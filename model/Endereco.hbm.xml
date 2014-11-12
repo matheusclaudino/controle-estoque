@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/11/2014 10:21:13 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Endereco" table="endereco" catalog="mydb">
+        <id name="idEndereco" type="java.lang.Integer">
+            <column name="idEndereco" />
+            <generator class="identity" />
+        </id>
+        <property name="cep" type="string">
+            <column name="cep" length="8" not-null="true" />
+        </property>
+        <property name="rua" type="string">
+            <column name="rua" length="45" not-null="true" />
+        </property>
+        <property name="numero" type="int">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="complemento" type="string">
+            <column name="complemento" length="15" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="bairro" length="30" not-null="true" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="cidade" length="25" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="20" not-null="true" />
+        </property>
+        <property name="referencia" type="string">
+            <column name="referencia" length="100" />
+        </property>
+        <set name="pessoas" table="pessoa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Endereco_idEndereco" not-null="true" />
+            </key>
+            <one-to-many class="model.Pessoa" />
+        </set>
+    </class>
+</hibernate-mapping>

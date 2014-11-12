@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/11/2014 10:21:13 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Pessoa" table="pessoa" catalog="mydb">
+        <id name="idPessoa" type="java.lang.Integer">
+            <column name="idPessoa" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="endereco" class="model.Endereco" fetch="select">
+            <column name="Endereco_idEndereco" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="45" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="45" />
+        </property>
+        <set name="pessoafisicas" table="pessoafisica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Pessoa_idPessoa" not-null="true" />
+            </key>
+            <one-to-many class="model.Pessoafisica" />
+        </set>
+        <set name="fornecedors" table="fornecedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Pessoa_idPessoa" not-null="true" />
+            </key>
+            <one-to-many class="model.Fornecedor" />
+        </set>
+    </class>
+</hibernate-mapping>
