@@ -109,7 +109,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Produto` (
-  `idProduto` INT NOT NULL AUTO_INCREMENT,
+  `codigo` INT NOT NULL,
   `Fornecedor_cnpj` VARCHAR(14) NOT NULL,
   `Categoria_idCategoria` INT NOT NULL,
   `Tamanho_idTamanho` INT NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Produto` (
   `quantidade` INT NOT NULL,
   `preco` DECIMAL(5,2) NOT NULL,
   `data` DATE NOT NULL,
-  PRIMARY KEY (`idProduto`),
+  PRIMARY KEY (`codigo`),
   INDEX `fk_Produto_Categoria1_idx` (`Categoria_idCategoria` ASC),
   INDEX `fk_Produto_Tamanho1_idx` (`Tamanho_idTamanho` ASC),
   INDEX `fk_Produto_Cor1_idx` (`Cor_idCor` ASC),
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Venda` (
   INDEX `fk_Venda_PessoaFisica1_idx` (`PessoaFisica_idPessoaFisica` ASC),
   CONSTRAINT `fk_Saida_Produto1`
     FOREIGN KEY (`Produto_idProduto`)
-    REFERENCES `mydb`.`Produto` (`idProduto`)
+    REFERENCES `mydb`.`Produto` (`codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Venda_Vendedor1`
