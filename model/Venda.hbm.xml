@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/11/2014 10:21:13 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Venda" table="venda" catalog="mydb">
+        <id name="idVenda" type="java.lang.Integer">
+            <column name="idVenda" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="produto" class="model.Produto" fetch="select">
+            <column name="Produto_idProduto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pessoafisica" class="model.Pessoafisica" fetch="select">
+            <column name="PessoaFisica_idPessoaFisica" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vendedor" class="model.Vendedor" fetch="select">
+            <column name="Vendedor_idVendedor" not-null="true" />
+        </many-to-one>
+        <property name="quantidade" type="int">
+            <column name="quantidade" not-null="true" />
+        </property>
+        <property name="valor" type="double">
+            <column name="valor" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="data" type="date">
+            <column name="data" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
