@@ -17,6 +17,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -89,12 +90,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelCadastroCliente.setText("jLabel1");
 
         jButtonCadastroProduto.setText("Produto");
+        jButtonCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroProdutoActionPerformed(evt);
+            }
+        });
 
         jButtonCadastroFornecedor.setText("Fornecedor");
+        jButtonCadastroFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroFornecedorActionPerformed(evt);
+            }
+        });
 
         jButtonCadasatroVendedor.setText("Vendedor");
+        jButtonCadasatroVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadasatroVendedorActionPerformed(evt);
+            }
+        });
 
         jButtonCadastroCliente.setText("Cliente");
+        jButtonCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCadastroLayout = new javax.swing.GroupLayout(jPanelCadastro);
         jPanelCadastro.setLayout(jPanelCadastroLayout);
@@ -151,6 +172,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelListarCliente.setText("jLabel1");
 
         jButtonListarProduto.setText("Produto");
+        jButtonListarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarProdutoActionPerformed(evt);
+            }
+        });
 
         jButtonListarFornecedor.setText("Fornecedor");
 
@@ -302,6 +328,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItemCadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroFornecedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemCadastroFornecedorActionPerformed
+
+    private void jButtonCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroProdutoActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroProduto cadastroProduto = new TelaCadastroProduto(this, true);
+        cadastroProduto.setLocationRelativeTo(this);
+        cadastroProduto.setVisible(true);
+    }//GEN-LAST:event_jButtonCadastroProdutoActionPerformed
+
+    private void jButtonCadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroFornecedorActionPerformed
+        // TODO add your handling code here:
+        
+        TelaCadastroFornecedor cadastroFornecedor = new TelaCadastroFornecedor(this, true);
+        cadastroFornecedor.setLocationRelativeTo(this);
+        cadastroFornecedor.setVisible(true);
+    }//GEN-LAST:event_jButtonCadastroFornecedorActionPerformed
+
+    private void jButtonCadasatroVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadasatroVendedorActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroVendedor cadastroVendedor = new TelaCadastroVendedor(this, true);
+        cadastroVendedor.setLocationRelativeTo(this);
+        cadastroVendedor.setVisible(true);
+    }//GEN-LAST:event_jButtonCadasatroVendedorActionPerformed
+
+    private void jButtonCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroClienteActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroCliente cadastroCliente = new TelaCadastroCliente(this, true);
+        cadastroCliente.setLocationRelativeTo(this);
+        cadastroCliente.setVisible(true);
+    }//GEN-LAST:event_jButtonCadastroClienteActionPerformed
+
+    private void jButtonListarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonListarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
