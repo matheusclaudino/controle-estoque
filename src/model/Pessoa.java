@@ -15,22 +15,14 @@ public class Pessoa  implements java.io.Serializable {
      private Endereco endereco;
      private String nome;
      private String telefone;
-     private Set pessoafisicas = new HashSet(0);
-     private Set fornecedors = new HashSet(0);
-
+ 
     public Pessoa() {
     }
 
-	
-    public Pessoa(Endereco endereco) {
-        this.endereco = endereco;
-    }
-    public Pessoa(Endereco endereco, String nome, String telefone, Set pessoafisicas, Set fornecedors) {
+    public Pessoa(Endereco endereco, String nome, String telefone) {
        this.endereco = endereco;
        this.nome = nome;
        this.telefone = telefone;
-       this.pessoafisicas = pessoafisicas;
-       this.fornecedors = fornecedors;
     }
    
     public Integer getIdPessoa() {
@@ -61,24 +53,6 @@ public class Pessoa  implements java.io.Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    public Set getPessoafisicas() {
-        return this.pessoafisicas;
-    }
-    
-    public void setPessoafisicas(Set pessoafisicas) {
-        this.pessoafisicas = pessoafisicas;
-    }
-    public Set getFornecedors() {
-        return this.fornecedors;
-    }
-    
-    public void setFornecedors(Set fornecedors) {
-        this.fornecedors = fornecedors;
-    }
-
-
-
-
 }
 
 
