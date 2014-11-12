@@ -1,5 +1,5 @@
 package model;
-// Generated 11/11/2014 10:21:12 by Hibernate Tools 3.6.0
+// Generated 12/11/2014 11:14:00 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -13,12 +13,12 @@ import java.util.Set;
 public class Produto  implements java.io.Serializable {
 
 
-     private Integer idProduto;
-     private Fornecedor fornecedor;
-     private Cor cor;
-     private Tamanho tamanho;
-     private Estampa estampa;
+     private int codigo;
      private Categoria categoria;
+     private Cor cor;
+     private Estampa estampa;
+     private Fornecedor fornecedor;
+     private Tamanho tamanho;
      private String nome;
      private String descricao;
      private int quantidade;
@@ -30,24 +30,26 @@ public class Produto  implements java.io.Serializable {
     }
 
 	
-    public Produto(Fornecedor fornecedor, Cor cor, Tamanho tamanho, Estampa estampa, Categoria categoria, String nome, String descricao, int quantidade, BigDecimal preco, Date data) {
-        this.fornecedor = fornecedor;
-        this.cor = cor;
-        this.tamanho = tamanho;
-        this.estampa = estampa;
+    public Produto(int codigo, Categoria categoria, Cor cor, Estampa estampa, Fornecedor fornecedor, Tamanho tamanho, String nome, String descricao, int quantidade, BigDecimal preco, Date data) {
+        this.codigo = codigo;
         this.categoria = categoria;
+        this.cor = cor;
+        this.estampa = estampa;
+        this.fornecedor = fornecedor;
+        this.tamanho = tamanho;
         this.nome = nome;
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.preco = preco;
         this.data = data;
     }
-    public Produto(Fornecedor fornecedor, Cor cor, Tamanho tamanho, Estampa estampa, Categoria categoria, String nome, String descricao, int quantidade, BigDecimal preco, Date data, Set vendas) {
-       this.fornecedor = fornecedor;
-       this.cor = cor;
-       this.tamanho = tamanho;
-       this.estampa = estampa;
+    public Produto(int codigo, Categoria categoria, Cor cor, Estampa estampa, Fornecedor fornecedor, Tamanho tamanho, String nome, String descricao, int quantidade, BigDecimal preco, Date data, Set vendas) {
+       this.codigo = codigo;
        this.categoria = categoria;
+       this.cor = cor;
+       this.estampa = estampa;
+       this.fornecedor = fornecedor;
+       this.tamanho = tamanho;
        this.nome = nome;
        this.descricao = descricao;
        this.quantidade = quantidade;
@@ -56,19 +58,19 @@ public class Produto  implements java.io.Serializable {
        this.vendas = vendas;
     }
    
-    public Integer getIdProduto() {
-        return this.idProduto;
+    public int getCodigo() {
+        return this.codigo;
     }
     
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
-    public Fornecedor getFornecedor() {
-        return this.fornecedor;
+    public Categoria getCategoria() {
+        return this.categoria;
     }
     
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     public Cor getCor() {
         return this.cor;
@@ -77,13 +79,6 @@ public class Produto  implements java.io.Serializable {
     public void setCor(Cor cor) {
         this.cor = cor;
     }
-    public Tamanho getTamanho() {
-        return this.tamanho;
-    }
-    
-    public void setTamanho(Tamanho tamanho) {
-        this.tamanho = tamanho;
-    }
     public Estampa getEstampa() {
         return this.estampa;
     }
@@ -91,12 +86,19 @@ public class Produto  implements java.io.Serializable {
     public void setEstampa(Estampa estampa) {
         this.estampa = estampa;
     }
-    public Categoria getCategoria() {
-        return this.categoria;
+    public Fornecedor getFornecedor() {
+        return this.fornecedor;
     }
     
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+    public Tamanho getTamanho() {
+        return this.tamanho;
+    }
+    
+    public void setTamanho(Tamanho tamanho) {
+        this.tamanho = tamanho;
     }
     public String getNome() {
         return this.nome;

@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/11/2014 10:21:13 by Hibernate Tools 3.6.0 -->
+<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Produto" table="produto" catalog="mydb">
-        <id name="idProduto" type="java.lang.Integer">
-            <column name="idProduto" />
-            <generator class="identity" />
+    <class name="model.Produto" table="produto" catalog="mydb" optimistic-lock="version">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
         </id>
-        <many-to-one name="fornecedor" class="model.Fornecedor" fetch="select">
-            <column name="Fornecedor_cnpj" length="14" not-null="true" />
+        <many-to-one name="categoria" class="model.Categoria" fetch="select">
+            <column name="Categoria_idCategoria" not-null="true" />
         </many-to-one>
         <many-to-one name="cor" class="model.Cor" fetch="select">
             <column name="Cor_idCor" not-null="true" />
         </many-to-one>
-        <many-to-one name="tamanho" class="model.Tamanho" fetch="select">
-            <column name="Tamanho_idTamanho" not-null="true" />
-        </many-to-one>
         <many-to-one name="estampa" class="model.Estampa" fetch="select">
             <column name="Estampa_idEstampa" not-null="true" />
         </many-to-one>
-        <many-to-one name="categoria" class="model.Categoria" fetch="select">
-            <column name="Categoria_idCategoria" not-null="true" />
+        <many-to-one name="fornecedor" class="model.Fornecedor" fetch="select">
+            <column name="Fornecedor_cnpj" length="14" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tamanho" class="model.Tamanho" fetch="select">
+            <column name="Tamanho_idTamanho" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">
             <column name="nome" length="45" not-null="true" />

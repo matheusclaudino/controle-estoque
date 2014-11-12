@@ -1,5 +1,5 @@
 package model;
-// Generated 11/11/2014 10:21:12 by Hibernate Tools 3.6.0
+// Generated 12/11/2014 11:14:00 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,8 +16,8 @@ public class Pessoafisica  implements java.io.Serializable {
      private String sexo;
      private String dataNascimento;
      private String cpf;
-     private Set vendedors = new HashSet(0);
      private Set vendas = new HashSet(0);
+     private Set vendedors = new HashSet(0);
 
     public Pessoafisica() {
     }
@@ -26,13 +26,13 @@ public class Pessoafisica  implements java.io.Serializable {
     public Pessoafisica(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
-    public Pessoafisica(Pessoa pessoa, String sexo, String dataNascimento, String cpf, Set vendedors, Set vendas) {
+    public Pessoafisica(Pessoa pessoa, String sexo, String dataNascimento, String cpf, Set vendas, Set vendedors) {
        this.pessoa = pessoa;
        this.sexo = sexo;
        this.dataNascimento = dataNascimento;
        this.cpf = cpf;
-       this.vendedors = vendedors;
        this.vendas = vendas;
+       this.vendedors = vendedors;
     }
    
     public Integer getIdPessoaFisica() {
@@ -70,19 +70,19 @@ public class Pessoafisica  implements java.io.Serializable {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    public Set getVendedors() {
-        return this.vendedors;
-    }
-    
-    public void setVendedors(Set vendedors) {
-        this.vendedors = vendedors;
-    }
     public Set getVendas() {
         return this.vendas;
     }
     
     public void setVendas(Set vendas) {
         this.vendas = vendas;
+    }
+    public Set getVendedors() {
+        return this.vendedors;
+    }
+    
+    public void setVendedors(Set vendedors) {
+        this.vendedors = vendedors;
     }
 
 

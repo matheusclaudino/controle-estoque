@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/11/2014 10:21:13 by Hibernate Tools 3.6.0 -->
+<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Pessoafisica" table="pessoafisica" catalog="mydb">
+    <class name="model.Pessoafisica" table="pessoafisica" catalog="mydb" optimistic-lock="version">
         <id name="idPessoaFisica" type="java.lang.Integer">
             <column name="idPessoaFisica" />
             <generator class="identity" />
@@ -20,17 +20,17 @@
         <property name="cpf" type="string">
             <column name="cpf" length="45" />
         </property>
-        <set name="vendedors" table="vendedor" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PessoaFisica_idPessoaFisica" not-null="true" />
-            </key>
-            <one-to-many class="model.Vendedor" />
-        </set>
         <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="PessoaFisica_idPessoaFisica" not-null="true" />
             </key>
             <one-to-many class="model.Venda" />
+        </set>
+        <set name="vendedors" table="vendedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PessoaFisica_idPessoaFisica" not-null="true" />
+            </key>
+            <one-to-many class="model.Vendedor" />
         </set>
     </class>
 </hibernate-mapping>

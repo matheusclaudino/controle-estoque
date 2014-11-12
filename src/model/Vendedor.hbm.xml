@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/11/2014 10:21:13 by Hibernate Tools 3.6.0 -->
+<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Vendedor" table="vendedor" catalog="mydb">
+    <class name="model.Vendedor" table="vendedor" catalog="mydb" optimistic-lock="version">
         <id name="idVendedor" type="java.lang.Integer">
             <column name="idVendedor" />
             <generator class="identity" />
