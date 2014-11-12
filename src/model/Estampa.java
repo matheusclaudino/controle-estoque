@@ -13,8 +13,7 @@ public class Estampa  implements java.io.Serializable {
 
      private Integer idEstampa;
      private String nome;
-     private Set produtos = new HashSet(0);
-
+     
     public Estampa() {
     }
 
@@ -22,11 +21,7 @@ public class Estampa  implements java.io.Serializable {
     public Estampa(String nome) {
         this.nome = nome;
     }
-    public Estampa(String nome, Set produtos) {
-       this.nome = nome;
-       this.produtos = produtos;
-    }
-   
+
     public Integer getIdEstampa() {
         return this.idEstampa;
     }
@@ -41,17 +36,6 @@ public class Estampa  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Set getProdutos() {
-        return this.produtos;
-    }
-    
-    public void setProdutos(Set produtos) {
-        this.produtos = produtos;
-    }
-
-
-
-
 }
 
 

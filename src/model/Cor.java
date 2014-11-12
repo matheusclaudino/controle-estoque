@@ -13,18 +13,12 @@ public class Cor  implements java.io.Serializable {
 
      private Integer idCor;
      private String nome;
-     private Set produtos = new HashSet(0);
 
     public Cor() {
     }
-
 	
     public Cor(String nome) {
         this.nome = nome;
-    }
-    public Cor(String nome, Set produtos) {
-       this.nome = nome;
-       this.produtos = produtos;
     }
    
     public Integer getIdCor() {
@@ -41,17 +35,6 @@ public class Cor  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Set getProdutos() {
-        return this.produtos;
-    }
-    
-    public void setProdutos(Set produtos) {
-        this.produtos = produtos;
-    }
-
-
-
-
 }
 
 

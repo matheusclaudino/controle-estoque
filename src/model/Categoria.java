@@ -13,20 +13,14 @@ public class Categoria  implements java.io.Serializable {
 
      private Integer idCategoria;
      private String nome;
-     private Set produtos = new HashSet(0);
 
     public Categoria() {
     }
 
-	
     public Categoria(String nome) {
         this.nome = nome;
     }
-    public Categoria(String nome, Set produtos) {
-       this.nome = nome;
-       this.produtos = produtos;
-    }
-   
+    
     public Integer getIdCategoria() {
         return this.idCategoria;
     }
@@ -41,17 +35,6 @@ public class Categoria  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Set getProdutos() {
-        return this.produtos;
-    }
-    
-    public void setProdutos(Set produtos) {
-        this.produtos = produtos;
-    }
-
-
-
-
 }
 
 
