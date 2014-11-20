@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Vendedor" table="vendedor" catalog="mydb" optimistic-lock="version">
-        <id name="idVendedor" type="java.lang.Integer">
-            <column name="idVendedor" />
-            <generator class="identity" />
+    <class name="model.Vendedor" table="vendedor" catalog="controleestoque" optimistic-lock="version">
+        <id name="idPessoa" type="int">
+            <column name="idPessoa" />
+            <generator class="foreign">
+                <param name="property">pessoafisica</param>
+            </generator>
         </id>
-        <many-to-one name="pessoafisica" class="model.Pessoafisica" fetch="select">
-            <column name="PessoaFisica_idPessoaFisica" not-null="true" />
-        </many-to-one>
+        <one-to-one name="pessoafisica" class="model.Pessoafisica" constrained="true"></one-to-one>
         <property name="salario" type="double">
             <column name="salario" precision="22" scale="0" not-null="true" />
         </property>
@@ -22,7 +22,7 @@
         </property>
         <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Vendedor_idVendedor" not-null="true" />
+                <column name="idVendedor" not-null="true" />
             </key>
             <one-to-many class="model.Venda" />
         </set>

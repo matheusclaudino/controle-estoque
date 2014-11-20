@@ -1,36 +1,25 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Pessoafisica" table="pessoafisica" catalog="mydb" optimistic-lock="version">
-        <id name="idPessoaFisica" type="java.lang.Integer">
-            <column name="idPessoaFisica" />
-            <generator class="identity" />
+    <class name="model.Pessoafisica" table="pessoafisica" catalog="controleestoque" optimistic-lock="version">
+        <id name="idPessoa" type="int">
+            <column name="idPessoa" />
+            <generator class="foreign">
+                <param name="property">pessoa</param>
+            </generator>
         </id>
-        <many-to-one name="pessoa" class="model.Pessoa" fetch="select">
-            <column name="Pessoa_idPessoa" not-null="true" />
-        </many-to-one>
-        <property name="sexo" type="string">
-            <column name="sexo" length="45" />
-        </property>
-        <property name="dataNascimento" type="string">
-            <column name="data_nascimento" length="45" />
-        </property>
+        <one-to-one name="pessoa" class="model.Pessoa" constrained="true"></one-to-one>
         <property name="cpf" type="string">
-            <column name="cpf" length="45" />
+            <column name="cpf" length="11" not-null="true" />
         </property>
-        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PessoaFisica_idPessoaFisica" not-null="true" />
-            </key>
-            <one-to-many class="model.Venda" />
-        </set>
-        <set name="vendedors" table="vendedor" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PessoaFisica_idPessoaFisica" not-null="true" />
-            </key>
-            <one-to-many class="model.Vendedor" />
-        </set>
+        <property name="sexo" type="char">
+            <column name="sexo" length="1" not-null="true" />
+        </property>
+        <property name="dataNascimento" type="date">
+            <column name="data_nascimento" length="10" not-null="true" />
+        </property>
+        <one-to-one name="vendedor" class="model.Vendedor"></one-to-one>
     </class>
 </hibernate-mapping>

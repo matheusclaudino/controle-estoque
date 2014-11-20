@@ -1,19 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Fornecedor" table="fornecedor" catalog="mydb" optimistic-lock="version">
-        <id name="cnpj" type="string">
-            <column name="cnpj" length="14" />
-            <generator class="assigned" />
+    <class name="model.Fornecedor" table="fornecedor" catalog="controleestoque" optimistic-lock="version">
+        <id name="idPessoa" type="int">
+            <column name="idPessoa" />
+            <generator class="foreign">
+                <param name="property">pessoa</param>
+            </generator>
         </id>
-        <many-to-one name="pessoa" class="model.Pessoa" fetch="select">
-            <column name="Pessoa_idPessoa" not-null="true" />
-        </many-to-one>
+        <one-to-one name="pessoa" class="model.Pessoa" constrained="true"></one-to-one>
+        <property name="cnpj" type="string">
+            <column name="cnpj" length="14" not-null="true" />
+        </property>
         <set name="produtos" table="produto" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Fornecedor_cnpj" length="14" not-null="true" />
+                <column name="codigoFornecedor" not-null="true" />
             </key>
             <one-to-many class="model.Produto" />
         </set>

@@ -1,5 +1,5 @@
 package model;
-// Generated 12/11/2014 11:14:00 by Hibernate Tools 4.3.1
+// Generated 20/11/2014 14:44:36 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,7 +11,6 @@ public class Venda  implements java.io.Serializable {
 
 
      private Integer idVenda;
-     private Pessoafisica pessoafisica;
      private Produto produto;
      private Vendedor vendedor;
      private int quantidade;
@@ -21,8 +20,7 @@ public class Venda  implements java.io.Serializable {
     public Venda() {
     }
 
-    public Venda(Pessoafisica pessoafisica, Produto produto, Vendedor vendedor, int quantidade, double valor, Date data) {
-       this.pessoafisica = pessoafisica;
+    public Venda(Produto produto, Vendedor vendedor, int quantidade, double valor, Date data) {
        this.produto = produto;
        this.vendedor = vendedor;
        this.quantidade = quantidade;
@@ -36,13 +34,6 @@ public class Venda  implements java.io.Serializable {
     
     public void setIdVenda(Integer idVenda) {
         this.idVenda = idVenda;
-    }
-    public Pessoafisica getPessoafisica() {
-        return this.pessoafisica;
-    }
-    
-    public void setPessoafisica(Pessoafisica pessoafisica) {
-        this.pessoafisica = pessoafisica;
     }
     public Produto getProduto() {
         return this.produto;

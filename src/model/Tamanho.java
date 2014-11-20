@@ -1,5 +1,5 @@
 package model;
-// Generated 12/11/2014 11:14:00 by Hibernate Tools 4.3.1
+// Generated 20/11/2014 14:44:36 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,6 +13,7 @@ public class Tamanho  implements java.io.Serializable {
 
      private Integer idTamanho;
      private String nome;
+     private Set produtos = new HashSet(0);
 
     public Tamanho() {
     }
@@ -20,6 +21,10 @@ public class Tamanho  implements java.io.Serializable {
 	
     public Tamanho(String nome) {
         this.nome = nome;
+    }
+    public Tamanho(String nome, Set produtos) {
+       this.nome = nome;
+       this.produtos = produtos;
     }
    
     public Integer getIdTamanho() {
@@ -36,6 +41,17 @@ public class Tamanho  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public Set getProdutos() {
+        return this.produtos;
+    }
+    
+    public void setProdutos(Set produtos) {
+        this.produtos = produtos;
+    }
+
+
+
+
 }
 
 

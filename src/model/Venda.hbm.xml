@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Venda" table="venda" catalog="mydb" optimistic-lock="version">
+    <class name="model.Venda" table="venda" catalog="controleestoque" optimistic-lock="version">
         <id name="idVenda" type="java.lang.Integer">
             <column name="idVenda" />
             <generator class="identity" />
         </id>
-        <many-to-one name="pessoafisica" class="model.Pessoafisica" fetch="select">
-            <column name="PessoaFisica_idPessoaFisica" not-null="true" />
-        </many-to-one>
         <many-to-one name="produto" class="model.Produto" fetch="select">
-            <column name="Produto_idProduto" not-null="true" />
+            <column name="idProduto" not-null="true" />
         </many-to-one>
         <many-to-one name="vendedor" class="model.Vendedor" fetch="select">
-            <column name="Vendedor_idVendedor" not-null="true" />
+            <column name="idVendedor" not-null="true" />
         </many-to-one>
         <property name="quantidade" type="int">
             <column name="quantidade" not-null="true" />

@@ -1,33 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/11/2014 11:14:01 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Pessoa" table="pessoa" catalog="mydb" optimistic-lock="version">
+    <class name="model.Pessoa" table="pessoa" catalog="controleestoque" optimistic-lock="version">
         <id name="idPessoa" type="java.lang.Integer">
             <column name="idPessoa" />
             <generator class="identity" />
         </id>
         <many-to-one name="endereco" class="model.Endereco" fetch="select">
-            <column name="Endereco_idEndereco" not-null="true" />
+            <column name="idEndereco" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">
-            <column name="nome" length="45" />
+            <column name="nome" length="45" not-null="true" />
         </property>
         <property name="telefone" type="string">
-            <column name="telefone" length="45" />
+            <column name="telefone" length="11" />
         </property>
-        <set name="pessoafisicas" table="pessoafisica" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Pessoa_idPessoa" not-null="true" />
-            </key>
-            <one-to-many class="model.Pessoafisica" />
-        </set>
-        <set name="fornecedors" table="fornecedor" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Pessoa_idPessoa" not-null="true" />
-            </key>
-            <one-to-many class="model.Fornecedor" />
-        </set>
+        <one-to-one name="pessoafisica" class="model.Pessoafisica"></one-to-one>
+        <one-to-one name="fornecedor" class="model.Fornecedor"></one-to-one>
     </class>
 </hibernate-mapping>
