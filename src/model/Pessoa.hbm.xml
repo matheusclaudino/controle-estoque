@@ -17,7 +17,42 @@
         <property name="telefone" type="string">
             <column name="telefone" length="11" />
         </property>
-        <one-to-one name="pessoafisica" class="model.Pessoafisica"></one-to-one>
-        <one-to-one name="fornecedor" class="model.Fornecedor"></one-to-one>
+        <joined-subclass name="model.Pessoafisica" table="PessoaFisica" catalog="controleEstoque">
+            <key>
+                <column name="idPessoa" not-null="true" />
+            </key>
+            <property name="cpf" type="string">
+                <column name="cpf" length="11" not-null="true" />
+            </property>
+            <property name="sexo" type="char">
+                <column name="sexo" length="1" not-null="true" />
+            </property>
+            <property name="dataNascimento" type="date">
+                <column name="data_nascimento" length="10" not-null="true" />
+            </property>
+            <joined-subclass name="model.Vendedor" table="Vendedor" catalog="controleEstoque">
+                <key>
+                    <column name="idPessoa" not-null="true" />
+                </key>
+                <property name="salario" type="double">
+                    <column name="salario" precision="22" scale="0" not-null="true" />
+                </property>
+                <property name="dataAdmissao" type="date">
+                    <column name="data_admissao" length="10" not-null="true" />
+                </property>
+                <property name="dataDemissao" type="date">
+                    <column name="data_demissao" length="10" />
+                </property>
+            </joined-subclass>
+        </joined-subclass>
+        <joined-subclass name="model.Fornecedor" table="Fornecedor" catalog="controleEstoque">
+            <key>
+                <column name="idPessoa" not-null="true" />
+            </key>
+            <property name="cnpj" type="string">
+                <column name="cnpj" length="14" not-null="true" />
+            </property>
+        </joined-subclass>
+       
     </class>
 </hibernate-mapping>
