@@ -286,6 +286,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         jMenuCadastro.setText("Registrar");
+        jMenuCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroProdutoActionPerformed(evt);
+            }
+        });
 
         jMenuItemCadastroProduto.setText("Produto");
         jMenuCadastro.add(jMenuItemCadastroProduto);
