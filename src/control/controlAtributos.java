@@ -48,5 +48,15 @@ public class controlAtributos {
             Logger.getLogger(controlAtributos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void carregarComboCor(JComboBox Cor){
+         List lista;
+        try {
+            lista = dao.listarCor();
+            Cor.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (Exception ex) {
+            Cor.setModel(null);
+            Logger.getLogger(controlAtributos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
