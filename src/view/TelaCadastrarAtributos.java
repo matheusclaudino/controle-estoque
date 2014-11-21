@@ -5,6 +5,8 @@
  */
 package view;
 
+import control.controlAtributos;
+
 /**
  *
  * @author Matheus Claudino
@@ -14,6 +16,7 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastrarAtributos
      */
+    controlAtributos controlAtri;
     public TelaCadastrarAtributos() {
         initComponents();
     }
@@ -27,21 +30,150 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        buttonGroupTipoAtributo = new javax.swing.ButtonGroup();
+        jPanelAtributos = new javax.swing.JPanel();
+        jPanelTipoAtributo = new javax.swing.JPanel();
+        jRadioButtonCor = new javax.swing.JRadioButton();
+        jRadioButtonEstampa = new javax.swing.JRadioButton();
+        jRadioButtonCategoria = new javax.swing.JRadioButton();
+        jRadioButtonTamanho = new javax.swing.JRadioButton();
+        jPanelInformacao = new javax.swing.JPanel();
+        jLabelNome = new javax.swing.JLabel();
+        jTextFieldNome = new javax.swing.JTextField();
+        jButtonCadastrar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Atributo");
+
+        jPanelTipoAtributo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Atributo"));
+        jPanelTipoAtributo.setToolTipText("");
+
+        buttonGroupTipoAtributo.add(jRadioButtonCor);
+        jRadioButtonCor.setMnemonic('1');
+        jRadioButtonCor.setText("Cor");
+
+        buttonGroupTipoAtributo.add(jRadioButtonEstampa);
+        jRadioButtonEstampa.setMnemonic('2');
+        jRadioButtonEstampa.setText("Estampa");
+
+        buttonGroupTipoAtributo.add(jRadioButtonCategoria);
+        jRadioButtonCategoria.setMnemonic('3');
+        jRadioButtonCategoria.setText("Categoria");
+
+        buttonGroupTipoAtributo.add(jRadioButtonTamanho);
+        jRadioButtonTamanho.setMnemonic('4');
+        jRadioButtonTamanho.setText("Tamanho");
+        jRadioButtonTamanho.setToolTipText("");
+        jRadioButtonTamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTamanhoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelTipoAtributoLayout = new javax.swing.GroupLayout(jPanelTipoAtributo);
+        jPanelTipoAtributo.setLayout(jPanelTipoAtributoLayout);
+        jPanelTipoAtributoLayout.setHorizontalGroup(
+            jPanelTipoAtributoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTipoAtributoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jRadioButtonCor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jRadioButtonEstampa)
+                .addGap(26, 26, 26)
+                .addComponent(jRadioButtonCategoria)
+                .addGap(30, 30, 30)
+                .addComponent(jRadioButtonTamanho)
+                .addGap(19, 19, 19))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanelTipoAtributoLayout.setVerticalGroup(
+            jPanelTipoAtributoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTipoAtributoLayout.createSequentialGroup()
+                .addGroup(jPanelTipoAtributoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonCor)
+                    .addComponent(jRadioButtonEstampa)
+                    .addComponent(jRadioButtonCategoria)
+                    .addComponent(jRadioButtonTamanho))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
+
+        jPanelInformacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação"));
+
+        jLabelNome.setText("Nome");
+
+        javax.swing.GroupLayout jPanelInformacaoLayout = new javax.swing.GroupLayout(jPanelInformacao);
+        jPanelInformacao.setLayout(jPanelInformacaoLayout);
+        jPanelInformacaoLayout.setHorizontalGroup(
+            jPanelInformacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInformacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelInformacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNome))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelInformacaoLayout.setVerticalGroup(
+            jPanelInformacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInformacaoLayout.createSequentialGroup()
+                .addComponent(jLabelNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
+        );
+
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelAtributosLayout = new javax.swing.GroupLayout(jPanelAtributos);
+        jPanelAtributos.setLayout(jPanelAtributosLayout);
+        jPanelAtributosLayout.setHorizontalGroup(
+            jPanelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtributosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelTipoAtributo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelAtributosLayout.createSequentialGroup()
+                        .addComponent(jPanelInformacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(jButtonCadastrar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelAtributosLayout.setVerticalGroup(
+            jPanelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAtributosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelTipoAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAtributosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelInformacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAtributosLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButtonCadastrar)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelAtributos, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButtonTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTamanhoActionPerformed
+        int id;
+        id = controlAtri.inserirAtributo(
+                buttonGroupTipoAtributo.getSelection().getMnemonic(),
+                jTextFieldNome.getText()
+        );
+        
+    }//GEN-LAST:event_jRadioButtonTamanhoActionPerformed
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +211,16 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupTipoAtributo;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JPanel jPanelAtributos;
+    private javax.swing.JPanel jPanelInformacao;
+    private javax.swing.JPanel jPanelTipoAtributo;
+    private javax.swing.JRadioButton jRadioButtonCategoria;
+    private javax.swing.JRadioButton jRadioButtonCor;
+    private javax.swing.JRadioButton jRadioButtonEstampa;
+    private javax.swing.JRadioButton jRadioButtonTamanho;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 }
