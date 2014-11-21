@@ -11,7 +11,7 @@ public class Fornecedor  extends Pessoa {
     public Fornecedor() {
     }
 	
-    public Fornecedor(Endereco endereco, String nome, String telefone, Pessoa pessoa, String cnpj) {
+    public Fornecedor(Endereco endereco, String nome, String telefone, String cnpj) {
         super(endereco, nome, telefone);
         this.cnpj = cnpj;
     }
