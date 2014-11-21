@@ -30,6 +30,8 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     public TelaCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.controlAtri = new controlAtributos();
+        this.control = new controlProduto();
     }
 
     /**
