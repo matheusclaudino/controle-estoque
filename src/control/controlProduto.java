@@ -10,5 +10,9 @@ package control;
  * @author Matheus Claudino
  */
 public class controlProduto {
-    
+    public int inserirProduto(){
+        
+        return 0;
+    }
+           
 }
