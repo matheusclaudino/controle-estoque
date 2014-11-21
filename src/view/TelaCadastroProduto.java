@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.controlAtributos;
 import control.controlProduto;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -25,7 +26,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
      * Creates new form TelaCadastroProduto
      */
     controlProduto control;
-
+    controlAtributos controlAtri;
     public TelaCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -105,22 +106,47 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         jLabelFornecedor.setText("Fornecedor");
 
         jComboBoxFornecedor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFornecedor.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBoxFornecedorComponentShown(evt);
+            }
+        });
 
         jLabelCategoria.setText("Categoria");
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCategoria.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBoxCategoriaComponentShown(evt);
+            }
+        });
 
         jLabelTamanho.setText("Tamanho");
 
         jComboBoxTamanho.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTamanho.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBoxTamanhoComponentShown(evt);
+            }
+        });
 
         jLabelCor.setText("Cor");
 
         jComboBoxCor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCor.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBoxCorComponentShown(evt);
+            }
+        });
 
         jLabelEstampa.setText("Estampa");
 
         jComboBoxEstampa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEstampa.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jComboBoxEstampaComponentShown(evt);
+            }
+        });
 
         jLabelCodigo.setText("Código");
 
@@ -293,6 +319,26 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
+
+    private void jComboBoxFornecedorComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxFornecedorComponentShown
+        controlAtri.carregarComboFornecedor(jComboBoxFornecedor);
+    }//GEN-LAST:event_jComboBoxFornecedorComponentShown
+
+    private void jComboBoxCategoriaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaComponentShown
+        controlAtri.carregarComboCategoria(jComboBoxCategoria);
+    }//GEN-LAST:event_jComboBoxCategoriaComponentShown
+
+    private void jComboBoxTamanhoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxTamanhoComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxTamanhoComponentShown
+
+    private void jComboBoxCorComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxCorComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCorComponentShown
+
+    private void jComboBoxEstampaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxEstampaComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEstampaComponentShown
     public void cleanFields(){
                     jTextFieldCodigo.setText("");
                     jTextFieldNome.setText("");
