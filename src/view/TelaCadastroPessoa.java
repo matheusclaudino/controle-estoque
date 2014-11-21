@@ -491,11 +491,14 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         Date dataNascimento = null;
         Date dataAdmissao = null;
         try {
-            if(jTextFieldDataNascimento.getText() != null){
+            if(!jTextFieldDataNascimento.getText().equals("")){
                 dataNascimento = formatter.parse(nascimento);
             }
-            if(jTextFieldAdmissao.getText() != null){
+            if(!jTextFieldAdmissao.getText().equals("")){
                 dataAdmissao = formatter.parse(admissao);
+            }
+            if(jTextFieldSalario.getText().equals("")){
+                jTextFieldSalario.setText("0.0");
             }
             int id;
             
@@ -505,7 +508,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                         jTextFieldCEP.getText(),
                         jTextFieldCidade.getText(),
                         jTextFieldRua.getText(),
-                        Integer.parseInt(jTextFieldNumero.getText()),
+                        Integer.parseInt(jTextFieldNumero.getText().toString()),
                         jTextFieldBairro.getText(),
                         jTextFieldComplemento.getText(),
                         jTextFieldReferencia.getText(),
@@ -515,7 +518,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                         dataNascimento,
                         jComboBoxSexo.getSelectedItem().toString(),
                         jTextFieldCNPJ.getText(),
-                        Double.parseDouble(jTextFieldSalario.getText()),
+                        Double.parseDouble(jTextFieldSalario.getText().toString()),
                         dataAdmissao
                 );  
             } catch (Exception ex) {

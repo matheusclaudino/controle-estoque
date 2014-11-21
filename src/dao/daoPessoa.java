@@ -32,7 +32,7 @@ public class daoPessoa {
             sessao.beginTransaction();
 
             sessao.save(pes);
-
+            System.out.println("lol");
             sessao.getTransaction().commit();
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();
