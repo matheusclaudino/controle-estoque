@@ -5,10 +5,36 @@
  */
 package dao;
 
+import java.sql.SQLException;
+import java.util.List;
+import model.Fornecedor;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+
 /**
  *
  * @author Matheus Claudino
  */
 public class daoAtributos {
-    
+     public List<Fornecedor> listarFornecedor() throws SQLException, Exception {
+
+       Session sessao = null;
+        try {
+            sessao = util.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+                                  
+            List<Fornecedor> resultado = sessao.createCriteria(Fornecedor.class).list();
+         
+            sessao.getTransaction().commit();  
+            sessao.close();
+            return resultado;
+        } catch (HibernateException he) {
+            if ( sessao != null ) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("ERRO listar CIDADE: " + he.getMessage() );
+            return null;
+        }
+    }
 }
