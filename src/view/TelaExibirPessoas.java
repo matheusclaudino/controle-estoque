@@ -5,6 +5,14 @@
  */
 package view;
 
+import control.controlPessoa;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import model.Pessoa;
+
 /**
  *
  * @author Paulo
@@ -14,10 +22,15 @@ public class TelaExibirPessoas extends javax.swing.JFrame {
     /**
      * Creates new form TelaExibirPessoas
      */
-    public TelaExibirPessoas() {
+    controlPessoa controladoraPessoa;
+    Pessoa pesSelecionado;
+    
+    public TelaExibirPessoas() throws SQLException, Exception {
         initComponents();
+        controladoraPessoa = new controlPessoa();
+        pesSelecionado = null;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +40,236 @@ public class TelaExibirPessoas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        buttonGroupTipo = new javax.swing.ButtonGroup();
+        jPanelExibirPessoas = new javax.swing.JPanel();
+        jPanelTabelaPessoas = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTablePessoas = new javax.swing.JTable();
+        jPanelTipo = new javax.swing.JPanel();
+        jRadioButtonVendedores = new javax.swing.JRadioButton();
+        jRadioButtonClientes = new javax.swing.JRadioButton();
+        jRadioButtonFornecedores = new javax.swing.JRadioButton();
+        jButtonSelecionar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanelTabelaPessoas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        jTablePessoas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nome", "CPF/CNPJ/SALÁRIO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTablePessoas);
+
+        javax.swing.GroupLayout jPanelTabelaPessoasLayout = new javax.swing.GroupLayout(jPanelTabelaPessoas);
+        jPanelTabelaPessoas.setLayout(jPanelTabelaPessoasLayout);
+        jPanelTabelaPessoasLayout.setHorizontalGroup(
+            jPanelTabelaPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTabelaPessoasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelTabelaPessoasLayout.setVerticalGroup(
+            jPanelTabelaPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanelTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo\n"));
+
+        buttonGroupTipo.add(jRadioButtonVendedores);
+        jRadioButtonVendedores.setMnemonic('V');
+        jRadioButtonVendedores.setText("Vendedores");
+        jRadioButtonVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonVendedoresActionPerformed(evt);
+            }
+        });
+
+        buttonGroupTipo.add(jRadioButtonClientes);
+        jRadioButtonClientes.setMnemonic('C');
+        jRadioButtonClientes.setText("Clientes");
+        jRadioButtonClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonClientesActionPerformed(evt);
+            }
+        });
+
+        buttonGroupTipo.add(jRadioButtonFornecedores);
+        jRadioButtonFornecedores.setMnemonic('F');
+        jRadioButtonFornecedores.setText("Fornecedores");
+        jRadioButtonFornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonFornecedoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelTipoLayout = new javax.swing.GroupLayout(jPanelTipo);
+        jPanelTipo.setLayout(jPanelTipoLayout);
+        jPanelTipoLayout.setHorizontalGroup(
+            jPanelTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jRadioButtonVendedores)
+            .addComponent(jRadioButtonClientes)
+            .addComponent(jRadioButtonFornecedores)
+        );
+        jPanelTipoLayout.setVerticalGroup(
+            jPanelTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTipoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jRadioButtonVendedores)
+                .addGap(9, 9, 9)
+                .addComponent(jRadioButtonClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jRadioButtonFornecedores)
+                .addContainerGap())
+        );
+
+        jButtonSelecionar.setText("Selecionar");
+        jButtonSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelecionarActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelExibirPessoasLayout = new javax.swing.GroupLayout(jPanelExibirPessoas);
+        jPanelExibirPessoas.setLayout(jPanelExibirPessoasLayout);
+        jPanelExibirPessoasLayout.setHorizontalGroup(
+            jPanelExibirPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelExibirPessoasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelExibirPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSelecionar))
+                .addGroup(jPanelExibirPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelExibirPessoasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelTabelaPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExibirPessoasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jButtonCancelar)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButtonExcluir)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelExibirPessoasLayout.setVerticalGroup(
+            jPanelExibirPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelExibirPessoasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelExibirPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelTabelaPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelExibirPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSelecionar)
+                    .addComponent(jButtonCancelar)
+                    .addComponent(jButtonExcluir))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanelExibirPessoas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanelExibirPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButtonVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVendedoresActionPerformed
+        // TODO add your handling code here:
+        controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
+    }//GEN-LAST:event_jRadioButtonVendedoresActionPerformed
+
+    private void jRadioButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClientesActionPerformed
+        // TODO add your handling code here:
+         controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
+    }//GEN-LAST:event_jRadioButtonClientesActionPerformed
+
+    private void jRadioButtonFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFornecedoresActionPerformed
+        // TODO add your handling code here:
+         controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
+    }//GEN-LAST:event_jRadioButtonFornecedoresActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // TODO add your handling code here:
+        int linha = jTablePessoas.getSelectedRow();
+        if ( linha >= 0) {
+            pesSelecionado = (Pessoa) jTablePessoas.getValueAt(linha,0);
+            try {
+                controladoraPessoa.excluirPessoa(pesSelecionado, jTablePessoas);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "ERRO ao excluir PESSOA.");
+                Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha.");
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
+        try {
+            // TODO add your handling code here:
+            TelaAlterarPessoa telaAlterarPessoa = new TelaAlterarPessoa();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +301,29 @@ public class TelaExibirPessoas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaExibirPessoas().setVisible(true);
+                try {
+                    new TelaExibirPessoas().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupTipo;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonSelecionar;
+    private javax.swing.JPanel jPanelExibirPessoas;
+    private javax.swing.JPanel jPanelTabelaPessoas;
+    private javax.swing.JPanel jPanelTipo;
+    private javax.swing.JRadioButton jRadioButtonClientes;
+    private javax.swing.JRadioButton jRadioButtonFornecedores;
+    private javax.swing.JRadioButton jRadioButtonVendedores;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePessoas;
     // End of variables declaration//GEN-END:variables
 }

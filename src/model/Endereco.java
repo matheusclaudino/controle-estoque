@@ -20,7 +20,6 @@ public class Endereco  implements java.io.Serializable {
      private String cidade;
      private String estado;
      private String referencia;
-     private Set pessoas = new HashSet(0);
 
     public Endereco() {
     }
@@ -33,17 +32,6 @@ public class Endereco  implements java.io.Serializable {
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-    }
-    public Endereco(String cep, String rua, int numero, String complemento, String bairro, String cidade, String estado, String referencia, Set pessoas) {
-       this.cep = cep;
-       this.rua = rua;
-       this.numero = numero;
-       this.complemento = complemento;
-       this.bairro = bairro;
-       this.cidade = cidade;
-       this.estado = estado;
-       this.referencia = referencia;
-       this.pessoas = pessoas;
     }
    
     public Integer getIdEndereco() {
@@ -108,13 +96,6 @@ public class Endereco  implements java.io.Serializable {
     
     public void setReferencia(String referencia) {
         this.referencia = referencia;
-    }
-    public Set getPessoas() {
-        return this.pessoas;
-    }
-    
-    public void setPessoas(Set pessoas) {
-        this.pessoas = pessoas;
     }
 
 

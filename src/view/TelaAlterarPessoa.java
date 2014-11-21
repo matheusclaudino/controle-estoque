@@ -6,6 +6,7 @@
 package view;
 
 import control.controlPessoa;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,14 +18,15 @@ import javafx.scene.input.DataFormat;
  *
  * @author Matheus Claudino
  */
-public class TelaCadastroPessoa extends javax.swing.JFrame {
+public class TelaAlterarPessoa extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaCadastroPessoa
      */
-    controlPessoa control;
-    public TelaCadastroPessoa() {
+    controlPessoa controladoraPessoa;
+    public TelaAlterarPessoa() throws SQLException, Exception {
         initComponents();
+        controladoraPessoa = new controlPessoa();
         jPanelCliente.setVisible(false);
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(false);
@@ -85,7 +87,8 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jTextFieldAdmissao = new javax.swing.JTextField();
         jLabelDataAdmissao = new javax.swing.JLabel();
         jLabelFormatoData1 = new javax.swing.JLabel();
-        jButtonCadastrar = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
@@ -383,7 +386,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                 .addGroup(jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSalario)
                     .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelVendedorLayout.createSequentialGroup()
                         .addComponent(jLabelDataAdmissao)
@@ -406,10 +409,17 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                 .addGap(0, 17, Short.MAX_VALUE))
         );
 
-        jButtonCadastrar.setText("CADASTRAR");
-        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar.setText("CANCELAR");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -424,12 +434,12 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                     .addComponent(jPanelInformacoesGerais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelTipoPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelTelaCadastroPessoaLayout.createSequentialGroup()
+                        .addComponent(jButtonAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCancelar)))
                 .addContainerGap())
-            .addGroup(jPanelTelaCadastroPessoaLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jButtonCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTelaCadastroPessoaLayout.setVerticalGroup(
             jPanelTelaCadastroPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,9 +454,11 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                 .addComponent(jPanelFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanelTelaCadastroPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAlterar)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanelTelaCadastroPessoa, java.awt.BorderLayout.CENTER);
@@ -484,38 +496,14 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jPanelVendedor.setVisible(true);
     }//GEN-LAST:event_jRadioButtonVendedorActionPerformed
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String nascimento = jTextFieldDataNascimento.getText();
-        String admissao = jTextFieldAdmissao.getText();
-        try {
-            Date dataNascimento = formatter.parse(nascimento);
-            Date dataAdmissao = formatter.parse(admissao);
-            int id;
-            
-                id = control.inserirPessoa(
-                        jTextFieldNome.getText(),
-                        jTextFieldTelefone.getText(),
-                        jTextFieldCEP.getText(),
-                        jTextFieldCidade.getText(),
-                        jTextFieldRua.getText(),
-                        Integer.parseInt(jTextFieldNumero.getText()),
-                        jTextFieldBairro.getText(),
-                        jTextFieldComplemento.getText(),
-                        jTextFieldReferencia.getText(),
-                        jComboBoxEstado.getSelectedItem().toString(),
-                        buttonGroupTipoPessoa.getSelection().getMnemonic(),
-                        jTextFieldCPF.getText(),
-                        dataNascimento,
-                        jComboBoxSexo.getSelectedItem().toString(),
-                        jTextFieldCNPJ.getText(),
-                        Double.parseDouble(jTextFieldSalario.getText()),
-                        dataAdmissao
-                );  
-            } catch (Exception ex) {
-                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        controladoraPessoa.alterarPessoa(WIDTH, null, null, null, null, null, WIDTH, null, null, null, null, WIDTH, null, null, null, null, Double.NaN, null);
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,27 +522,29 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarPessoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroPessoa().setVisible(true);
+                new TelaAlterarPessoa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupTipoPessoa;
-    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonAlterar;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JComboBox jComboBoxEstado;
     private javax.swing.JComboBox jComboBoxSexo;
     private javax.swing.JLabel jLabel1;
