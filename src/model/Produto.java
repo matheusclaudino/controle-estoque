@@ -29,7 +29,7 @@ public class Produto  implements java.io.Serializable {
     public Produto() {
     }
 
-	
+    
     public Produto(int codigo, Categoria categoria, Cor cor, Estampa estampa, Fornecedor fornecedor, Tamanho tamanho, String nome, String descricao, int quantidade, BigDecimal preco, Date data) {
         this.codigo = codigo;
         this.categoria = categoria;
