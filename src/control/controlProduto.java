@@ -5,12 +5,15 @@
  */
 package control;
 
+import java.util.Date;
+
 /**
  *
  * @author Matheus Claudino
  */
 public class controlProduto {
-    public int inserirProduto(){
+    public int inserirProduto(String nome, String descricao, float preco, int unidade, Date dataEntrada, String fornecedor,
+                String categoria, String tamanho, String cor, String estampa){
         
         return 0;
     }
