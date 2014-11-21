@@ -6,6 +6,9 @@
 package dao;
 
 import model.Produto;
+import org.hibernate.HibernateUtil;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 
 /**
  *
@@ -13,6 +16,20 @@ import model.Produto;
  */
 public class daoProduto {
     public void insert(Produto produto){
-        
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            sessao.save(produto);
+
+            sessao.getTransaction().commit();
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
     }
 }

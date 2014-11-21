@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author Paulo
@@ -279,11 +280,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                     bigPreco,
                     Integer.parseInt(jTextFieldUnidade.getText()),
                     dataEntrada,
-                    jComboBoxFornecedor.getSelectedItem().toString(),
-                    jComboBoxCategoria.getSelectedItem().toString(),
-                    jComboBoxTamanho.getSelectedItem().toString(),
-                    jComboBoxCor.getSelectedItem().toString(),
-                    jComboBoxEstampa.getSelectedItem().toString()
+                    jComboBoxFornecedor.getSelectedItem(),
+                    jComboBoxCategoria.getSelectedItem(),
+                    jComboBoxTamanho.getSelectedItem(),
+                    jComboBoxCor.getSelectedItem(),
+                    jComboBoxEstampa.getSelectedItem()
             );
 
         } catch (ParseException ex) {
