@@ -27,6 +27,15 @@ public class controlAtributos {
             Fornecedor.setModel(null);
             Logger.getLogger(controlAtributos.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+    }
+    public void carregarComboCategoria(JComboBox Categoria){
+         List lista;
+        try {
+            lista = dao.listarCategoria();
+            Categoria.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (Exception ex) {
+            Categoria.setModel(null);
+            Logger.getLogger(controlAtributos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
