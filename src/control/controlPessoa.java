@@ -69,7 +69,7 @@ public class controlPessoa {
             pes = new Pessoafisica(endereco, nome, telefone, cpf, s, dataNascimento);
         } else if (tipoPessoa == 'F') {
             pes = new Fornecedor(endereco, nome, telefone, cnpj);
-        } else if (tipoPessoa == 'V') {
+        } else {
             pes = new Vendedor(endereco, nome, telefone, cpf, s, dataNascimento, salario, dataAdmissao);
         }
 

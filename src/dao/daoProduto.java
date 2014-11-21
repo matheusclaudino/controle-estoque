@@ -6,7 +6,6 @@
 package dao;
 
 import model.Produto;
-import util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 

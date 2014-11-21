@@ -6,6 +6,7 @@
 package view;
 
 import control.controlPessoa;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,11 +24,12 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa control;
-    public TelaCadastroPessoa() {
+    public TelaCadastroPessoa() throws SQLException, Exception {
         initComponents();
         jPanelCliente.setVisible(false);
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(false);
+        this.control = new controlPessoa();
     }
 
     /**
@@ -556,7 +558,11 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroPessoa().setVisible(true);
+                try {
+                    new TelaCadastroPessoa().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -14,7 +14,6 @@ import model.Fornecedor;
 import model.Tamanho;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import util.HibernateUtil;
 
 /**
  *
@@ -95,7 +94,7 @@ public class daoAtributos {
 
         Session sessao = null;
         try {
-            sessao = util.HibernateUtil.getSessionFactory().openSession();
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             List<Fornecedor> resultado = sessao.createCriteria(Fornecedor.class).list();
@@ -116,7 +115,7 @@ public class daoAtributos {
     public List<Categoria> listarCategoria() {
         Session sessao = null;
         try {
-            sessao = util.HibernateUtil.getSessionFactory().openSession();
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             List<Categoria> resultado = sessao.createCriteria(Categoria.class).list();
@@ -136,7 +135,7 @@ public class daoAtributos {
      public List<Tamanho> listarTamanho() {
         Session sessao = null;
         try {
-            sessao = util.HibernateUtil.getSessionFactory().openSession();
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             List<Tamanho> resultado = sessao.createCriteria(Tamanho.class).list();
@@ -156,7 +155,7 @@ public class daoAtributos {
      public List<Cor> listarCor() {
         Session sessao = null;
         try {
-            sessao = util.HibernateUtil.getSessionFactory().openSession();
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             List<Cor> resultado = sessao.createCriteria(Cor.class).list();
@@ -176,7 +175,7 @@ public class daoAtributos {
       public List<Estampa> listarEstampa() {
         Session sessao = null;
         try {
-            sessao = util.HibernateUtil.getSessionFactory().openSession();
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
             List<Estampa> resultado = sessao.createCriteria(Estampa.class).list();
