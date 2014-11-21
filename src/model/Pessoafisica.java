@@ -45,8 +45,11 @@ public class Pessoafisica extends Pessoa {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+   
 
-
+    public Object[] toArray(){
+        return new Object[] {this, this.getCpf()};
+    }
 
 }
 

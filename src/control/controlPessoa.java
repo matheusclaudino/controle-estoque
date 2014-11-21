@@ -17,11 +17,16 @@ import model.Pessoa;
 import model.Pessoafisica;
 import model.Vendedor;
 
+
+import java.util.Date;
+import java.util.Iterator;
+
 /**
  *
  * @author Matheus Claudino
  */
 public class controlPessoa {
+
     daoPessoa dao;
     List<Pessoa> lista;
 
@@ -82,14 +87,45 @@ public class controlPessoa {
         ((DefaultTableModel) tabela.getModel()).removeRow(linha);
     }
 
-    public void pesquisarPessoa(JTable tabela, String pesq, int tipo) {
+    public void consultaPessoa(JTable tabela, int tipo) {
 
-        lista = dao.pesquisarNome(pesq, tipo);
+        lista = dao.consultaPessoa(tipo);
 
-        mostrarLista(tabela, tipo);
+        exibirLista(tabela, tipo);
 
     }
     
+    public void exibirLista(JTable tabela, int tipo) {
+        String nomeClasse = null;
+        Pessoa pes = null;
+
+        switch (tipo) {
+            case 'C': // Pessoa Fisica
+                nomeClasse = "modelo.Pessoafisica";
+                break;
+            case 'F': // Pessoa Fornecedor
+                nomeClasse = "modelo.Fornecedor";
+                break;
+            case 'V': // Pessoa Vendedor
+                nomeClasse = "modelo.Vendedor";
+                break;
+        }
+
+        // Percorrer a LISTA
+        if (lista != null) {
+            ((DefaultTableModel) tabela.getModel()).setRowCount(0);
+            Iterator<Pessoa> it = lista.iterator();
+            while (it.hasNext()) {
+                pes = it.next();
+
+                if (nomeClasse.equals(pes.getClass().getName())) {//possivelmente desnecessário
+                    ((DefaultTableModel) tabela.getModel()).addRow(pes.toArray());
+                }
+            }
+        }
+
+    }
+
     public char tipoSexo(String sexo){
         char s;
         if(sexo.equalsIgnoreCase("Feminino"))
@@ -100,3 +136,4 @@ public class controlPessoa {
         return s;
     }
 }
+

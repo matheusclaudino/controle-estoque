@@ -42,7 +42,10 @@ public class Vendedor  extends Pessoafisica {
     public void setDataDemissao(Date dataDemissao) {
         this.dataDemissao = dataDemissao;
     }
-
+    
+     public Object[] toArray(){
+        return new Object[] {this, this.getCpf()};
+    }
 
 
 }

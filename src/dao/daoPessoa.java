@@ -100,7 +100,7 @@ public class daoPessoa {
         }
     }
 
-    public List pesquisarNome(String pesq, int tipo) {
+    public List consultaPessoa(int tipo) {
         Session sessao = null;
         List<Pessoa> lista = null;
         try {
@@ -116,7 +116,6 @@ public class daoPessoa {
                 consulta = sessao.createCriteria(Vendedor.class);
             }
 
-            consulta.add(Restrictions.like("nome", pesq + "%"));
             lista = consulta.list();
 
             sessao.getTransaction().commit();
