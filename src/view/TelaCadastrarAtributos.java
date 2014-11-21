@@ -19,6 +19,7 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
     controlAtributos controlAtri;
     public TelaCadastrarAtributos() {
         initComponents();
+        this.controlAtri = new controlAtributos();
     }
 
     /**
@@ -64,11 +65,6 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
         jRadioButtonTamanho.setMnemonic('4');
         jRadioButtonTamanho.setText("Tamanho");
         jRadioButtonTamanho.setToolTipText("");
-        jRadioButtonTamanho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonTamanhoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanelTipoAtributoLayout = new javax.swing.GroupLayout(jPanelTipoAtributo);
         jPanelTipoAtributo.setLayout(jPanelTipoAtributoLayout);
@@ -162,17 +158,12 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButtonTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTamanhoActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         int id;
         id = controlAtri.inserirAtributo(
                 buttonGroupTipoAtributo.getSelection().getMnemonic(),
                 jTextFieldNome.getText()
         );
-        
-    }//GEN-LAST:event_jRadioButtonTamanhoActionPerformed
-
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**

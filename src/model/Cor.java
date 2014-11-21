@@ -1,5 +1,5 @@
 package model;
-// Generated 20/11/2014 14:44:36 by Hibernate Tools 4.3.1
+// Generated 21/11/2014 10:23:45 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -48,7 +48,14 @@ public class Cor  implements java.io.Serializable {
     public void setProdutos(Set produtos) {
         this.produtos = produtos;
     }
-
+    
+    public String toString(){
+        return this.nome;
+    }
+    
+    public Object[] toArray(){
+        return new Object[] {this};
+    }
 
 
 

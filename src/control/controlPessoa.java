@@ -44,6 +44,7 @@ public class controlPessoa {
         char s = tipoSexo(sexo);
         Pessoa pes;
         Endereco endereco = new Endereco(cep, rua, numero, bairro, cidade, estado);
+        dao.inserirEndereco(endereco);
         if (tipoPessoa == 'C') {
             pes = new Pessoafisica(endereco, nome, telefone, cpf, s, dataNascimento);
         } else if (tipoPessoa == 'F') {

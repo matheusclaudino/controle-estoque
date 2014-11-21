@@ -24,8 +24,9 @@ public class Fornecedor  extends Pessoa {
         this.cnpj = cnpj;
     }
     
+    
      public Object[] toArray(){
-        return new Object[] {this, this.getCnpj()};
+        return new Object[] {this};
     }
 }
 

@@ -6,6 +6,7 @@
 package dao;
 
 import java.util.List;
+import model.Endereco;
 import model.Fornecedor;
 import model.Pessoa;
 import model.Pessoafisica;
@@ -32,6 +33,25 @@ public class daoPessoa {
 
             sessao.save(pes);
             System.out.println("lol");
+            sessao.getTransaction().commit();
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
+    }
+    
+    public void inserirEndereco(Endereco pes) {
+
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            sessao.save(pes);
+
             sessao.getTransaction().commit();
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();

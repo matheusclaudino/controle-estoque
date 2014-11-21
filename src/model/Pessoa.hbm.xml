@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/11/2014 08:57:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.Pessoa" table="pessoa" catalog="controleestoque" optimistic-lock="version">
         <id name="idPessoa" type="java.lang.Integer">
@@ -17,6 +17,7 @@
         <property name="telefone" type="string">
             <column name="telefone" length="11" />
         </property>
+        
         <joined-subclass name="model.Pessoafisica" table="pessoafisica" catalog="controleestoque">
             <key>
                 <column name="idPessoa" not-null="true" />
@@ -30,6 +31,7 @@
             <property name="dataNascimento" type="date">
                 <column name="data_nascimento" length="10" not-null="true" />
             </property>
+            
             <joined-subclass name="model.Vendedor" table="vendedor" catalog="controleestoque">
                 <key>
                     <column name="idPessoa" not-null="true" />
@@ -45,14 +47,14 @@
                 </property>
             </joined-subclass>
         </joined-subclass>
+        
         <joined-subclass name="model.Fornecedor" table="fornecedor" catalog="controleestoque">
             <key>
                 <column name="idPessoa" not-null="true" />
             </key>
             <property name="cnpj" type="string">
-                <column name="cnpj" length="14" not-null="true" />
-            </property>
+                <column name="cnpj" length="20" />
+            </property>                
         </joined-subclass>
-       
     </class>
 </hibernate-mapping>

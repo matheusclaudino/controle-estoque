@@ -107,7 +107,7 @@ public class daoAtributos {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("ERRO listar CIDADE: " + he.getMessage());
+            System.out.println("ERRO listar Fornecedor: " + he.getMessage());
             return null;
         }
     }
@@ -128,7 +128,7 @@ public class daoAtributos {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("ERRO listar CIDADE: " + he.getMessage());
+            System.out.println("ERRO listar Categoria: " + he.getMessage());
             return null;
         }
     }
@@ -148,7 +148,7 @@ public class daoAtributos {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("ERRO listar CIDADE: " + he.getMessage());
+            System.out.println("ERRO listar Tamanho: " + he.getMessage());
             return null;
         }
     }
@@ -168,7 +168,7 @@ public class daoAtributos {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("ERRO listar CIDADE: " + he.getMessage());
+            System.out.println("ERRO listar Cor: " + he.getMessage());
             return null;
         }
     }
@@ -188,7 +188,7 @@ public class daoAtributos {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("ERRO listar CIDADE: " + he.getMessage());
+            System.out.println("ERRO listar Estampa: " + he.getMessage());
             return null;
         }
     }

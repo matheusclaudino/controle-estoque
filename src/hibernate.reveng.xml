@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="controleestoque"/>
-  <table-filter match-name="endereco"/>
-  <table-filter match-name="categoria"/>
-  <table-filter match-name="produto"/>
-  <table-filter match-name="tamanho"/>
-  <table-filter match-name="pessoa"/>
+  <schema-selection match-catalog="controleEstoque"/>
+  <table-filter match-name="fornecedor"/>
   <table-filter match-name="vendedor"/>
+  <table-filter match-name="pessoa"/>
+  <table-filter match-name="estampa"/>
+  <table-filter match-name="categoria"/>
   <table-filter match-name="cor"/>
   <table-filter match-name="pessoafisica"/>
-  <table-filter match-name="fornecedor"/>
-  <table-filter match-name="estampa"/>
+  <table-filter match-name="tamanho"/>
   <table-filter match-name="venda"/>
+  <table-filter match-name="endereco"/>
+  <table-filter match-name="produto"/>
 </hibernate-reverse-engineering>

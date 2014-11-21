@@ -6,13 +6,13 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/controleEstoque?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <mapping resource="model/Produto.hbm.xml"/>
     <mapping resource="model/Endereco.hbm.xml"/>
     <mapping resource="model/Cor.hbm.xml"/>
-    <mapping resource="model/Venda.hbm.xml"/>
     <mapping resource="model/Estampa.hbm.xml"/>
     <mapping resource="model/Tamanho.hbm.xml"/>
-    <mapping resource="model/Categoria.hbm.xml"/>
     <mapping resource="model/Pessoa.hbm.xml"/>
+    <mapping resource="model/Categoria.hbm.xml"/>
+    <mapping resource="model/Produto.hbm.xml"/>
+    <mapping resource="model/Venda.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

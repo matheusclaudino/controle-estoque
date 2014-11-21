@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20/11/2014 14:44:37 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/11/2014 08:57:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.Cor" table="cor" catalog="controleestoque" optimistic-lock="version">
         <id name="idCor" type="java.lang.Integer">
@@ -11,11 +11,5 @@
         <property name="nome" type="string">
             <column name="nome" length="15" not-null="true" />
         </property>
-        <set name="produtos" table="produto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="codigoCor" not-null="true" />
-            </key>
-            <one-to-many class="model.Produto" />
-        </set>
     </class>
 </hibernate-mapping>
