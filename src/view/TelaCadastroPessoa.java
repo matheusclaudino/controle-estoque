@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa control;
+
     public TelaCadastroPessoa() throws SQLException, Exception {
         initComponents();
         jPanelCliente.setVisible(false);
@@ -493,40 +495,60 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         Date dataNascimento = null;
         Date dataAdmissao = null;
         try {
-            if(!jTextFieldDataNascimento.getText().equals("")){
+            if (!jTextFieldDataNascimento.getText().equals("")) {
                 dataNascimento = formatter.parse(nascimento);
             }
-            if(!jTextFieldAdmissao.getText().equals("")){
+            if (!jTextFieldAdmissao.getText().equals("")) {
                 dataAdmissao = formatter.parse(admissao);
             }
-            if(jTextFieldSalario.getText().equals("")){
+            if (jTextFieldSalario.getText().equals("")) {
                 jTextFieldSalario.setText("0.0");
             }
             int id;
             
-                id = control.inserirPessoa(
-                        jTextFieldNome.getText(),
-                        jTextFieldTelefone.getText(),
-                        jTextFieldCEP.getText(),
-                        jTextFieldCidade.getText(),
-                        jTextFieldRua.getText(),
-                        Integer.parseInt(jTextFieldNumero.getText().toString().trim()),
-                        jTextFieldBairro.getText(),
-                        jTextFieldComplemento.getText(),
-                        jTextFieldReferencia.getText(),
-                        jComboBoxEstado.getSelectedItem().toString(),
-                        buttonGroupTipoPessoa.getSelection().getMnemonic(),
-                        jTextFieldCPF.getText(),
-                        dataNascimento,
-                        jComboBoxSexo.getSelectedItem().toString(),
-                        jTextFieldCNPJ.getText(),
-                        Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
-                        dataAdmissao
-                );  
-            } catch (Exception ex) {
-                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            id = control.inserirPessoa(
+                    jTextFieldNome.getText(),
+                    jTextFieldTelefone.getText(),
+                    jTextFieldCEP.getText(),
+                    jTextFieldCidade.getText(),
+                    jTextFieldRua.getText(),
+                    Integer.parseInt(jTextFieldNumero.getText().toString().trim()),
+                    jTextFieldBairro.getText(),
+                    jTextFieldComplemento.getText(),
+                    jTextFieldReferencia.getText(),
+                    jComboBoxEstado.getSelectedItem().toString(),
+                    buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                    jTextFieldCPF.getText(),
+                    dataNascimento,
+                    jComboBoxSexo.getSelectedItem().toString(),
+                    jTextFieldCNPJ.getText(),
+                    Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
+                    dataAdmissao
+            );            
+            JOptionPane.showMessageDialog(this, "Pessoa " + id + " foi cadastrada");
+            cleanFields();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
+    public void cleanFields() {
+        jTextFieldNome.setText("");
+        jTextFieldTelefone.setText("");
+        jTextFieldCEP.setText("");
+        jTextFieldCidade.setText("");
+        jTextFieldRua.setText("");
+        jTextFieldNumero.setText("");
+        jTextFieldBairro.setText("");
+        jTextFieldComplemento.setText("");
+        jTextFieldReferencia.setText("");
+        jComboBoxEstado.setSelectedIndex(0);
+        jTextFieldCPF.setText("");
+        jTextFieldDataNascimento.setText("");
+        jComboBoxSexo.setSelectedIndex(0);
+        jTextFieldCNPJ.setText("");
+        jTextFieldSalario.setText("");
+        jTextFieldAdmissao.setText("");
+    }
 
     /**
      * @param args the command line arguments
