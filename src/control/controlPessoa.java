@@ -5,6 +5,7 @@
  */
 package control;
 
+
 import dao.daoPessoa;
 import java.sql.SQLException;
 import java.util.Date;
@@ -16,6 +17,10 @@ import model.Fornecedor;
 import model.Pessoa;
 import model.Pessoafisica;
 import model.Vendedor;
+
+import java.util.Date;
+import java.util.Iterator;
+
 
 /**
  *
@@ -84,5 +89,36 @@ public class controlPessoa {
         mostrarLista(tabela, tipo);
 
     }
+    
+    public void mostrarLista(JTable tabela, int tipo) {
+        String nomeClasse = null;
+        Pessoa pes = null;
 
+        switch (tipo) {
+            case 'C': // Pessoa Fisica
+                nomeClasse = "modelo.Pessoafisica";
+                break;
+            case 'F': // Pessoa Fornecedor
+                nomeClasse = "modelo.Fornecedor";
+                break;
+            case 'V': // Pessoa Vendedor
+                nomeClasse = "modelo.Vendedor";
+                break;
+        }
+
+        // Percorrer a LISTA
+        if (lista != null) {
+            ((DefaultTableModel) tabela.getModel()).setRowCount(0);
+            Iterator<Pessoa> it = lista.iterator();
+            while (it.hasNext()) {
+                pes = it.next();
+
+                if (nomeClasse.equals(pes.getClass().getName())) {
+                    ((DefaultTableModel) tabela.getModel()).addRow(pes.toArray());
+                }
+            }
+        }
+
+    }
+    
 }
