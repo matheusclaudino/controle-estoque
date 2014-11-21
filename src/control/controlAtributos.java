@@ -11,6 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import model.Categoria;
+import model.Cor;
+import model.Estampa;
+import model.Tamanho;
 
 /**
  *
@@ -18,6 +22,22 @@ import javax.swing.JComboBox;
  */
 public class controlAtributos {
     daoAtributos dao;
+    public void inserirAtributo(int tipo, String nome){
+        if(tipo == 1){
+            Cor cor = new Cor(nome);
+            dao.insertCor(cor);
+        }else if(tipo == 2){
+            Estampa estampa = new Estampa(nome);
+            dao.insertEstampa(estampa);
+        }else if(tipo == 3){
+            Categoria categoria = new Categoria(nome);
+            dao.insertCategoria(categoria);
+        }else{
+            Tamanho tamanho = new Tamanho(nome);
+            dao.insertTamanho(tamanho);
+        }
+        
+    }
     public void carregarComboFornecedor(JComboBox Fornecedor) {
         List lista;
         try {
