@@ -5,10 +5,16 @@
  */
 package control;
 
+import java.util.Date;
+
 /**
  *
  * @author Matheus Claudino
  */
 public class controlPessoa {
-    
+    public void insert(String nome, String telefone, String cep, String Cidade, String rua, int numero, String bairro,
+                String complemento, String referencia, String estado, int tipoPessoa, String cpf, Date nascimento,
+                String sexo, String cnpj, Double salario, Date dataAdmissao){
+        
+    }
 }
