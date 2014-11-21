@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
+
+import control.controlProduto;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,6 +21,8 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     /**
      * Creates new form TelaCadastroProduto
      */
+    controlProduto control;
+
     public TelaCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -155,6 +163,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         );
 
         jButtonCadastrarProduto.setText("Cadastrar");
+        jButtonCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarProdutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -238,6 +251,32 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarProdutoActionPerformed
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String data = jTextFieldDataProduto.getText();
+        Date dataEntrada;
+        try {
+            dataEntrada = formatter.parse(data);
+
+            int id;
+            id = control.inserirProduto(
+                    jTextFieldNomeProduto.getText(),
+                    jTextAreaDescricaoProduto.getText(),
+                    Float.parseFloat(jTextFieldPrecoProduto.getText()),
+                    Integer.parseInt(jTextFieldUndProduto.getText()),
+                    dataEntrada,
+                    jComboBoxFornecedor.getSelectedItem().toString(),
+                    jComboBoxCategoria.getSelectedItem().toString(),
+                    jComboBoxTamanho.getSelectedItem().toString(),
+                    jComboBoxCor.getSelectedItem().toString(),
+                    jComboBoxEstampa.getSelectedItem().toString()
+            );
+
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
