@@ -58,5 +58,15 @@ public class controlAtributos {
             Logger.getLogger(controlAtributos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void carregarComboEstampa(JComboBox Estampa){
+         List lista;
+        try {
+            lista = dao.listarEstampa();
+            Estampa.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (Exception ex) {
+            Estampa.setModel(null);
+            Logger.getLogger(controlAtributos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
