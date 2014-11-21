@@ -51,6 +51,7 @@ public class controlPessoa {
         } else{
             pes = new Vendedor(endereco, nome, telefone, cpf, s, dataNascimento, salario, dataAdmissao);
         }
+        System.out.println(pes.getNome());
         dao.inserir(pes);
         return pes.getIdPessoa();
 

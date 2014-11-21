@@ -232,7 +232,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jPanelTipoPessoa.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
 
         buttonGroupTipoPessoa.add(jRadioButtonCliente);
-        jRadioButtonCliente.setMnemonic('c');
+        jRadioButtonCliente.setMnemonic('C');
         jRadioButtonCliente.setText("Cliente");
         jRadioButtonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +241,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         });
 
         buttonGroupTipoPessoa.add(jRadioButtonFornecedor);
-        jRadioButtonFornecedor.setMnemonic('f');
+        jRadioButtonFornecedor.setMnemonic('F');
         jRadioButtonFornecedor.setText("Fornecedor");
         jRadioButtonFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +250,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         });
 
         buttonGroupTipoPessoa.add(jRadioButtonVendedor);
-        jRadioButtonVendedor.setMnemonic('v');
+        jRadioButtonVendedor.setMnemonic('V');
         jRadioButtonVendedor.setText("Vendedor");
         jRadioButtonVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,7 +508,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                         jTextFieldCEP.getText(),
                         jTextFieldCidade.getText(),
                         jTextFieldRua.getText(),
-                        Integer.parseInt(jTextFieldNumero.getText().toString()),
+                        Integer.parseInt(jTextFieldNumero.getText().toString().trim()),
                         jTextFieldBairro.getText(),
                         jTextFieldComplemento.getText(),
                         jTextFieldReferencia.getText(),
@@ -518,7 +518,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                         dataNascimento,
                         jComboBoxSexo.getSelectedItem().toString(),
                         jTextFieldCNPJ.getText(),
-                        Double.parseDouble(jTextFieldSalario.getText().toString()),
+                        Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
                         dataAdmissao
                 );  
             } catch (Exception ex) {
