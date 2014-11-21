@@ -497,7 +497,7 @@ public class TelaAlterarPessoa extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonVendedorActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        controladoraPessoa.alterarPessoa(WIDTH, null, null, null, null, null, WIDTH, null, null, null, null, WIDTH, null, null, null, null, Double.NaN, null);
+        //controladoraPessoa.alterarPessoa(WIDTH, null, null, null, null, null, WIDTH, null, null, null, null, WIDTH, null, null, null, null, Double.NaN, null);
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -536,7 +536,7 @@ public class TelaAlterarPessoa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterarPessoa().setVisible(true);
+               // new TelaAlterarPessoa().setVisible(true);
             }
         });
     }

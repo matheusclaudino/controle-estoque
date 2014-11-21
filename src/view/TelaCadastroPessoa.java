@@ -488,9 +488,15 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String nascimento = jTextFieldDataNascimento.getText();
         String admissao = jTextFieldAdmissao.getText();
+        Date dataNascimento = null;
+        Date dataAdmissao = null;
         try {
-            Date dataNascimento = formatter.parse(nascimento);
-            Date dataAdmissao = formatter.parse(admissao);
+            if(jTextFieldDataNascimento.getText() != null){
+                dataNascimento = formatter.parse(nascimento);
+            }
+            if(jTextFieldAdmissao.getText() != null){
+                dataAdmissao = formatter.parse(admissao);
+            }
             int id;
             
                 id = control.inserirPessoa(
