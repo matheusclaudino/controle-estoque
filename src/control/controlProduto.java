@@ -24,6 +24,11 @@ import model.Tamanho;
  */
 public class controlProduto {
     daoProduto dao;
+
+    public controlProduto() {
+        this.dao = new daoProduto();
+    }
+    
     public int inserirProduto(int codigo,String nome, String descricao, BigDecimal preco, int unidade, Date dataEntrada, Object forne,
                 Object cate, Object tam, Object c, Object est){
         

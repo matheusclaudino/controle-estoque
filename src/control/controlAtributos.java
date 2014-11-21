@@ -22,6 +22,11 @@ import model.Tamanho;
  */
 public class controlAtributos {
     daoAtributos dao;
+
+    public controlAtributos() {
+        this.dao = new daoAtributos();
+    }
+    
     public int inserirAtributo(int tipo, String nome){
         if(tipo == 1){
             Cor cor = new Cor(nome);
