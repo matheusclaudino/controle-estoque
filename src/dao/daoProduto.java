@@ -5,10 +5,14 @@
  */
 package dao;
 
+import model.Produto;
+
 /**
  *
  * @author Matheus Claudino
  */
 public class daoProduto {
-    
+    public void insert(Produto produto){
+        
+    }
 }
