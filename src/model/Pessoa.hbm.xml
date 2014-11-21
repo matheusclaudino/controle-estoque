@@ -17,7 +17,7 @@
         <property name="telefone" type="string">
             <column name="telefone" length="11" />
         </property>
-        <joined-subclass name="model.Pessoafisica" table="PessoaFisica" catalog="controleEstoque">
+        <joined-subclass name="model.Pessoafisica" table="pessoafisica" catalog="controleEstoque">
             <key>
                 <column name="idPessoa" not-null="true" />
             </key>
@@ -30,7 +30,7 @@
             <property name="dataNascimento" type="date">
                 <column name="data_nascimento" length="10" not-null="true" />
             </property>
-            <joined-subclass name="model.Vendedor" table="Vendedor" catalog="controleEstoque">
+            <joined-subclass name="model.Vendedor" table="vendedor" catalog="controleEstoque">
                 <key>
                     <column name="idPessoa" not-null="true" />
                 </key>
@@ -45,7 +45,7 @@
                 </property>
             </joined-subclass>
         </joined-subclass>
-        <joined-subclass name="model.Fornecedor" table="Fornecedor" catalog="controleEstoque">
+        <joined-subclass name="model.Fornecedor" table="fornecedor" catalog="controleEstoque">
             <key>
                 <column name="idPessoa" not-null="true" />
             </key>
