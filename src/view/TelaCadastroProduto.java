@@ -6,6 +6,7 @@
 package view;
 
 import control.controlProduto;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -264,6 +265,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String data = jTextFieldData.getText();
         Date dataEntrada;
+        String preco = jTextFieldPreco.getText();
+        BigDecimal bigPreco = new BigDecimal(preco);
+        
         try {
             dataEntrada = formatter.parse(data);
 
@@ -272,7 +276,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                     Integer.parseInt(jTextFieldCodigo.getText()),
                     jTextFieldNome.getText(),
                     jTextAreaDescricao.getText(),
-                    Float.parseFloat(jTextFieldPreco.getText()),
+                    bigPreco,
                     Integer.parseInt(jTextFieldUnidade.getText()),
                     dataEntrada,
                     jComboBoxFornecedor.getSelectedItem().toString(),
