@@ -24,12 +24,12 @@ public class Produto  implements java.io.Serializable {
      private int quantidade;
      private BigDecimal preco;
      private Date data;
-     private Set vendas = new HashSet(0);
+
 
     public Produto() {
     }
 
-	
+    
     public Produto(int codigo, Categoria categoria, Cor cor, Estampa estampa, Fornecedor fornecedor, Tamanho tamanho, String nome, String descricao, int quantidade, BigDecimal preco, Date data) {
         this.codigo = codigo;
         this.categoria = categoria;
@@ -42,20 +42,6 @@ public class Produto  implements java.io.Serializable {
         this.quantidade = quantidade;
         this.preco = preco;
         this.data = data;
-    }
-    public Produto(int codigo, Categoria categoria, Cor cor, Estampa estampa, Fornecedor fornecedor, Tamanho tamanho, String nome, String descricao, int quantidade, BigDecimal preco, Date data, Set vendas) {
-       this.codigo = codigo;
-       this.categoria = categoria;
-       this.cor = cor;
-       this.estampa = estampa;
-       this.fornecedor = fornecedor;
-       this.tamanho = tamanho;
-       this.nome = nome;
-       this.descricao = descricao;
-       this.quantidade = quantidade;
-       this.preco = preco;
-       this.data = data;
-       this.vendas = vendas;
     }
    
     public int getCodigo() {
@@ -134,13 +120,6 @@ public class Produto  implements java.io.Serializable {
     
     public void setData(Date data) {
         this.data = data;
-    }
-    public Set getVendas() {
-        return this.vendas;
-    }
-    
-    public void setVendas(Set vendas) {
-        this.vendas = vendas;
     }
 
 
