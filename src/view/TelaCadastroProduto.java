@@ -329,7 +329,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxCategoriaComponentShown
 
     private void jComboBoxTamanhoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxTamanhoComponentShown
-        // TODO add your handling code here:
+        controlAtri.carregarComboTamanho(jComboBoxTamanho);
     }//GEN-LAST:event_jComboBoxTamanhoComponentShown
 
     private void jComboBoxCorComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxCorComponentShown
