@@ -6,15 +6,20 @@
 package control;
 
 import java.util.Date;
+import model.Produto;
 
 /**
  *
  * @author Matheus Claudino
  */
 public class controlProduto {
-    public int inserirProduto(String nome, String descricao, float preco, int unidade, Date dataEntrada, String fornecedor,
+    public int inserirProduto(int codigo,String nome, String descricao, float preco, int unidade, Date dataEntrada, String fornecedor,
                 String categoria, String tamanho, String cor, String estampa){
         
+        Produto pro;
+        
+        
+        pro = new Produto();
         return 0;
     }
            
