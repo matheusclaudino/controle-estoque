@@ -5,6 +5,14 @@
  */
 package view;
 
+import control.controlPessoa;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.input.DataFormat;
+
 /**
  *
  * @author Matheus Claudino
@@ -14,6 +22,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastroPessoa
      */
+    controlPessoa control;
     public TelaCadastroPessoa() {
         initComponents();
         jPanelCliente.setVisible(false);
@@ -51,8 +60,8 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jLabelCEP = new javax.swing.JLabel();
         jComboBoxEstado = new javax.swing.JComboBox();
         jLabelEstado = new javax.swing.JLabel();
-        jTextFieldComplementoFornecedor = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jTextFieldComplemento = new javax.swing.JTextField();
+        jLabelComplemento = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldReferencia = new javax.swing.JTextField();
         jPanelTipoPessoa = new javax.swing.JPanel();
@@ -117,7 +126,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
 
         jLabelEstado.setText("Estado");
 
-        jLabel9.setText("Complemento");
+        jLabelComplemento.setText("Complemento");
 
         jLabel2.setText("Referência");
 
@@ -151,13 +160,13 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                                 .addComponent(jTextFieldCidade)
                                 .addComponent(jTextFieldTelefone)
                                 .addComponent(jTextFieldNumero)
-                                .addComponent(jTextFieldComplementoFornecedor)
+                                .addComponent(jTextFieldComplemento)
                                 .addGroup(jPanelInformacoesGeraisLayout.createSequentialGroup()
                                     .addGroup(jPanelInformacoesGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabelTelefone)
                                         .addComponent(jLabelCidade)
                                         .addComponent(jLabelNumero)
-                                        .addComponent(jLabel9))
+                                        .addComponent(jLabelComplemento))
                                     .addGap(95, 95, 95))))))
                 .addContainerGap())
         );
@@ -204,9 +213,9 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelInformacoesGeraisLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(jLabelComplemento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldComplementoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelInformacoesGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelInformacoesGeraisLayout.createSequentialGroup()
@@ -398,6 +407,11 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         );
 
         jButtonCadastrar.setText("CADASTRAR");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTelaCadastroPessoaLayout = new javax.swing.GroupLayout(jPanelTelaCadastroPessoa);
         jPanelTelaCadastroPessoa.setLayout(jPanelTelaCadastroPessoaLayout);
@@ -470,6 +484,37 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jPanelVendedor.setVisible(true);
     }//GEN-LAST:event_jRadioButtonVendedorActionPerformed
 
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String nascimento = jTextFieldDataNascimento.getText();
+        String admissao = jTextFieldAdmissao.getText();
+        try {
+            Date dataNascimento = formatter.parse(nascimento);
+            Date dataAdmissao = formatter.parse(admissao);
+        control.insert(
+                jTextFieldNome.getText(),
+                jTextFieldTelefone.getText(),
+                jTextFieldCEP.getText(),
+                jTextFieldCidade.getText(),
+                jTextFieldRua.getText(),
+                Integer.parseInt(jTextFieldNumero.getText()),
+                jTextFieldBairro.getText(),
+                jTextFieldComplemento.getText(),
+                jTextFieldReferencia.getText(),
+                jComboBoxEstado.getSelectedItem().toString(),
+                buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                jTextFieldCPF.getText(),
+                dataNascimento,
+                jComboBoxSexo.getSelectedItem().toString(),
+                jTextFieldCNPJ.getText(),
+                Double.parseDouble(jTextFieldSalario.getText()),
+                dataAdmissao
+        );
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -512,12 +557,12 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCNPJ;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCidade;
+    private javax.swing.JLabel jLabelComplemento;
     private javax.swing.JLabel jLabelDataAdmissao;
     private javax.swing.JLabel jLabelDataNascimento;
     private javax.swing.JLabel jLabelEstado;
@@ -545,7 +590,7 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCNPJ;
     private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldCidade;
-    private javax.swing.JTextField jTextFieldComplementoFornecedor;
+    private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldDataNascimento;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNumero;
