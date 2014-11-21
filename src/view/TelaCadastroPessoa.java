@@ -491,28 +491,30 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         try {
             Date dataNascimento = formatter.parse(nascimento);
             Date dataAdmissao = formatter.parse(admissao);
-        control.insert(
-                jTextFieldNome.getText(),
-                jTextFieldTelefone.getText(),
-                jTextFieldCEP.getText(),
-                jTextFieldCidade.getText(),
-                jTextFieldRua.getText(),
-                Integer.parseInt(jTextFieldNumero.getText()),
-                jTextFieldBairro.getText(),
-                jTextFieldComplemento.getText(),
-                jTextFieldReferencia.getText(),
-                jComboBoxEstado.getSelectedItem().toString(),
-                buttonGroupTipoPessoa.getSelection().getMnemonic(),
-                jTextFieldCPF.getText(),
-                dataNascimento,
-                jComboBoxSexo.getSelectedItem().toString(),
-                jTextFieldCNPJ.getText(),
-                Double.parseDouble(jTextFieldSalario.getText()),
-                dataAdmissao
-        );
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            int id;
+            
+                id = control.inserirPessoa(
+                        jTextFieldNome.getText(),
+                        jTextFieldTelefone.getText(),
+                        jTextFieldCEP.getText(),
+                        jTextFieldCidade.getText(),
+                        jTextFieldRua.getText(),
+                        Integer.parseInt(jTextFieldNumero.getText()),
+                        jTextFieldBairro.getText(),
+                        jTextFieldComplemento.getText(),
+                        jTextFieldReferencia.getText(),
+                        jComboBoxEstado.getSelectedItem().toString(),
+                        buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                        jTextFieldCPF.getText(),
+                        dataNascimento,
+                        jComboBoxSexo.getSelectedItem().toString(),
+                        jTextFieldCNPJ.getText(),
+                        Double.parseDouble(jTextFieldSalario.getText()),
+                        dataAdmissao
+                );  
+            } catch (Exception ex) {
+                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
