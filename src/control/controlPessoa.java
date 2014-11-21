@@ -86,7 +86,7 @@ public class controlPessoa {
 
         lista = dao.pesquisarNome(pesq, tipo);
 
-        //mostrarLista(tabela, tipo);
+        mostrarLista(tabela, tipo);
 
     }
     
