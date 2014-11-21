@@ -337,7 +337,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxCorComponentShown
 
     private void jComboBoxEstampaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jComboBoxEstampaComponentShown
-        // TODO add your handling code here:
+        controlAtri.carregarComboEstampa(jComboBoxEstampa);
     }//GEN-LAST:event_jComboBoxEstampaComponentShown
     public void cleanFields(){
                     jTextFieldCodigo.setText("");
