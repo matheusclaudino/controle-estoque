@@ -10,7 +10,7 @@ import model.Fornecedor;
 import model.Pessoa;
 import model.Pessoafisica;
 import model.Vendedor;
-import org.hibernate.HibernateUtil;
+import util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 

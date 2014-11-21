@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -286,12 +287,25 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                     jComboBoxCor.getSelectedItem(),
                     jComboBoxEstampa.getSelectedItem()
             );
-
+           JOptionPane.showMessageDialog(this, "Produto " + id + " cadastrado");
+           cleanFields();
         } catch (ParseException ex) {
             Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
-
+    public void cleanFields(){
+                    jTextFieldCodigo.setText("");
+                    jTextFieldNome.setText("");
+                    jTextAreaDescricao.setText("");
+                    jTextFieldPreco.setText("");
+                    jTextFieldUnidade.setText("");
+                    jTextFieldData.setText("");
+                    jComboBoxFornecedor.setSelectedIndex(0);
+                    jComboBoxCategoria.setSelectedIndex(0);
+                    jComboBoxTamanho.setSelectedIndex(0);
+                    jComboBoxCor.setSelectedIndex(0);
+                    jComboBoxEstampa.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */
