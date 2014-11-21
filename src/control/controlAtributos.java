@@ -22,19 +22,23 @@ import model.Tamanho;
  */
 public class controlAtributos {
     daoAtributos dao;
-    public void inserirAtributo(int tipo, String nome){
+    public int inserirAtributo(int tipo, String nome){
         if(tipo == 1){
             Cor cor = new Cor(nome);
             dao.insertCor(cor);
+            return cor.getIdCor();
         }else if(tipo == 2){
             Estampa estampa = new Estampa(nome);
             dao.insertEstampa(estampa);
+            return estampa.getIdEstampa();
         }else if(tipo == 3){
             Categoria categoria = new Categoria(nome);
             dao.insertCategoria(categoria);
+            return categoria.getIdCategoria();
         }else{
             Tamanho tamanho = new Tamanho(nome);
             dao.insertTamanho(tamanho);
+            return tamanho.getIdTamanho();
         }
         
     }
