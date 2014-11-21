@@ -176,6 +176,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         );
 
         jButtonCadastrarProduto.setText("Cadastrar");
+        jButtonCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarProdutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,6 +259,33 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarProdutoActionPerformed
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String data = jTextFieldData.getText();
+        Date dataEntrada;
+        try {
+            dataEntrada = formatter.parse(data);
+
+            int id;
+           id = control.inserirProduto(
+                    Integer.parseInt(jTextFieldCodigo.getText()),
+                    jTextFieldNome.getText(),
+                    jTextAreaDescricao.getText(),
+                    Float.parseFloat(jTextFieldPreco.getText()),
+                    Integer.parseInt(jTextFieldUnidade.getText()),
+                    dataEntrada,
+                    jComboBoxFornecedor.getSelectedItem().toString(),
+                    jComboBoxCategoria.getSelectedItem().toString(),
+                    jComboBoxTamanho.getSelectedItem().toString(),
+                    jComboBoxCor.getSelectedItem().toString(),
+                    jComboBoxEstampa.getSelectedItem().toString()
+            );
+
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
