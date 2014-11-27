@@ -5,9 +5,14 @@
  */
 package dao;
 
+import java.util.List;
 import model.Produto;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -88,6 +93,37 @@ public class daoProduto {
             System.out.println("Erro de inserção do PRODUTO : " + he.getMessage() );
             return null;
         }
-        
+    }
+    
+    public List getNome(String nome){
+         Session sessao = null;
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+                       
+            //HQL
+            //List<Cliente> res = sessao.createQuery("from Cliente cli JOIN FETCH cli.cidade ").list();
+            
+             // CRITERIA
+              Criteria cons = sessao.createCriteria(Produto.class);
+              cons.setFetchMode("endereco", FetchMode.JOIN);    
+              
+              cons.add ( Restrictions.like("nome", nome + "%" ) );              
+              
+              cons.addOrder( Order.asc("nome") );
+              
+              List<Produto> res = cons.list();
+              
+            sessao.getTransaction().commit();  
+            sessao.close();
+            return res;
+        } catch (HibernateException he) {
+            if ( sessao != null ) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro ao listar os PRODUTOS: " + he.getMessage() );
+            return null;
+        }
     }
 }
