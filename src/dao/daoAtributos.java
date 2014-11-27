@@ -20,8 +20,8 @@ import org.hibernate.Session;
  * @author Matheus Claudino
  */
 public class daoAtributos {
-    
-    public void insertCor(Cor cor){
+
+    public void insertCor(Cor cor) {
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -38,7 +38,8 @@ public class daoAtributos {
             }
         }
     }
-    public void insertEstampa(Estampa estampa){
+
+    public void insertEstampa(Estampa estampa) {
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -55,7 +56,8 @@ public class daoAtributos {
             }
         }
     }
-    public void insertCategoria(Categoria categoria){
+
+    public void insertCategoria(Categoria categoria) {
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -72,7 +74,8 @@ public class daoAtributos {
             }
         }
     }
-    public void insertTamanho(Tamanho tamanho){
+
+    public void insertTamanho(Tamanho tamanho) {
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -89,7 +92,7 @@ public class daoAtributos {
             }
         }
     }
-    
+
     public List<Fornecedor> listarFornecedor() throws SQLException, Exception {
 
         Session sessao = null;
@@ -132,7 +135,8 @@ public class daoAtributos {
             return null;
         }
     }
-     public List<Tamanho> listarTamanho() {
+
+    public List<Tamanho> listarTamanho() {
         Session sessao = null;
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
@@ -152,7 +156,8 @@ public class daoAtributos {
             return null;
         }
     }
-     public List<Cor> listarCor() {
+
+    public List<Cor> listarCor() {
         Session sessao = null;
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
@@ -172,7 +177,8 @@ public class daoAtributos {
             return null;
         }
     }
-      public List<Estampa> listarEstampa() {
+
+    public List<Estampa> listarEstampa() {
         Session sessao = null;
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
@@ -192,5 +198,94 @@ public class daoAtributos {
             return null;
         }
     }
-    
+
+    public Categoria getCategoria(Categoria cat, int id) {
+
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            Categoria categoria = (Categoria) sessao.get(Categoria.class, new Integer(id));
+
+            sessao.getTransaction().commit();
+            sessao.close();
+            return categoria;
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+            System.out.println("Erro ao tentar pegar a CATEGORIA: " + he.getMessage());
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+            return null;
+        }
+    }
+
+    public Tamanho getTamanho(Tamanho tam, int id) {
+
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            Tamanho tamanho = (Tamanho) sessao.get(Tamanho.class, new Integer(id));
+
+            sessao.getTransaction().commit();
+            sessao.close();
+            return tamanho;
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+            System.out.println("Erro ao tentar pegar o TAMANHO: " + he.getMessage());
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+            return null;
+        }
+    }
+    public Cor getCor(Cor c, int id) {
+
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            Cor cor = (Cor) sessao.get(Cor.class, new Integer(id));
+
+            sessao.getTransaction().commit();
+            sessao.close();
+            return cor;
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+            System.out.println("Erro ao tentar pegar a COR: " + he.getMessage());
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+            return null;
+        }
+    }
+    public Estampa getEstampa(Estampa e, int id) {
+
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            Estampa estampa = (Estampa) sessao.get(Estampa.class, new Integer(id));
+
+            sessao.getTransaction().commit();
+            sessao.close();
+            return estampa;
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+            System.out.println("Erro ao tentar pegar a ESTAMPA: " + he.getMessage());
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+            return null;
+        }
+    }
 }
