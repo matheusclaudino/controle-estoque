@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -35,11 +36,12 @@ public class controlProduto {
     daoProduto dao;
     daoAtributos daoAtri;
     daoPessoa daoPess;
-
+    Produto produto;
     public controlProduto() {
         this.dao = new daoProduto();
         this.daoAtri = new daoAtributos();
         this.daoPess = new daoPessoa();
+        this.produto = null;
     }
 
     public int inserirProduto(int codigo, String nome, String descricao, BigDecimal preco, int unidade, Date dataEntrada, Object forne,
@@ -119,6 +121,15 @@ public class controlProduto {
             Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    public void getProdutoSelecionado(JFrame janelaPesquisa, JTable tabela, int linha){
+        if ( linha >= 0) {
+            produto = (Produto) tabela.getValueAt(linha,0);    
+            janelaPesquisa.setVisible(false);
+            
+        } else {
+            JOptionPane.showMessageDialog(janelaPesquisa, "Selecione um CLIENTE.");
+        }   
     }
 
 }
