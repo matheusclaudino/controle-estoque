@@ -100,22 +100,26 @@ public class daoPessoa {
         }
     }
 
-    public void getPessoa(Pessoa pes, int id) {
+    public Pessoa getPessoa(Pessoa pes, int id) {
 
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
-            sessao.load(pes, id);
-
-            sessao.getTransaction().commit();
+            Pessoa pessoa = (Pessoa) sessao.get( Pessoa.class, new Integer(id) );
+        
+            sessao.getTransaction().commit(); 
+            sessao.close();
+            return pessoa;
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();
+            System.out.println("Erro ao tentar pegar a Pessoa: " + he.getMessage() );
         } finally {
             if (sessao != null) {
                 sessao.close();
             }
+            return null;
         }
     }
 
