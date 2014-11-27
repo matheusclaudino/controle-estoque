@@ -100,7 +100,7 @@ public class daoPessoa {
         }
     }
 
-    public Pessoa getPessoa(Pessoa pes, int id) {
+    public Pessoa getPessoa(int id) {
 
         Session sessao = null;
         try {
