@@ -101,7 +101,6 @@ public class daoProduto {
             
             sessao.getTransaction().commit();
             sessao.close();
-            System.out.println(produto.getCategoria().getNome());
             return res;
 
         } catch (HibernateException he) {
