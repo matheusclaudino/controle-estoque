@@ -75,6 +75,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         jLabelCodigo = new javax.swing.JLabel();
         jButtonCadastrarProduto = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -194,6 +195,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             }
         });
 
+        jButtonAlterar.setText("Alterar");
+        jButtonAlterar.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,9 +233,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addGap(136, 136, 136)
+                .addComponent(jButtonAlterar)
+                .addGap(26, 26, 26)
                 .addComponent(jButtonCadastrarProduto)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +268,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                         .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jButtonCadastrarProduto)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrarProduto)
+                    .addComponent(jButtonAlterar))
                 .addGap(32, 32, 32))
         );
 
@@ -397,6 +405,15 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         this.jButtonPesquisar = jButtonPesquisar;
     }
 
+    public JButton getjButtonAlterar() {
+        return jButtonAlterar;
+    }
+
+    public void setjButtonAlterar(JButton jButtonAlterar) {
+        this.jButtonAlterar = jButtonAlterar;
+    }
+    
+
     public JComboBox getjComboBoxCategoria() {
         return jComboBoxCategoria;
     }
@@ -494,6 +511,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCadastrarProduto;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JComboBox jComboBoxCategoria;

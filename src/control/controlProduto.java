@@ -145,7 +145,7 @@ public class controlProduto {
             telaCad.getjTextFieldPreco().setText(produto.getPreco().toString());
             telaCad.getjTextFieldUnidade().setText(String.valueOf(produto.getQuantidade()));
             telaCad.getjTextFieldData().setText(produto.getData().toString());
-            
+            telaCad.getjButtonAlterar().setEnabled(true);
             janelaPesquisa.setVisible(false);
             
         } else {
