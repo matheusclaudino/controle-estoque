@@ -26,6 +26,8 @@ import model.Estampa;
 import model.Fornecedor;
 import model.Produto;
 import model.Tamanho;
+import view.TelaCadastroProduto;
+import view.TelaPesqProduto;
 
 /**
  *
@@ -37,11 +39,13 @@ public class controlProduto {
     daoAtributos daoAtri;
     daoPessoa daoPess;
     Produto produto;
+    TelaCadastroProduto janelaProduto;
     public controlProduto() {
         this.dao = new daoProduto();
         this.daoAtri = new daoAtributos();
         this.daoPess = new daoPessoa();
         this.produto = null;
+        this.janelaProduto = null;
     }
 
     public int inserirProduto(int codigo, String nome, String descricao, BigDecimal preco, int unidade, Date dataEntrada, Object forne,
@@ -122,14 +126,34 @@ public class controlProduto {
         }
 
     }
-    public void getProdutoSelecionado(JFrame janelaPesquisa, JTable tabela, int linha){
+    public void getProdutoSelecionado(TelaPesqProduto janelaPesquisa, JTable tabela, int linha){
         if ( linha >= 0) {
-            produto = (Produto) tabela.getValueAt(linha,0);    
+            produto = (Produto) tabela.getValueAt(linha,0);
+            janelaProduto.getjTextFieldNome().setText(produto.getNome());
+            janelaProduto.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
+            janelaProduto.getjTextAreaDescricao().setText(produto.getDescricao());
+            janelaProduto.getjComboBoxFornecedor().setSelectedItem(produto.getFornecedor());
+            janelaProduto.getjComboBoxCategoria().setSelectedItem(produto.getCategoria());
+            janelaProduto.getjComboBoxTamanho().setSelectedItem(produto.getTamanho());
+            janelaProduto.getjComboBoxCor().setSelectedItem(produto.getCor());
+            janelaProduto.getjComboBoxEstampa().setSelectedItem(produto.getEstampa());
+            janelaProduto.getjTextFieldPreco().setText(produto.getPreco().toString());
+            janelaProduto.getjTextFieldUnidade().setText(String.valueOf(produto.getQuantidade()));
+            janelaProduto.getjTextFieldData().setText(produto.getData().toString());
+            
             janelaPesquisa.setVisible(false);
             
         } else {
             JOptionPane.showMessageDialog(janelaPesquisa, "Selecione um CLIENTE.");
         }   
+    }
+
+    public TelaCadastroProduto getJanelaProduto() {
+        return janelaProduto;
+    }
+
+    public void setJanelaProduto(TelaCadastroProduto janelaProduto) {
+        this.janelaProduto = janelaProduto;
     }
 
 }
