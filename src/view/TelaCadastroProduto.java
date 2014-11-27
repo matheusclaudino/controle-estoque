@@ -197,6 +197,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
         jButtonAlterar.setText("Alterar");
         jButtonAlterar.setEnabled(false);
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -334,6 +339,34 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         pesquisa.setDefaultCloseOperation(TelaPrincipal.HIDE_ON_CLOSE);
         pesquisa.setVisible(true);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String data = jTextFieldData.getText();
+        Date dataEntrada;
+        String preco = jTextFieldPreco.getText();
+        BigDecimal bigPreco = new BigDecimal(preco);
+        
+        try {
+            dataEntrada = formatter.parse(data);
+       
+
+        control.alterarProduto(Integer.parseInt(jTextFieldCodigo.getText()),
+                    jTextFieldNome.getText(),
+                    jTextAreaDescricao.getText(),
+                    bigPreco,
+                    Integer.parseInt(jTextFieldUnidade.getText()),
+                    dataEntrada,
+                    jComboBoxFornecedor.getSelectedItem(),
+                    jComboBoxCategoria.getSelectedItem(),
+                    jComboBoxTamanho.getSelectedItem(),
+                    jComboBoxCor.getSelectedItem(),
+                    jComboBoxEstampa.getSelectedItem());
+         } catch (ParseException ex) {
+            Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
     public void cleanFields(){
                     jTextFieldCodigo.setText("");
                     jTextFieldNome.setText("");
