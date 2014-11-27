@@ -81,7 +81,7 @@ public class controlProduto {
 
     public void pesquisarProduto(int tipo, String pesquisa, JTable tabela) {
         List<Produto> lista = null;
-        Produto produto = null;
+        List<Produto> produto = null;
 
         try {
             if (tipo == 0) { //CÓDIGO
@@ -90,30 +90,27 @@ public class controlProduto {
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
             }
-//                else if(tipo == 2){ // Pesquisar por BAIRRO
-//                    lista = cliDAO.pesquisarBairro(pesq);
-//                }    
 
             ((DefaultTableModel) tabela.getModel()).setRowCount(0);
 
             if (lista != null) {
                 Iterator<Produto> it = lista.iterator();
-                while (it.hasNext()) {
-                    produto = it.next();
-                    ((DefaultTableModel) tabela.getModel()).addRow(produto.toArray());
+                for(Produto pro:produto) {
+                   // pro = (List<Produto>) it.next();
+                    ((DefaultTableModel) tabela.getModel()).addRow(pro.toArray());
                 }
             } else if (produto != null) {
                 ((DefaultTableModel) tabela.getModel()).addRow(new Vector());
                 int col = 0;
-                tabela.setValueAt(produto.getCodigo(), 0, col++);
-                tabela.setValueAt(produto.getNome(), 0, col++);
-                tabela.setValueAt(daoPess.getPessoa(produto.getFornecedor().getIdPessoa()), 0, col++);
-                tabela.setValueAt(daoAtri.getCategoria(produto.getCategoria().getIdCategoria()), 0, col++);
-                tabela.setValueAt(daoAtri.getTamanho(produto.getTamanho().getIdTamanho()), 0, col++);
-                tabela.setValueAt(daoAtri.getCor(produto.getCor().getIdCor()), 0, col++);
-                tabela.setValueAt(daoAtri.getEstampa(produto.getEstampa().getIdEstampa()), 0, col++);
-                tabela.setValueAt(produto.getPreco(), 0, col++);
-                tabela.setValueAt(produto.getQuantidade(), 0, col++);
+                tabela.setValueAt(produto.get(0).getCodigo(), 0, col++);
+                tabela.setValueAt(produto.get(0).getNome(), 0, col++);
+                tabela.setValueAt(produto.get(0).getFornecedor().getNome(), 0, col++);
+                tabela.setValueAt(produto.get(0).getCategoria().getNome(), 0, col++);
+                tabela.setValueAt(produto.get(0).getTamanho().getNome(), 0, col++);
+                tabela.setValueAt(produto.get(0).getCor().getNome(), 0, col++);
+                tabela.setValueAt(produto.get(0).getEstampa().getNome(), 0, col++);
+                tabela.setValueAt(produto.get(0).getPreco(), 0, col++);
+                tabela.setValueAt(produto.get(0).getQuantidade(), 0, col++);
             } else {
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
             }

@@ -19,7 +19,8 @@ import org.hibernate.criterion.Restrictions;
  * @author Matheus Claudino
  */
 public class daoProduto {
-    public void insert(Produto produto){
+
+    public void insert(Produto produto) {
         Session sessao = null;
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
@@ -36,6 +37,7 @@ public class daoProduto {
             }
         }
     }
+
     public void update(Produto produto) {
 
         Session sessao = null;
@@ -54,6 +56,7 @@ public class daoProduto {
             }
         }
     }
+
     public void delete(Produto produto) {
 
         Session sessao = null;
@@ -72,61 +75,77 @@ public class daoProduto {
             }
         }
     }
-    public Produto getProduto(int id){
+
+    public List getProduto(int id) {
         Session sessao = null;
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-                                  
+
             // GET: se não existir, retorna NULL
             // LOAD: se não existir, retorna ERRO (Exception)
-           Produto produto = (Produto) sessao.get( Produto.class, new Integer(id) );
-        
-            sessao.getTransaction().commit(); 
+            Produto produto = (Produto) sessao.get(Produto.class, new Integer(id));
+
+            
+            Criteria cons = sessao.createCriteria(Produto.class);
+            cons.setFetchMode("fornecedor", FetchMode.JOIN);
+            cons.setFetchMode("categoria", FetchMode.JOIN);
+            cons.setFetchMode("cor", FetchMode.JOIN);
+            cons.setFetchMode("estampa", FetchMode.JOIN);
+            cons.setFetchMode("tamanho", FetchMode.JOIN);
+            
+            cons.add(Restrictions.like("codigo", id));
+            cons.addOrder(Order.asc("codigo"));
+
+            List<Produto> res = cons.list();
+            
+            sessao.getTransaction().commit();
             sessao.close();
-            return produto;
+            System.out.println(produto.getCategoria().getNome());
+            return res;
+
         } catch (HibernateException he) {
-            if ( sessao != null ) {
+            System.out.println("Erro de inserção do PRODUTO : " + he.getMessage());
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("Erro de inserção do PRODUTO : " + he.getMessage() );
+            System.out.println("Erro de inserção do PRODUTO : " + he.getMessage());
             return null;
         }
     }
-    
-    public List getNome(String nome){
-         Session sessao = null;
+
+    public List getNome(String nome) {
+        Session sessao = null;
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-                       
+
             //HQL
             //List<Cliente> res = sessao.createQuery("from Cliente cli JOIN FETCH cli.cidade ").list();
-            
-             // CRITERIA
-              Criteria cons = sessao.createCriteria(Produto.class);
-              cons.setFetchMode("fornecedor", FetchMode.JOIN);    
-              cons.setFetchMode("categoria", FetchMode.JOIN); 
-              cons.setFetchMode("cor", FetchMode.JOIN); 
-              cons.setFetchMode("estampa", FetchMode.JOIN); 
-              cons.setFetchMode("tamanho", FetchMode.JOIN); 
-              
-              cons.add ( Restrictions.like("nome", nome + "%" ) );              
-              
-              cons.addOrder( Order.asc("nome") );
-              
-              List<Produto> res = cons.list();
-              
-            sessao.getTransaction().commit();  
+            // CRITERIA
+            Criteria cons = sessao.createCriteria(Produto.class);
+            cons.setFetchMode("fornecedor", FetchMode.JOIN);
+            cons.setFetchMode("categoria", FetchMode.JOIN);
+            cons.setFetchMode("cor", FetchMode.JOIN);
+            cons.setFetchMode("estampa", FetchMode.JOIN);
+            cons.setFetchMode("tamanho", FetchMode.JOIN);
+
+            cons.add(Restrictions.like("nome", nome + "%"));
+
+            cons.addOrder(Order.asc("nome"));
+
+            List<Produto> res = cons.list();
+
+            sessao.getTransaction().commit();
             sessao.close();
             return res;
         } catch (HibernateException he) {
-            if ( sessao != null ) {
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            System.out.println("Erro ao listar os PRODUTOS: " + he.getMessage() );
+            System.out.println("Erro ao listar os PRODUTOS: " + he.getMessage());
             return null;
         }
     }
