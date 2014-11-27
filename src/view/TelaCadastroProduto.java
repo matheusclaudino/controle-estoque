@@ -13,7 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 
 /**
@@ -320,6 +324,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         // TODO add your handling code here:
         TelaPesqProduto pesquisa = new TelaPesqProduto();
         pesquisa.setLocationRelativeTo(this);
+        control.setJanelaProduto(this);   
         pesquisa.setVisible(true);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
     public void cleanFields(){
@@ -375,6 +380,118 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+
+    public JButton getjButtonCadastrarProduto() {
+        return jButtonCadastrarProduto;
+    }
+
+    public void setjButtonCadastrarProduto(JButton jButtonCadastrarProduto) {
+        this.jButtonCadastrarProduto = jButtonCadastrarProduto;
+    }
+
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
+    public void setjButtonPesquisar(JButton jButtonPesquisar) {
+        this.jButtonPesquisar = jButtonPesquisar;
+    }
+
+    public JComboBox getjComboBoxCategoria() {
+        return jComboBoxCategoria;
+    }
+
+    public void setjComboBoxCategoria(JComboBox jComboBoxCategoria) {
+        this.jComboBoxCategoria = jComboBoxCategoria;
+    }
+
+    public JComboBox getjComboBoxCor() {
+        return jComboBoxCor;
+    }
+
+    public void setjComboBoxCor(JComboBox jComboBoxCor) {
+        this.jComboBoxCor = jComboBoxCor;
+    }
+
+    public JComboBox getjComboBoxEstampa() {
+        return jComboBoxEstampa;
+    }
+
+    public void setjComboBoxEstampa(JComboBox jComboBoxEstampa) {
+        this.jComboBoxEstampa = jComboBoxEstampa;
+    }
+
+    public JComboBox getjComboBoxFornecedor() {
+        return jComboBoxFornecedor;
+    }
+
+    public void setjComboBoxFornecedor(JComboBox jComboBoxFornecedor) {
+        this.jComboBoxFornecedor = jComboBoxFornecedor;
+    }
+
+    public JComboBox getjComboBoxTamanho() {
+        return jComboBoxTamanho;
+    }
+
+    public void setjComboBoxTamanho(JComboBox jComboBoxTamanho) {
+        this.jComboBoxTamanho = jComboBoxTamanho;
+    }
+
+    public JTextArea getjTextAreaDescricao() {
+        return jTextAreaDescricao;
+    }
+
+    public void setjTextAreaDescricao(JTextArea jTextAreaDescricao) {
+        this.jTextAreaDescricao = jTextAreaDescricao;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    public JTextField getjTextFieldCodigo() {
+        return jTextFieldCodigo;
+    }
+
+    public void setjTextFieldCodigo(JTextField jTextFieldCodigo) {
+        this.jTextFieldCodigo = jTextFieldCodigo;
+    }
+
+    public JTextField getjTextFieldData() {
+        return jTextFieldData;
+    }
+
+    public void setjTextFieldData(JTextField jTextFieldData) {
+        this.jTextFieldData = jTextFieldData;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldPreco() {
+        return jTextFieldPreco;
+    }
+
+    public void setjTextFieldPreco(JTextField jTextFieldPreco) {
+        this.jTextFieldPreco = jTextFieldPreco;
+    }
+
+    public JTextField getjTextFieldUnidade() {
+        return jTextFieldUnidade;
+    }
+
+    public void setjTextFieldUnidade(JTextField jTextFieldUnidade) {
+        this.jTextFieldUnidade = jTextFieldUnidade;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
