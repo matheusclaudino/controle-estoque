@@ -82,7 +82,7 @@ public class controlProduto {
     public void pesquisarProduto(int tipo, String pesquisa, JTable tabela) {
         List<Produto> lista = null;
         List<Produto> produto = null;
-
+        Produto prod = null;
         try {
             if (tipo == 0) { //CÓDIGO
                 int id = Integer.parseInt(pesquisa);
@@ -94,10 +94,10 @@ public class controlProduto {
             ((DefaultTableModel) tabela.getModel()).setRowCount(0);
 
             if (lista != null) {
-                Iterator<Produto> it = lista.iterator();
-                for(Produto pro:produto) {
-                   // pro = (List<Produto>) it.next();
-                    ((DefaultTableModel) tabela.getModel()).addRow(pro.toArray());
+               Iterator<Produto> it = lista.iterator();
+                while (it.hasNext()) {
+                    prod = (Produto) it.next();
+                    ((DefaultTableModel) tabela.getModel()).addRow(prod.toArray());
                 }
             } else if (produto != null) {
                 ((DefaultTableModel) tabela.getModel()).addRow(new Vector());

@@ -428,6 +428,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonListarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarProdutoActionPerformed
         // TODO add your handling code here:
+        TelaPesqProduto pesquisaProduto = new TelaPesqProduto();
+        pesquisaProduto.setLocationRelativeTo(this);
+        pesquisaProduto.setVisible(true);
     }//GEN-LAST:event_jButtonListarProdutoActionPerformed
 
     private void jButtonCadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroFornecedorActionPerformed
