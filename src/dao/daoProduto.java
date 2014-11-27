@@ -67,4 +67,27 @@ public class daoProduto {
             }
         }
     }
+    public Produto getProduto(int id){
+        Session sessao = null;
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+                                  
+            // GET: se não existir, retorna NULL
+            // LOAD: se não existir, retorna ERRO (Exception)
+           Produto produto = (Produto) sessao.get( Produto.class, new Integer(id) );
+        
+            sessao.getTransaction().commit(); 
+            sessao.close();
+            return produto;
+        } catch (HibernateException he) {
+            if ( sessao != null ) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de inserção do PRODUTO : " + he.getMessage() );
+            return null;
+        }
+        
+    }
 }
