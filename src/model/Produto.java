@@ -143,7 +143,10 @@ public class Produto  implements java.io.Serializable {
         this.vendas = vendas;
     }
 
-
+    public Object[] toArray() {
+        return new Object[] {this.codigo,this.nome,this.fornecedor,this.categoria
+                , this.tamanho, this.cor, this.estampa, this.preco, this.quantidade };
+    } 
 
 
 }
