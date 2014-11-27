@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.Categoria;
 import model.Cor;
@@ -39,13 +40,12 @@ public class controlProduto {
     daoAtributos daoAtri;
     daoPessoa daoPess;
     Produto produto;
-    TelaCadastroProduto janelaProduto;
+    //TelaCadastroProduto janelaProduto;
     public controlProduto() {
         this.dao = new daoProduto();
         this.daoAtri = new daoAtributos();
         this.daoPess = new daoPessoa();
         this.produto = null;
-        //this.janelaProduto = null;
     }
 
     public int inserirProduto(int codigo, String nome, String descricao, BigDecimal preco, int unidade, Date dataEntrada, Object forne,
@@ -118,7 +118,7 @@ public class controlProduto {
                 tabela.setValueAt(produto.get(0).getPreco(), 0, col++);
                 tabela.setValueAt(produto.get(0).getQuantidade(), 0, col++);
             } else {
-                JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+                JOptionPane.showMessageDialog(null, "Produto não encontrado!");
             }
         } catch (Exception ex) {
             // tabela.setModel( null );
@@ -126,7 +126,7 @@ public class controlProduto {
         }
 
     }
-    public void getProdutoSelecionado(TelaPesqProduto janelaPesquisa, JTable tabela){
+    public void getProdutoSelecionado(TelaCadastroProduto telaCad, TelaPesqProduto janelaPesquisa, JTable tabela){
         int linha = tabela.getSelectedRow();
         System.out.println(linha);
         System.out.println(tabela.getValueAt(linha, 0));
@@ -134,34 +134,24 @@ public class controlProduto {
         if ( linha >= 0) {
             l = dao.getProduto((int) tabela.getValueAt(linha,0));
             produto = l.get(0);
-            System.out.println(produto.getNome());
-            
-            janelaProduto.getjTextFieldNome().setText(produto.getNome()); //jTextFieldNome().setText(produto.getNome());
-            janelaProduto.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
-            janelaProduto.getjTextAreaDescricao().setText(produto.getDescricao());
-            janelaProduto.getjComboBoxFornecedor().setSelectedItem(produto.getFornecedor());
-            janelaProduto.getjComboBoxCategoria().setSelectedItem(produto.getCategoria());
-            janelaProduto.getjComboBoxTamanho().setSelectedItem(produto.getTamanho());
-            janelaProduto.getjComboBoxCor().setSelectedItem(produto.getCor());
-            janelaProduto.getjComboBoxEstampa().setSelectedItem(produto.getEstampa());
-            janelaProduto.getjTextFieldPreco().setText(produto.getPreco().toString());
-            janelaProduto.getjTextFieldUnidade().setText(String.valueOf(produto.getQuantidade()));
-            janelaProduto.getjTextFieldData().setText(produto.getData().toString());
+            telaCad.getjTextFieldNome().setText(produto.getNome());
+            telaCad.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
+            telaCad.getjTextAreaDescricao().setText(produto.getDescricao());
+            telaCad.getjComboBoxFornecedor().setSelectedItem(produto.getFornecedor());
+            telaCad.getjComboBoxCategoria().setSelectedItem(produto.getCategoria());
+            telaCad.getjComboBoxTamanho().setSelectedItem(produto.getTamanho());
+            telaCad.getjComboBoxCor().setSelectedItem(produto.getCor());
+            telaCad.getjComboBoxEstampa().setSelectedItem(produto.getEstampa());
+            telaCad.getjTextFieldPreco().setText(produto.getPreco().toString());
+            telaCad.getjTextFieldUnidade().setText(String.valueOf(produto.getQuantidade()));
+            telaCad.getjTextFieldData().setText(produto.getData().toString());
             
             janelaPesquisa.setVisible(false);
             
         } else {
-            JOptionPane.showMessageDialog(janelaPesquisa, "Selecione um CLIENTE.");
+            JOptionPane.showMessageDialog(janelaPesquisa, "Selecione um PRODUTO.");
         }   
     }
 
-    public TelaCadastroProduto getJanelaProduto() {
-        return janelaProduto;
-    }
-
-    public void setJanelaProduto(TelaCadastroProduto janelaProduto) {
-        this.janelaProduto = janelaProduto;
-        System.out.println(janelaProduto.getjTextFieldNome().toString());
-    }
 
 }

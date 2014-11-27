@@ -321,11 +321,10 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         // TODO add your handling code here:
-        TelaPesqProduto pesquisa = new TelaPesqProduto(null, true);
+        TelaPesqProduto pesquisa = new TelaPesqProduto(null, true, this);
         pesquisa.requestFocus();  
         pesquisa.setDefaultCloseOperation(TelaPrincipal.HIDE_ON_CLOSE);
         pesquisa.setVisible(true);
-        control.setJanelaProduto(this); 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
     public void cleanFields(){
                     jTextFieldCodigo.setText("");

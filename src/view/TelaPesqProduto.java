@@ -16,11 +16,25 @@ import model.Produto;
 public class TelaPesqProduto extends javax.swing.JDialog {
     controlProduto control;
     Produto prod;
+    TelaCadastroProduto tela;
+
+    public TelaCadastroProduto getTela() {
+        return tela;
+    }
+
     /**
      * Creates new form TelaPesqProduto
      * @param parent
      * @param modal
+     * @param tela
      */
+    public TelaPesqProduto(java.awt.Frame parent, boolean modal, TelaCadastroProduto tela){
+        super(parent, modal);
+        initComponents();
+        this.tela = tela;
+        control = new controlProduto();
+        prod = null;
+    }
     public TelaPesqProduto(java.awt.Frame parent, boolean modal){
         super(parent, modal);
         initComponents();
@@ -148,7 +162,7 @@ public class TelaPesqProduto extends javax.swing.JDialog {
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
         // TODO add your handling code here:
-        control.getProdutoSelecionado(this, jTableProduto);   
+        control.getProdutoSelecionado(this.getTela(), this, jTableProduto); 
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**
