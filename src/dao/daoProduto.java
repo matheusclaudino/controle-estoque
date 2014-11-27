@@ -106,7 +106,11 @@ public class daoProduto {
             
              // CRITERIA
               Criteria cons = sessao.createCriteria(Produto.class);
-              cons.setFetchMode("endereco", FetchMode.JOIN);    
+              cons.setFetchMode("fornecedor", FetchMode.JOIN);    
+              cons.setFetchMode("categoria", FetchMode.JOIN); 
+              cons.setFetchMode("cor", FetchMode.JOIN); 
+              cons.setFetchMode("estampa", FetchMode.JOIN); 
+              cons.setFetchMode("tamanho", FetchMode.JOIN); 
               
               cons.add ( Restrictions.like("nome", nome + "%" ) );              
               
