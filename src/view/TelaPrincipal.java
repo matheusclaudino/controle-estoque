@@ -6,6 +6,9 @@
 
 package view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Paulo
@@ -30,6 +33,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanelCadastro = new javax.swing.JPanel();
         jLabelCadastroProduto = new javax.swing.JLabel();
@@ -56,10 +61,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonTamanho = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemCadastroProduto = new javax.swing.JMenuItem();
         jMenuItemCadastroFornecedor = new javax.swing.JMenuItem();
         jMenuItemCadastroVendedor = new javax.swing.JMenuItem();
         jMenuItemCliente = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemCor = new javax.swing.JMenuItem();
+        jMenuItemEstampa = new javax.swing.JMenuItem();
+        jMenuItemCategoria = new javax.swing.JMenuItem();
+        jMenuItemTamanho = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -72,6 +83,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,10 +112,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonCadastroFornecedor.setText("Fornecedor");
+        jButtonCadastroFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroFornecedorActionPerformed(evt);
+            }
+        });
 
         jButtonCadasatroVendedor.setText("Vendedor");
+        jButtonCadasatroVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadasatroVendedorActionPerformed(evt);
+            }
+        });
 
         jButtonCadastroCliente.setText("Cliente");
+        jButtonCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCadastroLayout = new javax.swing.GroupLayout(jPanelCadastro);
         jPanelCadastro.setLayout(jPanelCadastroLayout);
@@ -213,15 +243,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonCores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cores.jpg"))); // NOI18N
         jButtonCores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCoresActionPerformed(evt);
+            }
+        });
 
         jButtonEstampa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/estampa.jpg"))); // NOI18N
         jButtonEstampa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEstampa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEstampaActionPerformed(evt);
+            }
+        });
 
         jButtonCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categoria.jpg"))); // NOI18N
         jButtonCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCategoriaActionPerformed(evt);
+            }
+        });
 
         jButtonTamanho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tamanho.jpg"))); // NOI18N
         jButtonTamanho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonTamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTamanhoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAtributosLayout = new javax.swing.GroupLayout(jPanelAtributos);
         jPanelAtributos.setLayout(jPanelAtributosLayout);
@@ -276,8 +326,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButtonCadastroProdutoActionPerformed(evt);
             }
         });
+        jMenuCadastro.add(jSeparator2);
 
         jMenuItemCadastroProduto.setText("Produto");
+        jMenuItemCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastroProdutoActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemCadastroProduto);
 
         jMenuItemCadastroFornecedor.setText("Fornecedor");
@@ -289,10 +345,53 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuCadastro.add(jMenuItemCadastroFornecedor);
 
         jMenuItemCadastroVendedor.setText("Vendedor");
+        jMenuItemCadastroVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastroVendedorActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemCadastroVendedor);
 
         jMenuItemCliente.setText("Cliente");
+        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemCliente);
+        jMenuCadastro.add(jSeparator1);
+
+        jMenuItemCor.setText("Cor");
+        jMenuItemCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCorActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemCor);
+
+        jMenuItemEstampa.setText("Estampa");
+        jMenuItemEstampa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEstampaActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemEstampa);
+
+        jMenuItemCategoria.setText("Categoria");
+        jMenuItemCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCategoriaActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemCategoria);
+
+        jMenuItemTamanho.setText("Tamanho");
+        jMenuItemTamanho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTamanhoActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemTamanho);
 
         jMenuBar1.add(jMenuCadastro);
 
@@ -317,6 +416,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemCadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroFornecedorActionPerformed
         // TODO add your handling code here:
+        jButtonCadastroFornecedorActionPerformed(evt);
     }//GEN-LAST:event_jMenuItemCadastroFornecedorActionPerformed
 
     private void jButtonCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroProdutoActionPerformed
@@ -329,6 +429,122 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButtonListarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonListarProdutoActionPerformed
+
+    private void jButtonCadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroFornecedorActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroPessoa cadastroFornecedor;
+        try {
+            cadastroFornecedor = new TelaCadastroPessoa();
+            cadastroFornecedor.setLocationRelativeTo(this);
+            cadastroFornecedor.getjRadioButtonFornecedor().setSelected(true);
+            cadastroFornecedor.getjPanelFornecedor().setVisible(true);
+            cadastroFornecedor.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            cadastroFornecedor.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadastroFornecedorActionPerformed
+
+    private void jButtonCadasatroVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadasatroVendedorActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroPessoa cadastroVendedor;
+        try {
+            cadastroVendedor = new TelaCadastroPessoa();
+            cadastroVendedor.setLocationRelativeTo(this);
+            cadastroVendedor.getjRadioButtonVendedor().setSelected(true);
+            cadastroVendedor.getjPanelVendedor().setVisible(true);
+            cadastroVendedor.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            cadastroVendedor.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadasatroVendedorActionPerformed
+
+    private void jButtonCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroClienteActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroPessoa cadastroCliente;
+        try {
+            cadastroCliente = new TelaCadastroPessoa();
+            cadastroCliente.setLocationRelativeTo(this);
+            cadastroCliente.getjRadioButtonCliente().setSelected(true);
+            cadastroCliente.getjPanelCliente().setVisible(true);
+            cadastroCliente.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            cadastroCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadastroClienteActionPerformed
+
+    private void jButtonCoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCoresActionPerformed
+        // TODO add your handling code here:
+        TelaCadastrarAtributos cadastroCor = new TelaCadastrarAtributos();
+        cadastroCor.setLocationRelativeTo(this);
+        cadastroCor.getjRadioButtonCor().setSelected(true);
+        cadastroCor.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
+        cadastroCor.setVisible(true);
+    }//GEN-LAST:event_jButtonCoresActionPerformed
+
+    private void jButtonEstampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstampaActionPerformed
+        // TODO add your handling code here:
+        TelaCadastrarAtributos cadastroEstampa = new TelaCadastrarAtributos();
+        cadastroEstampa.setLocationRelativeTo(this);
+        cadastroEstampa.getjRadioButtonEstampa().setSelected(true);
+        cadastroEstampa.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
+        cadastroEstampa.setVisible(true);
+    }//GEN-LAST:event_jButtonEstampaActionPerformed
+
+    private void jButtonCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaActionPerformed
+        // TODO add your handling code here:
+        TelaCadastrarAtributos cadastroCategoria = new TelaCadastrarAtributos();
+        cadastroCategoria.setLocationRelativeTo(this);
+        cadastroCategoria.getjRadioButtonCategoria().setSelected(true);
+        cadastroCategoria.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
+        cadastroCategoria.setVisible(true);
+    }//GEN-LAST:event_jButtonCategoriaActionPerformed
+
+    private void jButtonTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTamanhoActionPerformed
+        // TODO add your handling code here:
+        TelaCadastrarAtributos cadastroTamanho = new TelaCadastrarAtributos();
+        cadastroTamanho.setLocationRelativeTo(this);
+        cadastroTamanho.getjRadioButtonTamanho().setSelected(true);
+        cadastroTamanho.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
+        cadastroTamanho.setVisible(true);
+    }//GEN-LAST:event_jButtonTamanhoActionPerformed
+
+    private void jMenuItemCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroProdutoActionPerformed
+        // TODO add your handling code here:
+        jButtonCadastroProdutoActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemCadastroProdutoActionPerformed
+
+    private void jMenuItemCadastroVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroVendedorActionPerformed
+        // TODO add your handling code here:
+        jButtonCadasatroVendedorActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemCadastroVendedorActionPerformed
+
+    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+        // TODO add your handling code here:
+        jButtonCadastroClienteActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTamanhoActionPerformed
+        // TODO add your handling code here:
+        jButtonTamanhoActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemTamanhoActionPerformed
+
+    private void jMenuItemCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaActionPerformed
+        // TODO add your handling code here:
+        jButtonCategoriaActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemCategoriaActionPerformed
+
+    private void jMenuItemCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCorActionPerformed
+        // TODO add your handling code here:
+        jButtonCoresActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemCorActionPerformed
+
+    private void jMenuItemEstampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstampaActionPerformed
+        // TODO add your handling code here:
+        jButtonEstampaActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItemEstampaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,15 +604,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelListarVendedor;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemCadastroFornecedor;
     private javax.swing.JMenuItem jMenuItemCadastroProduto;
     private javax.swing.JMenuItem jMenuItemCadastroVendedor;
+    private javax.swing.JMenuItem jMenuItemCategoria;
     private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemCor;
+    private javax.swing.JMenuItem jMenuItemEstampa;
+    private javax.swing.JMenuItem jMenuItemTamanho;
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAtributos;
     private javax.swing.JPanel jPanelCadastro;
     private javax.swing.JPanel jPanelListar;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

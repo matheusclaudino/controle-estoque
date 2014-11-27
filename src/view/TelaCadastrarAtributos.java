@@ -6,6 +6,7 @@
 package view;
 
 import control.controlAtributos;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -20,6 +21,38 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
     public TelaCadastrarAtributos() {
         initComponents();
         this.controlAtri = new controlAtributos();
+    }
+
+    public JRadioButton getjRadioButtonCategoria() {
+        return jRadioButtonCategoria;
+    }
+
+    public void setjRadioButtonCategoria(JRadioButton jRadioButtonCategoria) {
+        this.jRadioButtonCategoria = jRadioButtonCategoria;
+    }
+
+    public JRadioButton getjRadioButtonCor() {
+        return jRadioButtonCor;
+    }
+
+    public void setjRadioButtonCor(JRadioButton jRadioButtonCor) {
+        this.jRadioButtonCor = jRadioButtonCor;
+    }
+
+    public JRadioButton getjRadioButtonEstampa() {
+        return jRadioButtonEstampa;
+    }
+
+    public void setjRadioButtonEstampa(JRadioButton jRadioButtonEstampa) {
+        this.jRadioButtonEstampa = jRadioButtonEstampa;
+    }
+
+    public JRadioButton getjRadioButtonTamanho() {
+        return jRadioButtonTamanho;
+    }
+
+    public void setjRadioButtonTamanho(JRadioButton jRadioButtonTamanho) {
+        this.jRadioButtonTamanho = jRadioButtonTamanho;
     }
 
     /**

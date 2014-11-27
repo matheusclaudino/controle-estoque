@@ -13,7 +13,10 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -33,6 +36,63 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jPanelVendedor.setVisible(false);
         this.control = new controlPessoa();
     }
+
+    public ButtonGroup getButtonGroupTipoPessoa() {
+        return buttonGroupTipoPessoa;
+    }
+
+    public void setButtonGroupTipoPessoa(ButtonGroup buttonGroupTipoPessoa) {
+        this.buttonGroupTipoPessoa = buttonGroupTipoPessoa;
+    }
+
+    public JRadioButton getjRadioButtonCliente() {
+        return jRadioButtonCliente;
+    }
+
+    public void setjRadioButtonCliente(JRadioButton jRadioButtonCliente) {
+        this.jRadioButtonCliente = jRadioButtonCliente;
+    }
+
+    public JRadioButton getjRadioButtonFornecedor() {
+        return jRadioButtonFornecedor;
+    }
+
+    public void setjRadioButtonFornecedor(JRadioButton jRadioButtonFornecedor) {
+        this.jRadioButtonFornecedor = jRadioButtonFornecedor;
+    }
+
+    public JRadioButton getjRadioButtonVendedor() {
+        return jRadioButtonVendedor;
+    }
+
+    public void setjRadioButtonVendedor(JRadioButton jRadioButtonVendedor) {
+        this.jRadioButtonVendedor = jRadioButtonVendedor;
+    }
+
+    public JPanel getjPanelFornecedor() {
+        return jPanelFornecedor;
+    }
+
+    public void setjPanelFornecedor(JPanel jPanelFornecedor) {
+        this.jPanelFornecedor = jPanelFornecedor;
+    }
+
+    public JPanel getjPanelCliente() {
+        return jPanelCliente;
+    }
+
+    public void setjPanelCliente(JPanel jPanelCliente) {
+        this.jPanelCliente = jPanelCliente;
+    }
+
+    public JPanel getjPanelVendedor() {
+        return jPanelVendedor;
+    }
+
+    public void setjPanelVendedor(JPanel jPanelVendedor) {
+        this.jPanelVendedor = jPanelVendedor;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
