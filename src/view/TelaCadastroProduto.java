@@ -76,6 +76,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         jButtonCadastrarProduto = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -203,6 +204,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             }
         });
 
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -228,7 +232,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                                         .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanelDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 5, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +246,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                 .addComponent(jButtonAlterar)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonCadastrarProduto)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButtonExcluir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +281,8 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrarProduto)
-                    .addComponent(jButtonAlterar))
+                    .addComponent(jButtonAlterar)
+                    .addComponent(jButtonExcluir))
                 .addGap(32, 32, 32))
         );
 
@@ -342,7 +349,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
         String data = jTextFieldData.getText();
         Date dataEntrada;
         String preco = jTextFieldPreco.getText();
@@ -363,6 +370,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                     jComboBoxTamanho.getSelectedItem(),
                     jComboBoxCor.getSelectedItem(),
                     jComboBoxEstampa.getSelectedItem());
+         JOptionPane.showMessageDialog(this, "Produto " + Integer.parseInt(jTextFieldCodigo.getText()) + " alterado!");
+        cleanFields();
+        
          } catch (ParseException ex) {
             Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -444,6 +454,14 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
     public void setjButtonAlterar(JButton jButtonAlterar) {
         this.jButtonAlterar = jButtonAlterar;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
     }
     
 
@@ -546,6 +564,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCadastrarProduto;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JComboBox jComboBoxCategoria;
     private javax.swing.JComboBox jComboBoxCor;

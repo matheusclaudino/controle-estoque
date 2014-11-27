@@ -136,6 +136,7 @@ public class controlProduto {
             produto = l.get(0);
             telaCad.getjTextFieldNome().setText(produto.getNome());
             telaCad.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
+            telaCad.getjTextFieldCodigo().setEnabled(false);
             telaCad.getjTextAreaDescricao().setText(produto.getDescricao());
             telaCad.getjComboBoxFornecedor().setSelectedItem(produto.getFornecedor());
             telaCad.getjComboBoxCategoria().setSelectedItem(produto.getCategoria());
@@ -145,7 +146,9 @@ public class controlProduto {
             telaCad.getjTextFieldPreco().setText(produto.getPreco().toString());
             telaCad.getjTextFieldUnidade().setText(String.valueOf(produto.getQuantidade()));
             telaCad.getjTextFieldData().setText(produto.getData().toString());
+            
             telaCad.getjButtonAlterar().setEnabled(true);
+           
             janelaPesquisa.setVisible(false);
             
         } else {
