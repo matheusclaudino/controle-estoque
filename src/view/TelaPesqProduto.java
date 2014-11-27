@@ -6,6 +6,8 @@
 package view;
 
 import control.controlProduto;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Produto;
 
@@ -51,6 +53,8 @@ public class TelaPesqProduto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenuPesquisa = new javax.swing.JPopupMenu();
+        jMenuItemExcluir = new javax.swing.JMenuItem();
         jPanelPesqProduto = new javax.swing.JPanel();
         jComboBoxPesqProduto = new javax.swing.JComboBox();
         jTextFieldPesqProduto = new javax.swing.JTextField();
@@ -60,6 +64,14 @@ public class TelaPesqProduto extends javax.swing.JDialog {
         jButtonSelecionar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+
+        jMenuItemExcluir.setText("jMenuItem1");
+        jMenuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExcluirActionPerformed(evt);
+            }
+        });
+        jPopupMenuPesquisa.add(jMenuItemExcluir);
 
         jComboBoxPesqProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Nome" }));
 
@@ -165,6 +177,16 @@ public class TelaPesqProduto extends javax.swing.JDialog {
         control.getProdutoSelecionado(this.getTela(), this, jTableProduto); 
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
+    private void jMenuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirActionPerformed
+        // TODO add your handling code here:
+        int linha = jTableProduto.getSelectedRow();
+        try {
+            control.excluirPessoa(linha, jTableProduto);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPesqProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItemExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -213,7 +235,9 @@ public class TelaPesqProduto extends javax.swing.JDialog {
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSelecionar;
     private javax.swing.JComboBox jComboBoxPesqProduto;
+    private javax.swing.JMenuItem jMenuItemExcluir;
     private javax.swing.JPanel jPanelPesqProduto;
+    private javax.swing.JPopupMenu jPopupMenuPesquisa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableProduto;
     private javax.swing.JTextField jTextFieldPesqProduto;

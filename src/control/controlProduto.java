@@ -76,12 +76,22 @@ public class controlProduto {
         dao.update(pro);
     }
 
-    public void excluirPessoa(Produto produto, JTable tabela) throws SQLException, Exception {
-
+    public void excluirPessoa(int linha, JTable tabela) throws SQLException, Exception {
+        Produto pro;
+        if ( linha >= 0) {
+            pro = (Produto) tabela.getValueAt(linha,0);
+            try {
+                dao.delete(produto);
+            } catch (Exception ex) {
+                //JOptionPane.showMessageDialog( "ERRO ao excluir PESSOA.");
+                Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            //JOptionPane.showMessageDialog(this, "Selecione uma PESSOA.");
+        }
         dao.delete(produto);
 
         // Remover a linha selecionado
-        int linha = tabela.getSelectedRow();
         ((DefaultTableModel) tabela.getModel()).removeRow(linha);
     }
 
@@ -148,7 +158,7 @@ public class controlProduto {
             telaCad.getjTextFieldData().setText(produto.getData().toString());
             
             telaCad.getjButtonAlterar().setEnabled(true);
-           
+            telaCad.getjButtonExcluir().setEnabled(true);
             janelaPesquisa.setVisible(false);
             
         } else {
