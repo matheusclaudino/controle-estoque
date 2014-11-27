@@ -199,7 +199,7 @@ public class daoAtributos {
         }
     }
 
-    public Categoria getCategoria(Categoria cat, int id) {
+    public Categoria getCategoria(int id) {
 
         Session sessao = null;
         try {
@@ -222,7 +222,7 @@ public class daoAtributos {
         }
     }
 
-    public Tamanho getTamanho(Tamanho tam, int id) {
+    public Tamanho getTamanho(int id) {
 
         Session sessao = null;
         try {
@@ -244,7 +244,7 @@ public class daoAtributos {
             return null;
         }
     }
-    public Cor getCor(Cor c, int id) {
+    public Cor getCor(int id) {
 
         Session sessao = null;
         try {
@@ -266,7 +266,7 @@ public class daoAtributos {
             return null;
         }
     }
-    public Estampa getEstampa(Estampa e, int id) {
+    public Estampa getEstampa(int id) {
 
         Session sessao = null;
         try {
