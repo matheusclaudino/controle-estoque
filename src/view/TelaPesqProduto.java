@@ -6,6 +6,7 @@
 package view;
 
 import control.controlProduto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +14,7 @@ import control.controlProduto;
  */
 public class TelaPesqProduto extends javax.swing.JFrame {
     controlProduto control;
+
     /**
      * Creates new form TelaPesqProduto
      */
@@ -77,6 +79,11 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableProduto);
 
         jButtonSelecionar.setText("Selecionar");
+        jButtonSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelecionarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setText("Excluir");
 
@@ -135,6 +142,12 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
         control.pesquisarProduto(jComboBoxPesqProduto.getSelectedIndex(), jTextFieldPesqProduto.getText(), jTableProduto);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
+        // TODO add your handling code here:
+        int linha = jTableProduto.getSelectedRow();
+        control.getProdutoSelecionado(this,jTableProduto, linha);   
+    }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**
      * @param args the command line arguments
