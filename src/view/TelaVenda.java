@@ -40,8 +40,6 @@ public class TelaVenda extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jTextFieldCodigoProduto0 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jLabel2.setText("Quantidade");
 
         jLabel3.setText("Código do Vendedor");

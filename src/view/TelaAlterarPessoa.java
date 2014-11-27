@@ -18,13 +18,14 @@ import javafx.scene.input.DataFormat;
  *
  * @author Matheus Claudino
  */
-public class TelaAlterarPessoa extends javax.swing.JFrame {
+public class TelaAlterarPessoa extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa controladoraPessoa;
-    public TelaAlterarPessoa() throws SQLException, Exception {
+    public TelaAlterarPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
+        super(parent, modal);
         initComponents();
         controladoraPessoa = new controlPessoa();
         jPanelCliente.setVisible(false);
@@ -90,7 +91,6 @@ public class TelaAlterarPessoa extends javax.swing.JFrame {
         jButtonAlterar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
 
         jPanelInformacoesGerais.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Gerais"));
@@ -536,7 +536,20 @@ public class TelaAlterarPessoa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new TelaAlterarPessoa().setVisible(true);
+//               TelaAlterarPessoa dialog;
+//                try {
+//                    dialog = new TelaAlterarPessoa(new javax.swing.JFrame(), true);
+//               
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//                } catch (Exception ex) {
+//                    Logger.getLogger(TelaAlterarPessoa.class.getName()).log(Level.SEVERE, null, ex);
+//                }
             }
         });
     }

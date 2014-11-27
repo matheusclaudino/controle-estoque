@@ -7,20 +7,25 @@ package view;
 
 import control.controlProduto;
 import javax.swing.JOptionPane;
+import model.Produto;
 
 /**
  *
  * @author Matheus Claudino
  */
-public class TelaPesqProduto extends javax.swing.JFrame {
+public class TelaPesqProduto extends javax.swing.JDialog {
     controlProduto control;
-
+    Produto prod;
     /**
      * Creates new form TelaPesqProduto
+     * @param parent
+     * @param modal
      */
-    public TelaPesqProduto() {
+    public TelaPesqProduto(java.awt.Frame parent, boolean modal){
+        super(parent, modal);
         initComponents();
         control = new controlProduto();
+        prod = null;
     }
 
     /**
@@ -41,8 +46,6 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         jButtonSelecionar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jComboBoxPesqProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Nome" }));
 
@@ -145,8 +148,7 @@ public class TelaPesqProduto extends javax.swing.JFrame {
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
         // TODO add your handling code here:
-        int linha = jTableProduto.getSelectedRow();
-        control.getProdutoSelecionado(this,jTableProduto, linha);   
+        control.getProdutoSelecionado(this, jTableProduto);   
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**
@@ -179,7 +181,14 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPesqProduto().setVisible(true);
+              TelaPesqProduto dialog = new TelaPesqProduto(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

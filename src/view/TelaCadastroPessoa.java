@@ -22,14 +22,15 @@ import javax.swing.JRadioButton;
  *
  * @author Matheus Claudino
  */
-public class TelaCadastroPessoa extends javax.swing.JFrame {
+public class TelaCadastroPessoa extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa control;
 
-    public TelaCadastroPessoa() throws SQLException, Exception {
+    public TelaCadastroPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
+        super(parent, modal);
         initComponents();
         jPanelCliente.setVisible(false);
         jPanelFornecedor.setVisible(false);
@@ -151,7 +152,6 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         jLabelFormatoData1 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
 
         jPanelInformacoesGerais.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Gerais"));
@@ -639,9 +639,19 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
+              TelaCadastroPessoa dialog;
                 try {
-                    new TelaCadastroPessoa().setVisible(true);
+                    dialog = new TelaCadastroPessoa(new javax.swing.JFrame(), true);
+               
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
                 }

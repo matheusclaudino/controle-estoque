@@ -45,7 +45,7 @@ public class controlProduto {
         this.daoAtri = new daoAtributos();
         this.daoPess = new daoPessoa();
         this.produto = null;
-        this.janelaProduto = null;
+        //this.janelaProduto = null;
     }
 
     public int inserirProduto(int codigo, String nome, String descricao, BigDecimal preco, int unidade, Date dataEntrada, Object forne,
@@ -126,10 +126,17 @@ public class controlProduto {
         }
 
     }
-    public void getProdutoSelecionado(TelaPesqProduto janelaPesquisa, JTable tabela, int linha){
+    public void getProdutoSelecionado(TelaPesqProduto janelaPesquisa, JTable tabela){
+        int linha = tabela.getSelectedRow();
+        System.out.println(linha);
+        System.out.println(tabela.getValueAt(linha, 0));
+        List<Produto> l = null;
         if ( linha >= 0) {
-            produto = (Produto) tabela.getValueAt(linha,0);
-            janelaProduto.getjTextFieldNome().setText(produto.getNome());
+            l = dao.getProduto((int) tabela.getValueAt(linha,0));
+            produto = l.get(0);
+            System.out.println(produto.getNome());
+            
+            janelaProduto.getjTextFieldNome().setText(produto.getNome()); //jTextFieldNome().setText(produto.getNome());
             janelaProduto.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
             janelaProduto.getjTextAreaDescricao().setText(produto.getDescricao());
             janelaProduto.getjComboBoxFornecedor().setSelectedItem(produto.getFornecedor());
@@ -154,6 +161,7 @@ public class controlProduto {
 
     public void setJanelaProduto(TelaCadastroProduto janelaProduto) {
         this.janelaProduto = janelaProduto;
+        System.out.println(janelaProduto.getjTextFieldNome().toString());
     }
 
 }

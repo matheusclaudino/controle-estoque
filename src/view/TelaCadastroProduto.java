@@ -78,7 +78,6 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
         jTextField1.setText("jTextField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Produto");
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -322,10 +321,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         // TODO add your handling code here:
-        TelaPesqProduto pesquisa = new TelaPesqProduto();
-        pesquisa.setLocationRelativeTo(this);
-        control.setJanelaProduto(this);   
+        TelaPesqProduto pesquisa = new TelaPesqProduto(null, true);
+        pesquisa.requestFocus();  
+        pesquisa.setDefaultCloseOperation(TelaPrincipal.HIDE_ON_CLOSE);
         pesquisa.setVisible(true);
+        control.setJanelaProduto(this); 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
     public void cleanFields(){
                     jTextFieldCodigo.setText("");

@@ -6,19 +6,22 @@
 package view;
 
 import control.controlAtributos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JRadioButton;
 
 /**
  *
  * @author Matheus Claudino
  */
-public class TelaCadastrarAtributos extends javax.swing.JFrame {
+public class TelaCadastrarAtributos extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaCadastrarAtributos
      */
     controlAtributos controlAtri;
-    public TelaCadastrarAtributos() {
+    public TelaCadastrarAtributos(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.controlAtri = new controlAtributos();
     }
@@ -76,7 +79,6 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
         jTextFieldNome = new javax.swing.JTextField();
         jButtonCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastrar Atributo");
 
         jPanelTipoAtributo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Atributo"));
@@ -229,7 +231,20 @@ public class TelaCadastrarAtributos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastrarAtributos().setVisible(true);
+               TelaCadastrarAtributos dialog;
+                try {
+                    dialog = new TelaCadastrarAtributos(new javax.swing.JFrame(), true);
+               
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaCadastrarAtributos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

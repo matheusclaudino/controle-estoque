@@ -17,7 +17,7 @@ import model.Pessoa;
  *
  * @author Paulo
  */
-public class TelaExibirPessoas extends javax.swing.JFrame {
+public class TelaExibirPessoas extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaExibirPessoas
@@ -25,7 +25,8 @@ public class TelaExibirPessoas extends javax.swing.JFrame {
     controlPessoa controladoraPessoa;
     Pessoa pesSelecionado;
     
-    public TelaExibirPessoas() throws SQLException, Exception {
+    public TelaExibirPessoas(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
+        super(parent, modal);
         initComponents();
         controladoraPessoa = new controlPessoa();
         pesSelecionado = null;
@@ -265,7 +266,7 @@ public class TelaExibirPessoas extends javax.swing.JFrame {
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
         try {
             // TODO add your handling code here:
-            TelaAlterarPessoa telaAlterarPessoa = new TelaAlterarPessoa();
+            TelaAlterarPessoa telaAlterarPessoa = new TelaAlterarPessoa(null, true);
         } catch (Exception ex) {
             Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -301,8 +302,17 @@ public class TelaExibirPessoas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                TelaExibirPessoas dialog;
                 try {
-                    new TelaExibirPessoas().setVisible(true);
+                    dialog = new TelaExibirPessoas(new javax.swing.JFrame(), true);
+               
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
                 }

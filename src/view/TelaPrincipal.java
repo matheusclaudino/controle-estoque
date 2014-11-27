@@ -6,6 +6,7 @@
 
 package view;
 
+import control.controlProduto;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,13 +15,14 @@ import java.util.logging.Logger;
  * @author Paulo
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    controlProduto control;
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
+        this.control = null;
     }
 
     /**
@@ -428,8 +430,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonListarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarProdutoActionPerformed
         // TODO add your handling code here:
-        TelaPesqProduto pesquisaProduto = new TelaPesqProduto();
+        TelaPesqProduto pesquisaProduto = new TelaPesqProduto(this, true);
         pesquisaProduto.setLocationRelativeTo(this);
+        pesquisaProduto.setDefaultCloseOperation(TelaPrincipal.HIDE_ON_CLOSE);
         pesquisaProduto.setVisible(true);
     }//GEN-LAST:event_jButtonListarProdutoActionPerformed
 
@@ -437,11 +440,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaCadastroPessoa cadastroFornecedor;
         try {
-            cadastroFornecedor = new TelaCadastroPessoa();
+            cadastroFornecedor = new TelaCadastroPessoa(this, true);
             cadastroFornecedor.setLocationRelativeTo(this);
             cadastroFornecedor.getjRadioButtonFornecedor().setSelected(true);
             cadastroFornecedor.getjPanelFornecedor().setVisible(true);
-            cadastroFornecedor.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            cadastroFornecedor.setDefaultCloseOperation(HIDE_ON_CLOSE);
             cadastroFornecedor.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -452,7 +455,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaCadastroPessoa cadastroVendedor;
         try {
-            cadastroVendedor = new TelaCadastroPessoa();
+            cadastroVendedor = new TelaCadastroPessoa(this, true);
             cadastroVendedor.setLocationRelativeTo(this);
             cadastroVendedor.getjRadioButtonVendedor().setSelected(true);
             cadastroVendedor.getjPanelVendedor().setVisible(true);
@@ -467,7 +470,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaCadastroPessoa cadastroCliente;
         try {
-            cadastroCliente = new TelaCadastroPessoa();
+            cadastroCliente = new TelaCadastroPessoa(this, true);
             cadastroCliente.setLocationRelativeTo(this);
             cadastroCliente.getjRadioButtonCliente().setSelected(true);
             cadastroCliente.getjPanelCliente().setVisible(true);
@@ -480,7 +483,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCoresActionPerformed
         // TODO add your handling code here:
-        TelaCadastrarAtributos cadastroCor = new TelaCadastrarAtributos();
+        TelaCadastrarAtributos cadastroCor = new TelaCadastrarAtributos(this, true);
         cadastroCor.setLocationRelativeTo(this);
         cadastroCor.getjRadioButtonCor().setSelected(true);
         cadastroCor.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
@@ -489,7 +492,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonEstampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstampaActionPerformed
         // TODO add your handling code here:
-        TelaCadastrarAtributos cadastroEstampa = new TelaCadastrarAtributos();
+        TelaCadastrarAtributos cadastroEstampa = new TelaCadastrarAtributos(this, true);
         cadastroEstampa.setLocationRelativeTo(this);
         cadastroEstampa.getjRadioButtonEstampa().setSelected(true);
         cadastroEstampa.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
@@ -498,7 +501,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriaActionPerformed
         // TODO add your handling code here:
-        TelaCadastrarAtributos cadastroCategoria = new TelaCadastrarAtributos();
+        TelaCadastrarAtributos cadastroCategoria = new TelaCadastrarAtributos(this, true);
         cadastroCategoria.setLocationRelativeTo(this);
         cadastroCategoria.getjRadioButtonCategoria().setSelected(true);
         cadastroCategoria.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
@@ -507,7 +510,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTamanhoActionPerformed
         // TODO add your handling code here:
-        TelaCadastrarAtributos cadastroTamanho = new TelaCadastrarAtributos();
+        TelaCadastrarAtributos cadastroTamanho = new TelaCadastrarAtributos(this, true);
         cadastroTamanho.setLocationRelativeTo(this);
         cadastroTamanho.getjRadioButtonTamanho().setSelected(true);
         cadastroTamanho.setDefaultCloseOperation(TelaCadastrarAtributos.HIDE_ON_CLOSE);
