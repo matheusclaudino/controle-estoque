@@ -48,7 +48,10 @@ public class Estampa  implements java.io.Serializable {
     public void setProdutos(Set produtos) {
         this.produtos = produtos;
     }
-
+    
+    public String toString(){
+        return this.getNome();
+    } 
 
 
 
