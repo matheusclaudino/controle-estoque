@@ -5,17 +5,20 @@
  */
 package view;
 
+import control.controlProduto;
+
 /**
  *
  * @author Matheus Claudino
  */
 public class TelaPesqProduto extends javax.swing.JFrame {
-
+    controlProduto control;
     /**
      * Creates new form TelaPesqProduto
      */
     public TelaPesqProduto() {
         initComponents();
+        control = new controlProduto();
     }
 
     /**
@@ -32,7 +35,7 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         jTextFieldPesqProduto = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableProduto = new javax.swing.JTable();
         jButtonSelecionar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -42,8 +45,13 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         jComboBoxPesqProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Nome" }));
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -66,7 +74,7 @@ public class TelaPesqProduto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableProduto);
 
         jButtonSelecionar.setText("Selecionar");
 
@@ -123,6 +131,11 @@ public class TelaPesqProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        // TODO add your handling code here:
+        control.pesquisarProduto(jComboBoxPesqProduto.getSelectedIndex(), jTextFieldPesqProduto.getText(), jTableProduto);
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -166,7 +179,7 @@ public class TelaPesqProduto extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxPesqProduto;
     private javax.swing.JPanel jPanelPesqProduto;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableProduto;
     private javax.swing.JTextField jTextFieldPesqProduto;
     // End of variables declaration//GEN-END:variables
 }
