@@ -68,10 +68,12 @@ public class TelaPesqProduto extends javax.swing.JDialog {
         jMenuItemExcluir.setText("jMenuItem1");
         jMenuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemExcluirActionPerformed(evt);
+                jButtonExcluirActionPerformed(evt);
             }
         });
         jPopupMenuPesquisa.add(jMenuItemExcluir);
+
+        jPopupMenuPesquisa.getAccessibleContext().setAccessibleParent(jTableProduto);
 
         jComboBoxPesqProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Nome" }));
 
@@ -105,6 +107,8 @@ public class TelaPesqProduto extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jTableProduto.getTableHeader().setResizingAllowed(false);
+        jTableProduto.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableProduto);
 
         jButtonSelecionar.setText("Selecionar");
@@ -115,6 +119,11 @@ public class TelaPesqProduto extends javax.swing.JDialog {
         });
 
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
 
@@ -123,26 +132,28 @@ public class TelaPesqProduto extends javax.swing.JDialog {
         jPanelPesqProdutoLayout.setHorizontalGroup(
             jPanelPesqProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPesqProdutoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelPesqProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(jPanelPesqProdutoLayout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jComboBoxPesqProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldPesqProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonPesquisar)
+                        .addContainerGap()
+                        .addGroup(jPanelPesqProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanelPesqProdutoLayout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(jComboBoxPesqProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldPesqProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonPesquisar)
+                                .addGap(0, 187, Short.MAX_VALUE))))
+                    .addGroup(jPanelPesqProdutoLayout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jButtonSelecionar)
+                        .addGap(106, 106, 106)
+                        .addComponent(jButtonExcluir)
+                        .addGap(130, 130, 130)
+                        .addComponent(jButtonCancelar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanelPesqProdutoLayout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jButtonSelecionar)
-                .addGap(123, 123, 123)
-                .addComponent(jButtonExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                .addComponent(jButtonCancelar)
-                .addGap(108, 108, 108))
         );
         jPanelPesqProdutoLayout.setVerticalGroup(
             jPanelPesqProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,15 +188,15 @@ public class TelaPesqProduto extends javax.swing.JDialog {
         control.getProdutoSelecionado(this.getTela(), this, jTableProduto); 
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
-    private void jMenuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirActionPerformed
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         // TODO add your handling code here:
-        int linha = jTableProduto.getSelectedRow();
+         int linha = jTableProduto.getSelectedRow();
         try {
-            control.excluirPessoa(linha, jTableProduto);
+            control.excluirProduto(linha, jTableProduto);
         } catch (Exception ex) {
             Logger.getLogger(TelaPesqProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItemExcluirActionPerformed
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments

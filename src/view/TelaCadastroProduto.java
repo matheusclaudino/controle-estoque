@@ -349,6 +349,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         TelaPesqProduto pesquisa = new TelaPesqProduto(null, true, this);
         pesquisa.requestFocus();  
         pesquisa.setDefaultCloseOperation(TelaPrincipal.HIDE_ON_CLOSE);
+        pesquisa.setLocationRelativeTo(this);
         pesquisa.setVisible(true);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
