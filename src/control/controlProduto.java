@@ -102,7 +102,7 @@ public class controlProduto {
         try {
             if ((tipo == 0) && (!pesquisa.equals(""))) { //CÓDIGO
                 id  = Integer.parseInt(pesquisa);                
-                produto = dao.getProduto(id);
+                prod = dao.getProduto(id);
             
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
@@ -116,18 +116,18 @@ public class controlProduto {
                     prod = (Produto) it.next();
                     ((DefaultTableModel) tabela.getModel()).addRow(prod.toArray());
                 }
-            } else if (produto != null) {
+            } else if (prod != null) {
                 ((DefaultTableModel) tabela.getModel()).addRow(new Vector());
                 int col = 0;
-                tabela.setValueAt(produto.get(0).getCodigo(), 0, col++);
-                tabela.setValueAt(produto.get(0).getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getFornecedor().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getCategoria().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getTamanho().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getCor().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getEstampa().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getPreco(), 0, col++);
-                tabela.setValueAt(produto.get(0).getQuantidade(), 0, col++);
+                tabela.setValueAt(prod.getCodigo(), 0, col++);
+                tabela.setValueAt(prod.getNome(), 0, col++);
+                tabela.setValueAt(prod.getFornecedor().getNome(), 0, col++);
+                tabela.setValueAt(prod.getCategoria().getNome(), 0, col++);
+                tabela.setValueAt(prod.getTamanho().getNome(), 0, col++);
+                tabela.setValueAt(prod.getCor().getNome(), 0, col++);
+                tabela.setValueAt(prod.getEstampa().getNome(), 0, col++);
+                tabela.setValueAt(prod.getPreco(), 0, col++);
+                tabela.setValueAt(prod.getQuantidade(), 0, col++);
             } else {
                 JOptionPane.showMessageDialog(null, "Produto não encontrado!");
             }
