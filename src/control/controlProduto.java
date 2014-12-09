@@ -98,8 +98,9 @@ public class controlProduto {
         List<Produto> produto = null;
         Produto prod = null;
         int id;
+        System.out.println(pesquisa);
         try {
-            if ((tipo == 0) && (pesquisa != null)) { //CÓDIGO
+            if ((tipo == 0) && (!pesquisa.equals(""))) { //CÓDIGO
                 id  = Integer.parseInt(pesquisa);                
                 produto = dao.getProduto(id);
             
