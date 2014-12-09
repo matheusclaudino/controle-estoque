@@ -99,14 +99,10 @@ public class controlProduto {
         Produto prod = null;
         int id;
         try {
-            if (tipo == 0) { //CÓDIGO
-//                if(pesquisa.equals("")){
-//                    id = -1;
-//                }else{
-                    id  = Integer.parseInt(pesquisa);
-//                }
-                
+            if ((tipo == 0) && (pesquisa != null)) { //CÓDIGO
+                id  = Integer.parseInt(pesquisa);                
                 produto = dao.getProduto(id);
+            
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
             }
@@ -135,7 +131,7 @@ public class controlProduto {
                 JOptionPane.showMessageDialog(null, "Produto não encontrado!");
             }
         } catch (Exception ex) {
-             tabela.setModel( null );
+            //tabela.setModel( null );
             Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
