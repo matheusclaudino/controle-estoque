@@ -77,13 +77,11 @@ public class controlProduto {
     }
 
     public void excluirProduto(int linha, JTable tabela) throws SQLException, Exception {
-        List<Produto> produto;
         Produto pro;
-        System.out.println(tabela.getValueAt(linha,0));
         if ( linha >= 0) {
-            produto = dao.getProduto((int) tabela.getValueAt(linha,0));//GAMBIARRA
+            pro = (Produto) tabela.getValueAt(linha,0);//GAMBIARRA
             try {
-                dao.delete(produto.get(0));
+                dao.delete(pro);
             } catch (Exception ex) {
                 //JOptionPane.showMessageDialog( "ERRO ao excluir PESSOA.");
                 Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,9 +90,6 @@ public class controlProduto {
             //JOptionPane.showMessageDialog(this, "Selecione uma PESSOA.");
         }
         
-        //dao.delete(produto);
-
-        // Remover a linha selecionado
         ((DefaultTableModel) tabela.getModel()).removeRow(linha);
     }
 
