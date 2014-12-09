@@ -142,9 +142,14 @@ public class Produto  implements java.io.Serializable {
     public void setVendas(Set vendas) {
         this.vendas = vendas;
     }
+    
+     @Override
+    public String toString(){
+        return String.valueOf(this.codigo);
+    }
 
     public Object[] toArray() {
-        return new Object[] {this, this.codigo,this.nome,this.fornecedor,this.categoria
+        return new Object[] {this, this.nome,this.fornecedor,this.categoria
                 , this.tamanho, this.cor, this.estampa, this.preco, this.quantidade };
     } 
 
