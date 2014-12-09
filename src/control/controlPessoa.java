@@ -54,6 +54,7 @@ public class controlPessoa {
         }
         System.out.println(pes.getNome());
         dao.inserir(pes);
+        System.out.println(pes.getIdPessoa());
         return pes.getIdPessoa();
 
     }
