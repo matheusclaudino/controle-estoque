@@ -78,18 +78,12 @@ public class daoProduto {
 
     public List getProduto(int id) {
         Session sessao = null;
-//        Produto produto = null;
+
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-
-            // GET: se não existir, retorna NULL
-            // LOAD: se não existir, retorna ERRO (Exception)
-//            if(id == -1){
-//                 produto = (Produto) sessao.get(Produto.class);
-//            }else{
-                Produto produto = (Produto) sessao.get(Produto.class, new Integer(id));
-//            }
+ 
+            Produto produto = (Produto) sessao.get(Produto.class, new Integer(id));
             
             Criteria cons = sessao.createCriteria(Produto.class);
             cons.setFetchMode("fornecedor", FetchMode.JOIN);
@@ -100,7 +94,7 @@ public class daoProduto {
             
             cons.add(Restrictions.like("codigo", id));
             cons.addOrder(Order.asc("codigo"));
-
+            
             List<Produto> res = cons.list();
             
             sessao.getTransaction().commit();
