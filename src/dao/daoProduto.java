@@ -76,30 +76,19 @@ public class daoProduto {
         }
     }
 
-    public List getProduto(int id) {
+    public Produto getProduto(int id) {
         Session sessao = null;
-
+        Produto produto = null;
+        
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
  
-            Produto produto = (Produto) sessao.get(Produto.class, new Integer(id));
-            
-            Criteria cons = sessao.createCriteria(Produto.class);
-            cons.setFetchMode("fornecedor", FetchMode.JOIN);
-            cons.setFetchMode("categoria", FetchMode.JOIN);
-            cons.setFetchMode("cor", FetchMode.JOIN);
-            cons.setFetchMode("estampa", FetchMode.JOIN);
-            cons.setFetchMode("tamanho", FetchMode.JOIN);
-            
-            cons.add(Restrictions.like("codigo", id));
-            cons.addOrder(Order.asc("codigo"));
-            
-            List<Produto> res = cons.list();
+            produto = (Produto) sessao.get(Produto.class, new Integer(id));
             
             sessao.getTransaction().commit();
             sessao.close();
-            return res;
+            return produto;
 
         } catch (HibernateException he) {
             System.out.println("Erro de inserção do PRODUTO : " + he.getMessage());
