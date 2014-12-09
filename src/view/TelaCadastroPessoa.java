@@ -105,6 +105,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroupTipoPessoa = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanelTelaCadastroPessoa = new javax.swing.JPanel();
         jPanelInformacoesGerais = new javax.swing.JPanel();
         jTextFieldNome = new javax.swing.JTextField();
@@ -153,6 +154,8 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         jButtonCadastrar = new javax.swing.JButton();
 
         setTitle("Cadastro");
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(410, 708));
 
         jPanelInformacoesGerais.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Gerais"));
 
@@ -447,7 +450,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addGroup(jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSalario)
                     .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelVendedorLayout.createSequentialGroup()
                         .addComponent(jLabelDataAdmissao)
@@ -493,7 +496,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             .addGroup(jPanelTelaCadastroPessoaLayout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(jButtonCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelTelaCadastroPessoaLayout.setVerticalGroup(
             jPanelTelaCadastroPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,12 +511,14 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addComponent(jPanelFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanelTelaCadastroPessoa, java.awt.BorderLayout.CENTER);
+        jScrollPane1.setViewportView(jPanelTelaCadastroPessoa);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -543,7 +548,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButtonFornecedorActionPerformed
 
     private void jRadioButtonVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVendedorActionPerformed
-        jPanelCliente.setVisible(false);
+        jPanelCliente.setVisible(true);
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(true);
     }//GEN-LAST:event_jRadioButtonVendedorActionPerformed
@@ -692,6 +697,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButtonCliente;
     private javax.swing.JRadioButton jRadioButtonFornecedor;
     private javax.swing.JRadioButton jRadioButtonVendedor;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextFieldAdmissao;
     private javax.swing.JTextField jTextFieldBairro;

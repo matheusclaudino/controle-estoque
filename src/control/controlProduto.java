@@ -91,6 +91,7 @@ public class controlProduto {
         } else {
             //JOptionPane.showMessageDialog(this, "Selecione uma PESSOA.");
         }
+        
         //dao.delete(produto);
 
         // Remover a linha selecionado
