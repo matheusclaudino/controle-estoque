@@ -114,6 +114,7 @@ public class controlProduto {
                 produto = dao.getProduto(id);
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
+                System.out.println(lista.get(0).getNome());
             }
 
             ((DefaultTableModel) tabela.getModel()).setRowCount(0);
@@ -148,11 +149,9 @@ public class controlProduto {
     public void getProdutoSelecionado(TelaCadastroProduto telaCad, TelaPesqProduto janelaPesquisa, JTable tabela){
         int linha = tabela.getSelectedRow();
         System.out.println(linha);
-        System.out.println(tabela.getValueAt(linha, 0));
         List<Produto> l = null;
         if ( linha >= 0) {
-            l = dao.getProduto((int) tabela.getValueAt(linha,0));
-            produto = l.get(0);
+            produto =  (Produto) tabela.getValueAt(linha,0);
             telaCad.getjTextFieldNome().setText(produto.getNome());
             telaCad.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
             telaCad.getjTextFieldCodigo().setEnabled(false);
