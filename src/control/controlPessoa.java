@@ -52,10 +52,9 @@ public class controlPessoa {
         } else{
             pes = new Vendedor(endereco, nome, telefone, cpf, s, dataNascimento, salario, dataAdmissao);
         }
-        System.out.println(pes.getNome());
         dao.inserir(pes);
+        
         return pes.getIdPessoa();
-
     }
 
     public void alterarPessoa(int idPessoa, String nome, String telefone, String cep, String cidade, String rua, int numero, String bairro,
