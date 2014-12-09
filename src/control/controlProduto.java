@@ -95,7 +95,6 @@ public class controlProduto {
 
     public void pesquisarProduto(int tipo, String pesquisa, JTable tabela) {
         List<Produto> lista = null;
-        List<Produto> produto = null;
         Produto prod = null;
         int id;
         System.out.println(pesquisa);
