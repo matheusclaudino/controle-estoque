@@ -30,9 +30,9 @@ public class daoPessoa {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-
+            
             sessao.save(pes);
-            System.out.println("lol");
+            
             sessao.getTransaction().commit();
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();
