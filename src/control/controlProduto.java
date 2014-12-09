@@ -83,11 +83,11 @@ public class controlProduto {
             try {
                 dao.delete(pro);
             } catch (Exception ex) {
-                //JOptionPane.showMessageDialog( "ERRO ao excluir PESSOA.");
+                JOptionPane.showMessageDialog(null, "ERRO ao excluir PESSOA.");
                 Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //JOptionPane.showMessageDialog(this, "Selecione uma PESSOA.");
+            JOptionPane.showMessageDialog(null, "Selecione uma PESSOA.");
         }
         
         ((DefaultTableModel) tabela.getModel()).removeRow(linha);
@@ -109,7 +109,6 @@ public class controlProduto {
                 produto = dao.getProduto(id);
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
-                System.out.println(lista.get(0).getNome());
             }
 
             ((DefaultTableModel) tabela.getModel()).setRowCount(0);
@@ -136,7 +135,7 @@ public class controlProduto {
                 JOptionPane.showMessageDialog(null, "Produto não encontrado!");
             }
         } catch (Exception ex) {
-            // tabela.setModel( null );
+             tabela.setModel( null );
             Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
