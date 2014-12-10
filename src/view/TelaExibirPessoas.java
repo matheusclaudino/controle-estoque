@@ -292,7 +292,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
-        controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas);
+        controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, ((JRadioButton) evt.getSource() ).getMnemonic());
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**

@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
 import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -95,9 +96,8 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjPanelVendedor(JPanel jPanelVendedor) {
         this.jPanelVendedor = jPanelVendedor;
     }
-    
-    //AREA DE CORTE DIFERENCIAÇÃO DE METODOS
 
+    //AREA DE CORTE DIFERENCIAÇÃO DE METODOS
     public JLabel getjLabelDataAdmissao() {
         return jLabelDataAdmissao;
     }
@@ -217,10 +217,23 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjTextFieldTelefone(JTextField jTextFieldTelefone) {
         this.jTextFieldTelefone = jTextFieldTelefone;
     }
-    
-    
-    
 
+    public JComboBox getjComboBoxEstado() {
+        return jComboBoxEstado;
+    }
+
+    public void setjComboBoxEstado(JComboBox jComboBoxEstado) {
+        this.jComboBoxEstado = jComboBoxEstado;
+    }
+
+    public JComboBox getjComboBoxSexo() {
+        return jComboBoxSexo;
+    }
+
+    public void setjComboBoxSexo(JComboBox jComboBoxSexo) {
+        this.jComboBoxSexo = jComboBoxSexo;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -696,7 +709,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 jTextFieldSalario.setText("0.0");
             }
             int id;
-            
+
             id = control.inserirPessoa(
                     jTextFieldNome.getText(),
                     jTextFieldTelefone.getText(),
@@ -715,7 +728,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                     jTextFieldCNPJ.getText(),
                     Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
                     dataAdmissao
-            );            
+            );
             JOptionPane.showMessageDialog(this, "Pessoa " + id + " foi cadastrada");
             cleanFields();
         } catch (Exception ex) {
@@ -772,17 +785,17 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-              TelaCadastroPessoa dialog;
+                TelaCadastroPessoa dialog;
                 try {
                     dialog = new TelaCadastroPessoa(new javax.swing.JFrame(), true);
-               
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
                 }
