@@ -48,7 +48,7 @@ public class Pessoafisica extends Pessoa {
    
 
     public Object[] toArray(){
-        return new Object[] {this, this.getCpf()};
+        return new Object[] {this.getIdPessoa(), this, this.getCpf()};
     }
 
 }

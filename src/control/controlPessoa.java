@@ -20,6 +20,9 @@ import model.Vendedor;
 
 import java.util.Date;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
+import view.TelaCadastroPessoa;
+import view.TelaExibirPessoas;
 
 /**
  *
@@ -29,11 +32,13 @@ public class controlPessoa {
 
     daoPessoa dao;
     List<Pessoa> lista;
+    Pessoa pessoa;
 
     //PedidoDAO pedDAO;
     public controlPessoa() throws ClassNotFoundException, SQLException, Exception {
         this.dao = new daoPessoa();
         lista = null;
+        this.pessoa = null;
     }
 
     public int inserirPessoa(String nome, String telefone, String cep, String cidade, String rua, int numero, String bairro,
@@ -118,13 +123,44 @@ public class controlPessoa {
             Iterator<Pessoa> it = lista.iterator();
             while (it.hasNext()) {
                 pes = it.next();
-
-                if (nomeClasse.equals(pes.getClass().getName())) {//possivelmente desnecessário
                     ((DefaultTableModel) tabela.getModel()).addRow(pes.toArray());
-                }
             }
         }
 
+    }
+    
+   public void getPessoaSelecionada(TelaCadastroPessoa telaCadastro, TelaExibirPessoas janelaPesquisa, JTable tabela){
+        int linha = tabela.getSelectedRow();
+        if ( linha >= 0) {
+            pessoa = dao.getPessoa((int) tabela.getValueAt(linha,0));
+            telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
+            telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());
+            telaCadastro.getjTextFieldCEP().setText(pessoa.getEndereco().getCep());
+            telaCadastro.getjTextFieldCidade().setText(pessoa.getEndereco().getCidade());
+            telaCadastro.getjTextFieldRua().setText(pessoa.getEndereco().getRua());
+            telaCadastro.getjTextFieldNumero().setText(String.valueOf(pessoa.getEndereco().getNumero()));
+            telaCadastro.getjTextFieldBairro().setText(pessoa.getEndereco().getBairro());
+            telaCadastro.getjTextFieldComplemento().setText(pessoa.getEndereco().getComplemento());
+            telaCadastro.getjTextFieldReferencia().setText(pessoa.getEndereco().getReferencia());
+            
+            
+           /* telaCad.getjTextAreaDescricao().setText(produto.getDescricao());
+            telaCad.getjComboBoxFornecedor().setSelectedItem(produto.getFornecedor());
+            telaCad.getjComboBoxCategoria().setSelectedItem(produto.getCategoria());
+            telaCad.getjComboBoxTamanho().setSelectedItem(produto.getTamanho());
+            telaCad.getjComboBoxCor().setSelectedItem(produto.getCor());
+            telaCad.getjComboBoxEstampa().setSelectedItem(produto.getEstampa());
+            telaCad.getjTextFieldPreco().setText(produto.getPreco().toString());
+            telaCad.getjTextFieldUnidade().setText(String.valueOf(produto.getQuantidade()));
+            telaCad.getjTextFieldData().setText(produto.getData().toString());
+            
+            telaCad.getjButtonAlterar().setEnabled(true);
+            telaCad.getjButtonExcluir().setEnabled(true);*/
+            janelaPesquisa.setVisible(false);
+            
+        } else {
+            JOptionPane.showMessageDialog(janelaPesquisa, "Selecione alguem.");
+        }   
     }
 
     public char tipoSexo(String sexo){

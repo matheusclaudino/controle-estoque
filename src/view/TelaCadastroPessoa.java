@@ -14,9 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -93,6 +95,130 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjPanelVendedor(JPanel jPanelVendedor) {
         this.jPanelVendedor = jPanelVendedor;
     }
+    
+    //AREA DE CORTE DIFERENCIAÇÃO DE METODOS
+
+    public JLabel getjLabelDataAdmissao() {
+        return jLabelDataAdmissao;
+    }
+
+    public void setjLabelDataAdmissao(JLabel jLabelDataAdmissao) {
+        this.jLabelDataAdmissao = jLabelDataAdmissao;
+    }
+
+    public JTextField getjTextFieldAdmissao() {
+        return jTextFieldAdmissao;
+    }
+
+    public void setjTextFieldAdmissao(JTextField jTextFieldAdmissao) {
+        this.jTextFieldAdmissao = jTextFieldAdmissao;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    public JTextField getjTextFieldCEP() {
+        return jTextFieldCEP;
+    }
+
+    public void setjTextFieldCEP(JTextField jTextFieldCEP) {
+        this.jTextFieldCEP = jTextFieldCEP;
+    }
+
+    public JTextField getjTextFieldCNPJ() {
+        return jTextFieldCNPJ;
+    }
+
+    public void setjTextFieldCNPJ(JTextField jTextFieldCNPJ) {
+        this.jTextFieldCNPJ = jTextFieldCNPJ;
+    }
+
+    public JTextField getjTextFieldCPF() {
+        return jTextFieldCPF;
+    }
+
+    public void setjTextFieldCPF(JTextField jTextFieldCPF) {
+        this.jTextFieldCPF = jTextFieldCPF;
+    }
+
+    public JTextField getjTextFieldCidade() {
+        return jTextFieldCidade;
+    }
+
+    public void setjTextFieldCidade(JTextField jTextFieldCidade) {
+        this.jTextFieldCidade = jTextFieldCidade;
+    }
+
+    public JTextField getjTextFieldComplemento() {
+        return jTextFieldComplemento;
+    }
+
+    public void setjTextFieldComplemento(JTextField jTextFieldComplemento) {
+        this.jTextFieldComplemento = jTextFieldComplemento;
+    }
+
+    public JTextField getjTextFieldDataNascimento() {
+        return jTextFieldDataNascimento;
+    }
+
+    public void setjTextFieldDataNascimento(JTextField jTextFieldDataNascimento) {
+        this.jTextFieldDataNascimento = jTextFieldDataNascimento;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldNumero() {
+        return jTextFieldNumero;
+    }
+
+    public void setjTextFieldNumero(JTextField jTextFieldNumero) {
+        this.jTextFieldNumero = jTextFieldNumero;
+    }
+
+    public JTextField getjTextFieldReferencia() {
+        return jTextFieldReferencia;
+    }
+
+    public void setjTextFieldReferencia(JTextField jTextFieldReferencia) {
+        this.jTextFieldReferencia = jTextFieldReferencia;
+    }
+
+    public JTextField getjTextFieldRua() {
+        return jTextFieldRua;
+    }
+
+    public void setjTextFieldRua(JTextField jTextFieldRua) {
+        this.jTextFieldRua = jTextFieldRua;
+    }
+
+    public JTextField getjTextFieldSalario() {
+        return jTextFieldSalario;
+    }
+
+    public void setjTextFieldSalario(JTextField jTextFieldSalario) {
+        this.jTextFieldSalario = jTextFieldSalario;
+    }
+
+    public JTextField getjTextFieldTelefone() {
+        return jTextFieldTelefone;
+    }
+
+    public void setjTextFieldTelefone(JTextField jTextFieldTelefone) {
+        this.jTextFieldTelefone = jTextFieldTelefone;
+    }
+    
+    
     
 
     /**

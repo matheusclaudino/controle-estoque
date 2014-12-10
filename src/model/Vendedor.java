@@ -44,7 +44,7 @@ public class Vendedor  extends Pessoafisica {
     }
     
      public Object[] toArray(){
-        return new Object[] {this, this.getCpf()};
+        return new Object[] {this.getIdPessoa(), this, this.getCpf()};
     }
 
 
