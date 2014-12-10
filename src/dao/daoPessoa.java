@@ -153,5 +153,29 @@ public class daoPessoa {
             return lista;
         }
     }
+    
+    public Endereco getEndereco(int idEndereco){
+        Session sessao = null;
+        
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+ 
+            Endereco endereco = (Endereco) sessao.get(Endereco.class, new Integer(idEndereco));
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+            return endereco;
+
+        } catch (HibernateException he) {
+            System.out.println("Erro de CONSULTA DO ENDERECO: " + he.getMessage());
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de consulta do ENDERECO: " + he.getMessage());
+            return null;
+        }
+    }
 
 }

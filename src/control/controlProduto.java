@@ -138,7 +138,7 @@ public class controlProduto {
     }
     public void getProdutoSelecionado(TelaCadastroProduto telaCad, TelaPesqProduto janelaPesquisa, JTable tabela){
         int linha = tabela.getSelectedRow();
-        System.out.println(linha);
+
         List<Produto> l = null;
         if ( linha >= 0) {
             produto =  (Produto) tabela.getValueAt(linha,0);
