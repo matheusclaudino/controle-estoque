@@ -297,13 +297,6 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         } catch (Exception ex) {
             Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        try {
-            controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, buttonGroupTipo.getSelection().getMnemonic());
-        } catch (Exception ex) {
-            Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**
