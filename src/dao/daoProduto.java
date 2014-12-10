@@ -6,7 +6,12 @@
 package dao;
 
 import java.util.List;
+import model.Categoria;
+import model.Cor;
+import model.Estampa;
+import model.Fornecedor;
 import model.Produto;
+import model.Tamanho;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
@@ -78,14 +83,13 @@ public class daoProduto {
 
     public Produto getProduto(int id) {
         Session sessao = null;
-        Produto produto = null;
         
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
  
-            produto = (Produto) sessao.get(Produto.class, new Integer(id));
-            
+            Produto produto = (Produto) sessao.get(Produto.class, new Integer(id));
+            //System.out.println(produto.getCategoria().getNome());
             sessao.getTransaction().commit();
             sessao.close();
             return produto;
@@ -132,6 +136,126 @@ public class daoProduto {
                 sessao.close();
             }
             System.out.println("Erro ao listar os PRODUTOS: " + he.getMessage());
+            return null;
+        }
+    }
+    
+    public Fornecedor getFornecedor(int idFornecedor){
+        Session sessao = null;
+        
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+ 
+            Fornecedor fornecedor = (Fornecedor) sessao.get(Fornecedor.class, new Integer(idFornecedor));
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+            return fornecedor;
+
+        } catch (HibernateException he) {
+            System.out.println("Erro de CONSULTA DO FORNECEDOR: " + he.getMessage());
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de consulta de FORNECEDOR: " + he.getMessage());
+            return null;
+        }
+    }
+    
+    public Categoria getCategoria(int idCategoria){
+        Session sessao = null;
+        
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+ 
+            Categoria categoria = (Categoria) sessao.get(Categoria.class, new Integer(idCategoria));
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+            return categoria;
+
+        } catch (HibernateException he) {
+            System.out.println("Erro de CONSULTA DO CATEGORIA: " + he.getMessage());
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de consulta de CATEGORIA: " + he.getMessage());
+            return null;
+        }
+    }
+    
+    public Tamanho getTamanho(int idTamanho){
+        Session sessao = null;
+        
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+ 
+            Tamanho tamanho = (Tamanho) sessao.get(Tamanho.class, new Integer(idTamanho));
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+            return tamanho;
+
+        } catch (HibernateException he) {
+            System.out.println("Erro de CONSULTA DO TAMANHO: " + he.getMessage());
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de consulta de TAMANHO: " + he.getMessage());
+            return null;
+        }
+    }
+    
+    public Cor getCor(int idCor){
+        Session sessao = null;
+        
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+ 
+            Cor cor = (Cor) sessao.get(Cor.class, new Integer(idCor));
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+            return cor;
+
+        } catch (HibernateException he) {
+            System.out.println("Erro de CONSULTA DO COR: " + he.getMessage());
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de consulta de COR: " + he.getMessage());
+            return null;
+        }
+    }
+    
+    public Estampa getEstampa(int idEstampa){
+        Session sessao = null;
+        
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+ 
+            Estampa estampa = (Estampa) sessao.get(Estampa.class, new Integer(idEstampa));
+            
+            sessao.getTransaction().commit();
+            sessao.close();
+            return estampa;
+
+        } catch (HibernateException he) {
+            System.out.println("Erro de CONSULTA DA ESTAMPA: " + he.getMessage());
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("Erro de consulta de ESTAMPA: " + he.getMessage());
             return null;
         }
     }
