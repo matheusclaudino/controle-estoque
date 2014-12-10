@@ -77,41 +77,32 @@ public class controlProduto {
     }
 
     public void excluirProduto(int linha, JTable tabela) throws SQLException, Exception {
-        List<Produto> produto;
         Produto pro;
-        System.out.println(tabela.getValueAt(linha,0));
         if ( linha >= 0) {
-            produto = dao.getProduto((int) tabela.getValueAt(linha,0));//GAMBIARRA
+            pro = (Produto) tabela.getValueAt(linha,0);//GAMBIARRA
             try {
-                dao.delete(produto.get(0));
+                dao.delete(pro);
             } catch (Exception ex) {
-                //JOptionPane.showMessageDialog( "ERRO ao excluir PESSOA.");
+                JOptionPane.showMessageDialog(null, "ERRO ao excluir PESSOA.");
                 Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            //JOptionPane.showMessageDialog(this, "Selecione uma PESSOA.");
+            JOptionPane.showMessageDialog(null, "Selecione uma PESSOA.");
         }
         
-        //dao.delete(produto);
-
-        // Remover a linha selecionado
         ((DefaultTableModel) tabela.getModel()).removeRow(linha);
     }
 
     public void pesquisarProduto(int tipo, String pesquisa, JTable tabela) {
         List<Produto> lista = null;
-        List<Produto> produto = null;
-        Produto prod = null;
+        Produto prod = new Produto();
         int id;
+        System.out.println(pesquisa);
         try {
-            if (tipo == 0) { //CÓDIGO
-//                if(pesquisa.equals("")){
-//                    id = -1;
-//                }else{
-                    id  = Integer.parseInt(pesquisa);
-//                }
-                
-                produto = dao.getProduto(id);
+            if ((tipo == 0) && (!pesquisa.equals(""))) { //CÓDIGO
+                id  = Integer.parseInt(pesquisa);                
+                prod = dao.getProduto(id);
+                System.out.println();
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
             }
@@ -124,23 +115,23 @@ public class controlProduto {
                     prod = (Produto) it.next();
                     ((DefaultTableModel) tabela.getModel()).addRow(prod.toArray());
                 }
-            } else if (produto != null) {
+            } else if (prod != null) {
                 ((DefaultTableModel) tabela.getModel()).addRow(new Vector());
                 int col = 0;
-                tabela.setValueAt(produto.get(0).getCodigo(), 0, col++);
-                tabela.setValueAt(produto.get(0).getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getFornecedor().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getCategoria().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getTamanho().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getCor().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getEstampa().getNome(), 0, col++);
-                tabela.setValueAt(produto.get(0).getPreco(), 0, col++);
-                tabela.setValueAt(produto.get(0).getQuantidade(), 0, col++);
+                tabela.setValueAt(prod, 0, col++);
+                tabela.setValueAt(prod.getNome(), 0, col++);
+                tabela.setValueAt(dao.getFornecedor(prod.getFornecedor().getIdPessoa()), 0, col++);
+                tabela.setValueAt(dao.getCategoria(prod.getCategoria().getIdCategoria()), 0, col++);
+                tabela.setValueAt(dao.getTamanho(prod.getTamanho().getIdTamanho()), 0, col++);
+                tabela.setValueAt(dao.getCor(prod.getCor().getIdCor()), 0, col++);
+                tabela.setValueAt(dao.getEstampa(prod.getEstampa().getIdEstampa()), 0, col++);
+                tabela.setValueAt(prod.getPreco(), 0, col++);
+                tabela.setValueAt(prod.getQuantidade(), 0, col++);
             } else {
                 JOptionPane.showMessageDialog(null, "Produto não encontrado!");
             }
         } catch (Exception ex) {
-            // tabela.setModel( null );
+            //tabela.setModel( null );
             Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -148,11 +139,9 @@ public class controlProduto {
     public void getProdutoSelecionado(TelaCadastroProduto telaCad, TelaPesqProduto janelaPesquisa, JTable tabela){
         int linha = tabela.getSelectedRow();
         System.out.println(linha);
-        System.out.println(tabela.getValueAt(linha, 0));
         List<Produto> l = null;
         if ( linha >= 0) {
-            l = dao.getProduto((int) tabela.getValueAt(linha,0));
-            produto = l.get(0);
+            produto =  (Produto) tabela.getValueAt(linha,0);
             telaCad.getjTextFieldNome().setText(produto.getNome());
             telaCad.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
             telaCad.getjTextFieldCodigo().setEnabled(false);
