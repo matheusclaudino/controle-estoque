@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -162,6 +164,17 @@ public class controlProduto {
         } else {
             JOptionPane.showMessageDialog(janelaPesquisa, "Selecione um PRODUTO.");
         }   
+    }
+    
+    public void carregarComboProduto(JComboBox produto) {
+        List lista;
+        try {
+            lista = dao.listarProduto();
+            produto.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (Exception ex) {
+            produto.setModel(null);
+            Logger.getLogger(controlProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
