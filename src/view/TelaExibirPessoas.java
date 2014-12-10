@@ -25,20 +25,19 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     controlPessoa controladoraPessoa;
     Pessoa pesSelecionado;
     TelaCadastroPessoa telaCadastroPessoa;
-    int selecionadoAtual; //usado para armazenar o radio button selecionado
-    
-      public TelaCadastroPessoa getTela() {
+
+    public TelaCadastroPessoa getTela() {
         return this.telaCadastroPessoa;
     }
-    
+
     public TelaExibirPessoas(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
         initComponents();
         controladoraPessoa = new controlPessoa();
         pesSelecionado = null;
-         
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -231,8 +230,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-       public JRadioButton getjRadioButtonCliente() {
+    public JRadioButton getjRadioButtonCliente() {
         return jRadioButtonClientes;
     }
 
@@ -255,23 +253,20 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     public void setjRadioButtonVendedor(JRadioButton jRadioButtonVendedor) {
         this.jRadioButtonVendedores = jRadioButtonVendedor;
     }
-    
+
     private void jRadioButtonVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVendedoresActionPerformed
         // TODO add your handling code here:
-        selecionadoAtual =((JRadioButton) evt.getSource() ).getMnemonic();
-        controladoraPessoa.consultaPessoa(jTablePessoas, selecionadoAtual);
+        controladoraPessoa.consultaPessoa(jTablePessoas, buttonGroupTipo.getSelection().getMnemonic());
     }//GEN-LAST:event_jRadioButtonVendedoresActionPerformed
 
     private void jRadioButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClientesActionPerformed
         // TODO add your handling code here:
-         selecionadoAtual =((JRadioButton) evt.getSource() ).getMnemonic();
-         controladoraPessoa.consultaPessoa(jTablePessoas, selecionadoAtual);
+        controladoraPessoa.consultaPessoa(jTablePessoas, buttonGroupTipo.getSelection().getMnemonic());
     }//GEN-LAST:event_jRadioButtonClientesActionPerformed
 
     private void jRadioButtonFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFornecedoresActionPerformed
         // TODO add your handling code here:
-         selecionadoAtual =((JRadioButton) evt.getSource() ).getMnemonic();
-         controladoraPessoa.consultaPessoa(jTablePessoas, selecionadoAtual);
+        controladoraPessoa.consultaPessoa(jTablePessoas, buttonGroupTipo.getSelection().getMnemonic());
     }//GEN-LAST:event_jRadioButtonFornecedoresActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -282,8 +277,8 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         // TODO add your handling code here:
         int linha = jTablePessoas.getSelectedRow();
-        if ( linha >= 0) {
-            pesSelecionado = (Pessoa) jTablePessoas.getValueAt(linha,0);
+        if (linha >= 0) {
+            pesSelecionado = (Pessoa) jTablePessoas.getValueAt(linha, 0);
             try {
                 controladoraPessoa.excluirPessoa(pesSelecionado, jTablePessoas);
             } catch (Exception ex) {
@@ -296,8 +291,9 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
+
         try {
-            controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, selecionadoAtual);
+            controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, buttonGroupTipo.getSelection().getMnemonic());
         } catch (Exception ex) {
             Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -336,14 +332,14 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
                 TelaExibirPessoas dialog;
                 try {
                     dialog = new TelaExibirPessoas(new javax.swing.JFrame(), true);
-               
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
                 }
