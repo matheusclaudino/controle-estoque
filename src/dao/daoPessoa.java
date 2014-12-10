@@ -108,16 +108,17 @@ public class daoPessoa {
             sessao.beginTransaction();
 
             Pessoa pessoa = (Pessoa) sessao.get( Pessoa.class, new Integer(id) );
-        
+            
             sessao.getTransaction().commit(); 
             sessao.close();
             return pessoa;
+  
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();
             System.out.println("Erro ao tentar pegar a Pessoa: " + he.getMessage() );
         } finally {
             if (sessao != null) {
-                sessao.close();
+                sessao.close(); 
             }
             return null;
         }

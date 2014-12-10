@@ -14,9 +14,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -93,8 +97,160 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjPanelVendedor(JPanel jPanelVendedor) {
         this.jPanelVendedor = jPanelVendedor;
     }
-    
 
+    //AREA DE CORTE DIFERENCIAÇÃO DE METODOS
+    public JLabel getjLabelDataAdmissao() {
+        return jLabelDataAdmissao;
+    }
+
+    public void setjLabelDataAdmissao(JLabel jLabelDataAdmissao) {
+        this.jLabelDataAdmissao = jLabelDataAdmissao;
+    }
+
+    public JTextField getjTextFieldAdmissao() {
+        return jTextFieldAdmissao;
+    }
+
+    public void setjTextFieldAdmissao(JTextField jTextFieldAdmissao) {
+        this.jTextFieldAdmissao = jTextFieldAdmissao;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    public JTextField getjTextFieldCEP() {
+        return jTextFieldCEP;
+    }
+
+    public void setjTextFieldCEP(JTextField jTextFieldCEP) {
+        this.jTextFieldCEP = jTextFieldCEP;
+    }
+
+    public JTextField getjTextFieldCNPJ() {
+        return jTextFieldCNPJ;
+    }
+
+    public void setjTextFieldCNPJ(JTextField jTextFieldCNPJ) {
+        this.jTextFieldCNPJ = jTextFieldCNPJ;
+    }
+
+    public JTextField getjTextFieldCPF() {
+        return jTextFieldCPF;
+    }
+
+    public void setjTextFieldCPF(JTextField jTextFieldCPF) {
+        this.jTextFieldCPF = jTextFieldCPF;
+    }
+
+    public JTextField getjTextFieldCidade() {
+        return jTextFieldCidade;
+    }
+
+    public void setjTextFieldCidade(JTextField jTextFieldCidade) {
+        this.jTextFieldCidade = jTextFieldCidade;
+    }
+
+    public JTextField getjTextFieldComplemento() {
+        return jTextFieldComplemento;
+    }
+
+    public void setjTextFieldComplemento(JTextField jTextFieldComplemento) {
+        this.jTextFieldComplemento = jTextFieldComplemento;
+    }
+
+    public JTextField getjTextFieldDataNascimento() {
+        return jTextFieldDataNascimento;
+    }
+
+    public void setjTextFieldDataNascimento(JTextField jTextFieldDataNascimento) {
+        this.jTextFieldDataNascimento = jTextFieldDataNascimento;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldNumero() {
+        return jTextFieldNumero;
+    }
+
+    public void setjTextFieldNumero(JTextField jTextFieldNumero) {
+        this.jTextFieldNumero = jTextFieldNumero;
+    }
+
+    public JTextField getjTextFieldReferencia() {
+        return jTextFieldReferencia;
+    }
+
+    public void setjTextFieldReferencia(JTextField jTextFieldReferencia) {
+        this.jTextFieldReferencia = jTextFieldReferencia;
+    }
+
+    public JTextField getjTextFieldRua() {
+        return jTextFieldRua;
+    }
+
+    public void setjTextFieldRua(JTextField jTextFieldRua) {
+        this.jTextFieldRua = jTextFieldRua;
+    }
+
+    public JTextField getjTextFieldSalario() {
+        return jTextFieldSalario;
+    }
+
+    public void setjTextFieldSalario(JTextField jTextFieldSalario) {
+        this.jTextFieldSalario = jTextFieldSalario;
+    }
+
+    public JTextField getjTextFieldTelefone() {
+        return jTextFieldTelefone;
+    }
+
+    public void setjTextFieldTelefone(JTextField jTextFieldTelefone) {
+        this.jTextFieldTelefone = jTextFieldTelefone;
+    }
+
+    public JComboBox getjComboBoxEstado() {
+        return jComboBoxEstado;
+    }
+
+    public void setjComboBoxEstado(JComboBox jComboBoxEstado) {
+        this.jComboBoxEstado = jComboBoxEstado;
+    }
+
+    public JComboBox getjComboBoxSexo() {
+        return jComboBoxSexo;
+    }
+
+    public void setjComboBoxSexo(JComboBox jComboBoxSexo) {
+        this.jComboBoxSexo = jComboBoxSexo;
+    }
+
+    public JButton getjButtonAlterar() {
+        return jButtonAlterar;
+    }
+
+    public void setjButtonAlterar(JButton jButtonAlterar) {
+        this.jButtonAlterar = jButtonAlterar;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,6 +308,8 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         jLabelDataAdmissao = new javax.swing.JLabel();
         jLabelFormatoData1 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
 
         setTitle("Cadastro");
 
@@ -480,6 +638,12 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.setEnabled(false);
+
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.setEnabled(false);
+
         javax.swing.GroupLayout jPanelTelaCadastroPessoaLayout = new javax.swing.GroupLayout(jPanelTelaCadastroPessoa);
         jPanelTelaCadastroPessoa.setLayout(jPanelTelaCadastroPessoaLayout);
         jPanelTelaCadastroPessoaLayout.setHorizontalGroup(
@@ -494,8 +658,12 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                     .addComponent(jPanelVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanelTelaCadastroPessoaLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
+                .addGap(37, 37, 37)
+                .addComponent(jButtonAlterar)
+                .addGap(37, 37, 37)
                 .addComponent(jButtonCadastrar)
+                .addGap(32, 32, 32)
+                .addComponent(jButtonExcluir)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelTelaCadastroPessoaLayout.setVerticalGroup(
@@ -512,13 +680,16 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCadastrar)
+                .addGroup(jPanelTelaCadastroPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonAlterar)
+                    .addComponent(jButtonExcluir))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanelTelaCadastroPessoa);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -570,7 +741,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 jTextFieldSalario.setText("0.0");
             }
             int id;
-            
+
             id = control.inserirPessoa(
                     jTextFieldNome.getText(),
                     jTextFieldTelefone.getText(),
@@ -589,7 +760,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                     jTextFieldCNPJ.getText(),
                     Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
                     dataAdmissao
-            );            
+            );
             JOptionPane.showMessageDialog(this, "Pessoa " + id + " foi cadastrada");
             cleanFields();
         } catch (Exception ex) {
@@ -646,17 +817,17 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-              TelaCadastroPessoa dialog;
+                TelaCadastroPessoa dialog;
                 try {
                     dialog = new TelaCadastroPessoa(new javax.swing.JFrame(), true);
-               
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -666,7 +837,9 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupTipoPessoa;
+    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JComboBox jComboBoxEstado;
     private javax.swing.JComboBox jComboBoxSexo;
     private javax.swing.JLabel jLabel1;

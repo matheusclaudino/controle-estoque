@@ -3,26 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
+import control.controlPessoa;
 import control.controlProduto;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JRadioButton;
 
 /**
  *
  * @author Paulo
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+
     controlProduto control;
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
+    public TelaPrincipal(){
         initComponents();
         setLocationRelativeTo(null);
         this.control = null;
+     
     }
 
     /**
@@ -196,10 +200,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonListarFornecedor.setText("Fornecedor");
+        jButtonListarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarFornecedorActionPerformed(evt);
+            }
+        });
 
         jButtonListarVendedor.setText("Vendedor");
+        jButtonListarVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarVendedorActionPerformed(evt);
+            }
+        });
 
         jButtonListarCliente.setText("Cliente");
+        jButtonListarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelListarLayout = new javax.swing.GroupLayout(jPanelListar);
         jPanelListar.setLayout(jPanelListarLayout);
@@ -464,6 +483,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_jButtonCadasatroVendedorActionPerformed
 
     private void jButtonCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroClienteActionPerformed
@@ -551,6 +571,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jButtonEstampaActionPerformed(evt);
     }//GEN-LAST:event_jMenuItemEstampaActionPerformed
+
+    private void jButtonListarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarFornecedorActionPerformed
+        // TODO add your handling code here:
+        TelaExibirPessoas exibirPessoas;
+        try {
+            exibirPessoas = new TelaExibirPessoas(this, true);
+            exibirPessoas.setLocationRelativeTo(this);
+            exibirPessoas.getjRadioButtonFornecedor().setSelected(true);
+            exibirPessoas.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            exibirPessoas.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonListarFornecedorActionPerformed
+
+    private void jButtonListarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarVendedorActionPerformed
+        // TODO add your handling code here:
+         TelaExibirPessoas exibirPessoas;
+        try {
+            exibirPessoas = new TelaExibirPessoas(this, true);
+            exibirPessoas.setLocationRelativeTo(this);
+            exibirPessoas.getjRadioButtonVendedor().setSelected(true);
+            exibirPessoas.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            exibirPessoas.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButtonListarVendedorActionPerformed
+
+    private void jButtonListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarClienteActionPerformed
+        // TODO add your handling code here:
+         TelaExibirPessoas exibirPessoas;
+        try {
+            exibirPessoas = new TelaExibirPessoas(this, true);
+            exibirPessoas.setLocationRelativeTo(this);
+            exibirPessoas.getjRadioButtonCliente().setSelected(true);
+            exibirPessoas.setDefaultCloseOperation(TelaCadastroPessoa.HIDE_ON_CLOSE);
+            exibirPessoas.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonListarClienteActionPerformed
 
     /**
      * @param args the command line arguments

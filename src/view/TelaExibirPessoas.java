@@ -24,12 +24,18 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
      */
     controlPessoa controladoraPessoa;
     Pessoa pesSelecionado;
+    TelaCadastroPessoa telaCadastroPessoa;
+    
+      public TelaCadastroPessoa getTela() {
+        return this.telaCadastroPessoa;
+    }
     
     public TelaExibirPessoas(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
         initComponents();
         controladoraPessoa = new controlPessoa();
         pesSelecionado = null;
+         
     }
     
     /**
@@ -69,29 +75,26 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanelTabelaPessoas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jTablePessoas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Nome", "CPF/CNPJ/SALÁRIO"
+                "ID", "Nome", "CPF/CNPJ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTablePessoas.getTableHeader().setResizingAllowed(false);
+        jTablePessoas.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTablePessoas);
 
         javax.swing.GroupLayout jPanelTabelaPessoasLayout = new javax.swing.GroupLayout(jPanelTabelaPessoas);
@@ -227,6 +230,31 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+       public JRadioButton getjRadioButtonCliente() {
+        return jRadioButtonClientes;
+    }
+
+    public void setjRadioButtonCliente(JRadioButton jRadioButtonCliente) {
+        this.jRadioButtonClientes = jRadioButtonCliente;
+    }
+
+    public JRadioButton getjRadioButtonFornecedor() {
+        return jRadioButtonFornecedores;
+    }
+
+    public void setjRadioButtonFornecedor(JRadioButton jRadioButtonFornecedor) {
+        this.jRadioButtonFornecedores = jRadioButtonFornecedor;
+    }
+
+    public JRadioButton getjRadioButtonVendedor() {
+        return jRadioButtonVendedores;
+    }
+
+    public void setjRadioButtonVendedor(JRadioButton jRadioButtonVendedor) {
+        this.jRadioButtonVendedores = jRadioButtonVendedor;
+    }
+    
     private void jRadioButtonVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVendedoresActionPerformed
         // TODO add your handling code here:
         controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
@@ -264,12 +292,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
-        try {
-            // TODO add your handling code here:
-            TelaAlterarPessoa telaAlterarPessoa = new TelaAlterarPessoa(null, true);
-        } catch (Exception ex) {
-            Logger.getLogger(TelaExibirPessoas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, ((JRadioButton) evt.getSource() ).getMnemonic());
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**
