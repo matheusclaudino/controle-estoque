@@ -95,14 +95,14 @@ public class controlProduto {
 
     public void pesquisarProduto(int tipo, String pesquisa, JTable tabela) {
         List<Produto> lista = null;
-        Produto prod = null;
+        Produto prod = new Produto();
         int id;
         System.out.println(pesquisa);
         try {
             if ((tipo == 0) && (!pesquisa.equals(""))) { //CÓDIGO
                 id  = Integer.parseInt(pesquisa);                
                 prod = dao.getProduto(id);
-            
+                System.out.println();
             } else if (tipo == 1) { //NOME
                 lista = dao.getNome(pesquisa);
             }
@@ -118,13 +118,13 @@ public class controlProduto {
             } else if (prod != null) {
                 ((DefaultTableModel) tabela.getModel()).addRow(new Vector());
                 int col = 0;
-                tabela.setValueAt(prod.getCodigo(), 0, col++);
+                tabela.setValueAt(prod, 0, col++);
                 tabela.setValueAt(prod.getNome(), 0, col++);
-                tabela.setValueAt(prod.getFornecedor().getNome(), 0, col++);
-                tabela.setValueAt(prod.getCategoria().getNome(), 0, col++);
-                tabela.setValueAt(prod.getTamanho().getNome(), 0, col++);
-                tabela.setValueAt(prod.getCor().getNome(), 0, col++);
-                tabela.setValueAt(prod.getEstampa().getNome(), 0, col++);
+                tabela.setValueAt(dao.getFornecedor(prod.getFornecedor().getIdPessoa()), 0, col++);
+                tabela.setValueAt(dao.getCategoria(prod.getCategoria().getIdCategoria()), 0, col++);
+                tabela.setValueAt(dao.getTamanho(prod.getTamanho().getIdTamanho()), 0, col++);
+                tabela.setValueAt(dao.getCor(prod.getCor().getIdCor()), 0, col++);
+                tabela.setValueAt(dao.getEstampa(prod.getEstampa().getIdEstampa()), 0, col++);
                 tabela.setValueAt(prod.getPreco(), 0, col++);
                 tabela.setValueAt(prod.getQuantidade(), 0, col++);
             } else {
