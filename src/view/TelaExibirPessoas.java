@@ -25,6 +25,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     controlPessoa controladoraPessoa;
     Pessoa pesSelecionado;
     TelaCadastroPessoa telaCadastroPessoa;
+    int selecionadoAtual; //usado para armazenar o radio button selecionado
     
       public TelaCadastroPessoa getTela() {
         return this.telaCadastroPessoa;
@@ -257,17 +258,20 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     
     private void jRadioButtonVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVendedoresActionPerformed
         // TODO add your handling code here:
-        controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
+        selecionadoAtual =((JRadioButton) evt.getSource() ).getMnemonic();
+        controladoraPessoa.consultaPessoa(jTablePessoas, selecionadoAtual);
     }//GEN-LAST:event_jRadioButtonVendedoresActionPerformed
 
     private void jRadioButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClientesActionPerformed
         // TODO add your handling code here:
-         controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
+         selecionadoAtual =((JRadioButton) evt.getSource() ).getMnemonic();
+         controladoraPessoa.consultaPessoa(jTablePessoas, selecionadoAtual);
     }//GEN-LAST:event_jRadioButtonClientesActionPerformed
 
     private void jRadioButtonFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFornecedoresActionPerformed
         // TODO add your handling code here:
-         controladoraPessoa.consultaPessoa(jTablePessoas,((JRadioButton) evt.getSource() ).getMnemonic());
+         selecionadoAtual =((JRadioButton) evt.getSource() ).getMnemonic();
+         controladoraPessoa.consultaPessoa(jTablePessoas, selecionadoAtual);
     }//GEN-LAST:event_jRadioButtonFornecedoresActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
@@ -292,7 +296,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarActionPerformed
-        controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, ((JRadioButton) evt.getSource() ).getMnemonic());
+        controladoraPessoa.getPessoaSelecionada(this.getTela(), this, jTablePessoas, selecionadoAtual);
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
 
     /**

@@ -640,6 +640,11 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
         jButtonAlterar.setText("ALTERAR");
         jButtonAlterar.setEnabled(false);
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setText("EXCLUIR");
         jButtonExcluir.setEnabled(false);
@@ -767,6 +772,11 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
     public void cleanFields() {
         jTextFieldNome.setText("");
         jTextFieldTelefone.setText("");
