@@ -153,5 +153,28 @@ public class daoPessoa {
             return lista;
         }
     }
+    
+    public Endereco getEndereco(int idEndereco){
+         Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            Endereco endereco = (Endereco) sessao.get( Endereco.class, new Integer(idEndereco) );
+            
+            sessao.getTransaction().commit(); 
+            sessao.close();
+            return endereco;
+  
+        } catch (HibernateException he) {
+            sessao.getTransaction().rollback();
+            System.out.println("Erro ao tentar pegar o ENDERECO: " + he.getMessage() );
+        } finally {
+            if (sessao != null) {
+                sessao.close(); 
+            }
+            return null;
+        }
+    }
 
 }
