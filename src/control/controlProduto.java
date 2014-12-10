@@ -138,7 +138,7 @@ public class controlProduto {
     }
     public void getProdutoSelecionado(TelaCadastroProduto telaCad, TelaPesqProduto janelaPesquisa, JTable tabela){
         int linha = tabela.getSelectedRow();
-        //telaCad = new TelaCadastroProduto(null, true);
+
         List<Produto> l = null;
         if ( linha >= 0) {
             produto =  (Produto) tabela.getValueAt(linha,0);
@@ -158,7 +158,7 @@ public class controlProduto {
             telaCad.getjButtonAlterar().setEnabled(true);
             telaCad.getjButtonExcluir().setEnabled(true);
             janelaPesquisa.setVisible(false);
-            //telaCad.setVisible(true);
+            
         } else {
             JOptionPane.showMessageDialog(janelaPesquisa, "Selecione um PRODUTO.");
         }   
