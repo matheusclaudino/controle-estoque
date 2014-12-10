@@ -65,6 +65,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonEstampa = new javax.swing.JButton();
         jButtonCategoria = new javax.swing.JButton();
         jButtonTamanho = new javax.swing.JButton();
+        jPanelVenda = new javax.swing.JPanel();
+        jButtonCadastrarVenda = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -321,6 +323,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        jPanelVenda.setBorder(javax.swing.BorderFactory.createTitledBorder("Venda"));
+
+        jButtonCadastrarVenda.setText("Cadastrar");
+        jButtonCadastrarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarVendaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelVendaLayout = new javax.swing.GroupLayout(jPanelVenda);
+        jPanelVenda.setLayout(jPanelVendaLayout);
+        jPanelVendaLayout.setHorizontalGroup(
+            jPanelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonCadastrarVenda)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelVendaLayout.setVerticalGroup(
+            jPanelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVendaLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jButtonCadastrarVenda)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -328,6 +356,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanelCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +367,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanelListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jPanelVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenuCadastro.setText("Registrar");
@@ -429,7 +459,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -615,6 +647,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonListarClienteActionPerformed
 
+    private void jButtonCadastrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarVendaActionPerformed
+        // TODO add your handling code here:
+        TelaVenda cadastroVenda;
+        cadastroVenda = new TelaVenda(this, true);
+        cadastroVenda.setLocationRelativeTo(this);
+        cadastroVenda.setVisible(true);
+        
+    }//GEN-LAST:event_jButtonCadastrarVendaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -652,17 +693,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadasatroVendedor;
+    private javax.swing.JButton jButtonCadastrarVenda;
     private javax.swing.JButton jButtonCadastroCliente;
     private javax.swing.JButton jButtonCadastroFornecedor;
     private javax.swing.JButton jButtonCadastroProduto;
     private javax.swing.JButton jButtonCategoria;
+    private javax.swing.JButton jButtonCategoria1;
     private javax.swing.JButton jButtonCores;
+    private javax.swing.JButton jButtonCores1;
     private javax.swing.JButton jButtonEstampa;
+    private javax.swing.JButton jButtonEstampa1;
     private javax.swing.JButton jButtonListarCliente;
     private javax.swing.JButton jButtonListarFornecedor;
     private javax.swing.JButton jButtonListarProduto;
     private javax.swing.JButton jButtonListarVendedor;
     private javax.swing.JButton jButtonTamanho;
+    private javax.swing.JButton jButtonTamanho1;
     private javax.swing.JLabel jLabelCadastroCliente;
     private javax.swing.JLabel jLabelCadastroFornecedor;
     private javax.swing.JLabel jLabelCadastroProduto;
@@ -687,8 +733,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAtributos;
+    private javax.swing.JPanel jPanelAtributos1;
     private javax.swing.JPanel jPanelCadastro;
     private javax.swing.JPanel jPanelListar;
+    private javax.swing.JPanel jPanelVenda;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
