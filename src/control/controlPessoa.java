@@ -129,23 +129,24 @@ public class controlPessoa {
 
     }
 
-    public void getPessoaSelecionada(TelaCadastroPessoa telaCadastro, TelaExibirPessoas telaExibirPessoas, JTable tabela, int tipo) {
+    public void getPessoaSelecionada(TelaCadastroPessoa telaCadastro, TelaExibirPessoas telaExibirPessoas, JTable tabela, int tipo) throws Exception {
         int linha = tabela.getSelectedRow();
 
         if (linha >= 0) {
-
-            pessoa = dao.getPessoa((int) tabela.getValueAt(linha, 0));
-
-            telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
+            telaCadastro = new TelaCadastroPessoa(null, true);
+            pessoa = (Pessoa) tabela.getValueAt(linha, 1);
+            
+            telaCadastro.getjTextFieldNome().setText(pessoa.toString());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());
-            telaCadastro.getjTextFieldCEP().setText(pessoa.getEndereco().getCep());
-            telaCadastro.getjTextFieldCidade().setText(pessoa.getEndereco().getCidade());
-            telaCadastro.getjTextFieldRua().setText(pessoa.getEndereco().getRua());
-            telaCadastro.getjTextFieldNumero().setText(String.valueOf(pessoa.getEndereco().getNumero()));
-            telaCadastro.getjTextFieldBairro().setText(pessoa.getEndereco().getBairro());
-            telaCadastro.getjTextFieldComplemento().setText(pessoa.getEndereco().getComplemento());
-            telaCadastro.getjTextFieldReferencia().setText(pessoa.getEndereco().getReferencia());
-            telaCadastro.getjComboBoxEstado().getModel().setSelectedItem(pessoa.getEndereco().getEstado());
+            Endereco endereco = dao.getEndereco(pessoa.getEndereco().getIdEndereco());
+            telaCadastro.getjTextFieldCEP().setText(endereco.getCep());
+            telaCadastro.getjTextFieldCidade().setText(endereco.getCidade());
+            telaCadastro.getjTextFieldRua().setText(endereco.getRua());
+            telaCadastro.getjTextFieldNumero().setText(String.valueOf(endereco.getNumero()));
+            telaCadastro.getjTextFieldBairro().setText(endereco.getBairro());
+            telaCadastro.getjTextFieldComplemento().setText(endereco.getComplemento());
+            telaCadastro.getjTextFieldReferencia().setText(endereco.getReferencia());
+            telaCadastro.getjComboBoxEstado().getModel().setSelectedItem(endereco.getEstado());
 
             switch (tipo) {
                 case 'C': // Pessoa Fisica
@@ -175,7 +176,7 @@ public class controlPessoa {
             telaCadastro.getjButtonAlterar().setEnabled(true);
             telaCadastro.getjButtonExcluir().setEnabled(true);
             telaExibirPessoas.setVisible(false);
-
+            telaCadastro.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(telaExibirPessoas, "Selecione alguem.");
         }
