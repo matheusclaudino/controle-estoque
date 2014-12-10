@@ -662,9 +662,12 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonExcluir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+                <Property name="text" type="java.lang.String" value="LIMPAR"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluirActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

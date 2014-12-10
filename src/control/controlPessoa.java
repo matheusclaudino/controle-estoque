@@ -135,6 +135,7 @@ public class controlPessoa {
         if (linha >= 0) {
 
             pessoa = dao.getPessoa((int) tabela.getValueAt(linha, 0));
+            telaCadastro.setIdPessoa((int) tabela.getValueAt(linha, 0)); //recuperando o id da pessoa para operações
 
             telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());

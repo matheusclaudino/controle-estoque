@@ -32,6 +32,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa control;
+    int IdPessoa; //recupera o id para operações no banco
 
     public TelaCadastroPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
@@ -40,6 +41,14 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(false);
         this.control = new controlPessoa();
+    }
+
+    public int getIdPessoa() {
+        return IdPessoa;
+    }
+
+    public void setIdPessoa(int IdPessoa) {
+        this.IdPessoa = IdPessoa;
     }
 
     public ButtonGroup getButtonGroupTipoPessoa() {
@@ -250,7 +259,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjButtonExcluir(JButton jButtonExcluir) {
         this.jButtonExcluir = jButtonExcluir;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -646,8 +655,13 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
-        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.setText("LIMPAR");
         jButtonExcluir.setEnabled(false);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTelaCadastroPessoaLayout = new javax.swing.GroupLayout(jPanelTelaCadastroPessoa);
         jPanelTelaCadastroPessoa.setLayout(jPanelTelaCadastroPessoaLayout);
@@ -775,8 +789,57 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String nascimento = jTextFieldDataNascimento.getText();
+        String admissao = jTextFieldAdmissao.getText();
+        Date dataNascimento = null;
+        Date dataAdmissao = null;
+
+        if (!jTextFieldDataNascimento.getText().equals("")) {
+            try {
+                dataNascimento = formatter.parse(nascimento);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (!jTextFieldAdmissao.getText().equals("")) {
+            try {
+                dataAdmissao = formatter.parse(admissao);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        try {
+            control.alterarPessoa(this.getIdPessoa(),
+                    jTextFieldNome.getText(),
+                    jTextFieldTelefone.getText(),
+                    jTextFieldCEP.getText(),
+                    jTextFieldCidade.getText(),
+                    jTextFieldRua.getText(),
+                    Integer.parseInt(jTextFieldNumero.getText().toString().trim()),
+                    jTextFieldBairro.getText(),
+                    jTextFieldComplemento.getText(),
+                    jTextFieldReferencia.getText(),
+                    jComboBoxEstado.getSelectedItem().toString(),
+                    buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                    jTextFieldCPF.getText(),
+                    dataNascimento,
+                    jComboBoxSexo.getSelectedItem().toString(),
+                    jTextFieldCNPJ.getText(),
+                    Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
+                    dataAdmissao
+            );
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // TODO add your handling code here:
+        this.cleanFields();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+   
     public void cleanFields() {
         jTextFieldNome.setText("");
         jTextFieldTelefone.setText("");

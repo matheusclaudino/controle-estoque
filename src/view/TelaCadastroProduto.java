@@ -204,7 +204,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             }
         });
 
-        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setText("Limpar");
         jButtonExcluir.setEnabled(false);
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,8 +386,10 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         // TODO add your handling code here:
+        this.cleanFields();
         
     }//GEN-LAST:event_jButtonExcluirActionPerformed
+    
     public void cleanFields(){
                     jTextFieldCodigo.setText("");
                     jTextFieldNome.setText("");
