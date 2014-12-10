@@ -155,24 +155,25 @@ public class daoPessoa {
     }
     
     public Endereco getEndereco(int idEndereco){
-         Session sessao = null;
+        Session sessao = null;
+        
         try {
-            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-
-            Endereco endereco = (Endereco) sessao.get( Endereco.class, new Integer(idEndereco) );
+ 
+            Endereco endereco = (Endereco) sessao.get(Endereco.class, new Integer(idEndereco));
             
-            sessao.getTransaction().commit(); 
+            sessao.getTransaction().commit();
             sessao.close();
             return endereco;
-  
+
         } catch (HibernateException he) {
-            sessao.getTransaction().rollback();
-            System.out.println("Erro ao tentar pegar o ENDERECO: " + he.getMessage() );
-        } finally {
+            System.out.println("Erro de CONSULTA DO ENDERECO: " + he.getMessage());
             if (sessao != null) {
-                sessao.close(); 
+                sessao.getTransaction().rollback();
+                sessao.close();
             }
+            System.out.println("Erro de consulta do ENDERECO: " + he.getMessage());
             return null;
         }
     }
