@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -233,6 +234,22 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjComboBoxSexo(JComboBox jComboBoxSexo) {
         this.jComboBoxSexo = jComboBoxSexo;
     }
+
+    public JButton getjButtonAlterar() {
+        return jButtonAlterar;
+    }
+
+    public void setjButtonAlterar(JButton jButtonAlterar) {
+        this.jButtonAlterar = jButtonAlterar;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -291,6 +308,8 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         jLabelDataAdmissao = new javax.swing.JLabel();
         jLabelFormatoData1 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
+        jButtonAlterar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
 
         setTitle("Cadastro");
 
@@ -619,6 +638,12 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
+        jButtonAlterar.setText("ALTERAR");
+        jButtonAlterar.setEnabled(false);
+
+        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.setEnabled(false);
+
         javax.swing.GroupLayout jPanelTelaCadastroPessoaLayout = new javax.swing.GroupLayout(jPanelTelaCadastroPessoa);
         jPanelTelaCadastroPessoa.setLayout(jPanelTelaCadastroPessoaLayout);
         jPanelTelaCadastroPessoaLayout.setHorizontalGroup(
@@ -633,8 +658,12 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                     .addComponent(jPanelVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanelTelaCadastroPessoaLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
+                .addGap(37, 37, 37)
+                .addComponent(jButtonAlterar)
+                .addGap(37, 37, 37)
                 .addComponent(jButtonCadastrar)
+                .addGap(32, 32, 32)
+                .addComponent(jButtonExcluir)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelTelaCadastroPessoaLayout.setVerticalGroup(
@@ -651,13 +680,16 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCadastrar)
+                .addGroup(jPanelTelaCadastroPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrar)
+                    .addComponent(jButtonAlterar)
+                    .addComponent(jButtonExcluir))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanelTelaCadastroPessoa);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -805,7 +837,9 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupTipoPessoa;
+    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JComboBox jComboBoxEstado;
     private javax.swing.JComboBox jComboBoxSexo;
     private javax.swing.JLabel jLabel1;

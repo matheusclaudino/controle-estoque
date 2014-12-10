@@ -172,6 +172,8 @@ public class controlPessoa {
                     break;
             }
 
+            telaCadastro.getjButtonAlterar().setEnabled(true);
+            telaCadastro.getjButtonExcluir().setEnabled(true);
             telaExibirPessoas.setVisible(false);
 
         } else {
