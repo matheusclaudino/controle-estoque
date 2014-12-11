@@ -7,6 +7,8 @@ package view;
 
 import control.controlPessoa;
 import control.controlProduto;
+import dao.HibernateUtil;
+import dao.daoProduto;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -15,11 +17,14 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JRadioButton;
+import model.Produto;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
 import net.sf.jasperreports.view.JasperViewer;
+import org.hibernate.Session;
 
 /**
  *
@@ -91,6 +96,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemTamanho = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
         jMenuItemRelatorioCliente = new javax.swing.JMenuItem();
+        jMenuItemRelatorioProduto = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -478,6 +484,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuRelatorios.add(jMenuItemRelatorioCliente);
 
+        jMenuItemRelatorioProduto.setText("Produto");
+        jMenuItemRelatorioProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioProdutoActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItemRelatorioProduto);
+
         jMenuBar1.add(jMenuRelatorios);
 
         setJMenuBar(jMenuBar1);
@@ -725,6 +739,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
             janela.setVisible(true);
     }//GEN-LAST:event_jMenuItemRelatorioClienteActionPerformed
 
+    private void jMenuItemRelatorioProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioProdutoActionPerformed
+        // TODO add your handling code here:
+         Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            daoProduto dao = new daoProduto();
+            List<Produto> lista = dao.getNome("");
+            
+            // Dados para o RELATORIO
+            JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+            
+            // PASSO 1 - Caminho do relatório
+            InputStream rel = getClass().getResourceAsStream("../report/RelatorioProduto.jasper");
+
+            // PASSO 2 - Criar parâmetros de Pesquisa 
+            Map parametros = new HashMap();
+            //parametros.put( "src/report/");
+
+            // PASSO 3 - Carregar o relatório com os dados
+            JasperPrint print;
+            // Passar o caminho do RELATORIO e os PARAMETROS dos PASSSOS 1 e 2 e os DADOS
+            print = JasperFillManager.fillReport(rel, parametros, dados);
+
+
+            // PASSO 4 - Mostrat em uma JANELA
+            JasperViewer janela = new JasperViewer(print, false);
+            janela.setVisible(true);
+            
+        }catch(Exception e){
+            
+        }
+        
+    }//GEN-LAST:event_jMenuItemRelatorioProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -795,6 +843,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCor;
     private javax.swing.JMenuItem jMenuItemEstampa;
     private javax.swing.JMenuItem jMenuItemRelatorioCliente;
+    private javax.swing.JMenuItem jMenuItemRelatorioProduto;
     private javax.swing.JMenuItem jMenuItemTamanho;
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
