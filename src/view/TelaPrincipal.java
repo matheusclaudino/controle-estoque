@@ -755,15 +755,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             // PASSO 2 - Criar parâmetros de Pesquisa 
             Map parametros = new HashMap();
-            //parametros.put( "src/report/");
 
             // PASSO 3 - Carregar o relatório com os dados
-            JasperPrint print;
             // Passar o caminho do RELATORIO e os PARAMETROS dos PASSSOS 1 e 2 e os DADOS
+            JasperPrint print;
             print = JasperFillManager.fillReport(rel, parametros, dados);
 
 
-            // PASSO 4 - Mostrat em uma JANELA
+            // PASSO 4 - Mostrar em uma JANELA
             JasperViewer janela = new JasperViewer(print, false);
             janela.setVisible(true);
             

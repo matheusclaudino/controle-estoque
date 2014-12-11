@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="90bc06ca-7bf1-493f-833d-50fa03ccb1a6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="hql">
+		<![CDATA[FROM Venda]]>
+	</queryString>
+	<field name="data" class="java.util.Date"/>
+	<field name="idVenda" class="java.lang.Integer"/>
+	<field name="produto" class="model.Produto"/>
+	<field name="quantidade" class="java.lang.Integer"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="vendedor" class="model.Vendedor"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="408bdd3c-41cf-41de-84d2-6acbb009d407" x="211" y="19" width="136" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO VENDA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ab0e6d1f-d861-47d6-aebe-9f9832bf57b8" x="6" y="2" width="36" height="20"/>
+				<textElement/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da0e0269-501b-4204-aef4-a319591305bd" x="265" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[VENDEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e051c63-549b-45e3-9bea-30e795f822a9" x="379" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="10cf486f-5e20-42dd-bfc0-6df0c1e54133" x="495" y="2" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33810567-4b90-4138-827c-ff2fd71ab6de" x="54" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bbd22c36-0bb6-497b-9a27-f0c985a212e6" x="171" y="2" width="69" height="20"/>
+				<textElement/>
+				<text><![CDATA[QUANTIDADE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement uuid="cf277f86-1b95-4839-af38-506acf8219d6" x="6" y="6" width="36" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idVenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6afff12c-2c41-43cb-9454-156a00573351" x="54" y="6" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="927b8732-f66d-4f24-b1ef-bb6515a9cc98" x="265" y="6" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{vendedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5c9a662-fd6e-464f-bb7e-37298a0000aa" x="379" y="6" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[""+$F{produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="04b36ac3-7cf8-4712-bfe4-36f3c6c68fbe" x="495" y="6" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e017fde3-1ac5-48ee-add0-3125facd6194" x="171" y="6" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="0e429ff4-cc4f-4d66-9875-d1cc3910f508" x="6" y="26" width="549" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
