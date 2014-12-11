@@ -149,7 +149,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabelNome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="*Nome"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNome">
@@ -158,7 +158,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Descri&#xe7;&#xe3;o"/>
+                <TitledBorder title="*Descri&#xe7;&#xe3;o"/>
               </Border>
             </Property>
           </Properties>
@@ -198,21 +198,21 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabelPreco">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
+            <Property name="text" type="java.lang.String" value="*Pre&#xe7;o"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldPreco">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelUnidade">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Und."/>
+            <Property name="text" type="java.lang.String" value="*Und."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldUnidade">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelData">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data"/>
+            <Property name="text" type="java.lang.String" value="*Data"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldData">
@@ -351,7 +351,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelCodigo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
+                <Property name="text" type="java.lang.String" value="*C&#xf3;digo"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -135,6 +135,7 @@ public class controlPessoa {
         if (linha >= 0) {            
             telaCadastro = new TelaCadastroPessoa(null, true);
             pessoa = (Pessoa) tabela.getValueAt(linha, 1);
+            telaCadastro.setIdPessoa((int) tabela.getValueAt(linha, 0));
             
             telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());

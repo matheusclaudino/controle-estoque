@@ -87,9 +87,9 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             }
         });
 
-        jLabelNome.setText("Nome");
+        jLabelNome.setText("*Nome");
 
-        jPanelDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
+        jPanelDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder("*Descrição"));
 
         jTextAreaDescricao.setColumns(20);
         jTextAreaDescricao.setRows(5);
@@ -108,11 +108,11 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jLabelPreco.setText("Preço");
+        jLabelPreco.setText("*Preço");
 
-        jLabelUnidade.setText("Und.");
+        jLabelUnidade.setText("*Und.");
 
-        jLabelData.setText("Data");
+        jLabelData.setText("*Data");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -126,7 +126,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
         jLabelEstampa.setText("Estampa");
 
-        jLabelCodigo.setText("Código");
+        jLabelCodigo.setText("*Código");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

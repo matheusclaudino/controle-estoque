@@ -278,7 +278,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         // TODO add your handling code here:
         int linha = jTablePessoas.getSelectedRow();
         if (linha >= 0) {
-            pesSelecionado = (Pessoa) jTablePessoas.getValueAt(linha, 0);
+            pesSelecionado = (Pessoa) jTablePessoas.getValueAt(linha, 1);
             try {
                 controladoraPessoa.excluirPessoa(pesSelecionado, jTablePessoas);
             } catch (Exception ex) {
