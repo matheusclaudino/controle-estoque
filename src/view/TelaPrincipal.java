@@ -7,10 +7,19 @@ package view;
 
 import control.controlPessoa;
 import control.controlProduto;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JRadioButton;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -81,6 +90,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemCategoria = new javax.swing.JMenuItem();
         jMenuItemTamanho = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
+        jMenuItemRelatorioCliente = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -459,6 +469,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuCadastro);
 
         jMenuRelatorios.setText("Relatórios");
+
+        jMenuItemRelatorioCliente.setText("Cliente");
+        jMenuItemRelatorioCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioClienteActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItemRelatorioCliente);
+
         jMenuBar1.add(jMenuRelatorios);
 
         setJMenuBar(jMenuBar1);
@@ -680,6 +699,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaVenda.setVisible(true);
     }//GEN-LAST:event_jButtonListarVendaActionPerformed
 
+    private void jMenuItemRelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioClienteActionPerformed
+        // TODO add your handling code here:
+  
+            
+            // PASSO 1 - Caminho do relatório
+            InputStream rel = getClass().getResourceAsStream("../report/Cliente.jasper");
+
+            // PASSO 2 - Criar parâmetros de Pesquisa 
+            Map parametros = new HashMap();
+            parametros.put("SUBREPORT_DIR", "src/report/");
+
+            // PASSO 3 - Carregar o relatório com os dados
+            JasperPrint print = null;
+        try {
+            // Passar o caminho do RELATORIO e os PARAMETROS dos PASSSOS 1 e 2 e os DADOS
+            print = JasperFillManager.fillReport(rel, parametros);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+            // PASSO 4 - Mostrat em uma JANELA
+            JasperViewer janela = new JasperViewer(print, false);
+            janela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelatorioClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -749,6 +794,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemCor;
     private javax.swing.JMenuItem jMenuItemEstampa;
+    private javax.swing.JMenuItem jMenuItemRelatorioCliente;
     private javax.swing.JMenuItem jMenuItemTamanho;
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
