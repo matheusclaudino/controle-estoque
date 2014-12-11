@@ -32,6 +32,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa control;
+    int IdPessoa; //recupera o id para operações no banco
 
     public TelaCadastroPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
@@ -40,6 +41,14 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(false);
         this.control = new controlPessoa();
+    }
+
+    public int getIdPessoa() {
+        return IdPessoa;
+    }
+
+    public void setIdPessoa(int IdPessoa) {
+        this.IdPessoa = IdPessoa;
     }
 
     public ButtonGroup getButtonGroupTipoPessoa() {
@@ -250,7 +259,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setjButtonExcluir(JButton jButtonExcluir) {
         this.jButtonExcluir = jButtonExcluir;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -317,7 +326,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
         jPanelInformacoesGerais.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Gerais"));
 
-        jLabelNome.setText("Nome");
+        jLabelNome.setText("*Nome");
 
         jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,9 +334,9 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
-        jLabelTelefone.setText("Telefone");
+        jLabelTelefone.setText("*Telefone");
 
-        jLabelRua.setText("Rua");
+        jLabelRua.setText("*Rua");
 
         jTextFieldCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,17 +344,17 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
-        jLabelCidade.setText("Cidade");
+        jLabelCidade.setText("*Cidade");
 
-        jLabelBairro.setText("Bairro");
+        jLabelBairro.setText("*Bairro");
 
-        jLabelNumero.setText("Numero");
+        jLabelNumero.setText("*Numero");
 
         jSeparator1.setToolTipText("Endereço");
 
         jLabel1.setText("Endereço");
 
-        jLabelCEP.setText("CEP");
+        jLabelCEP.setText("*CEP");
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", " " }));
 
@@ -509,11 +518,11 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
         jPanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
-        jLabelCPF.setText("CPF");
+        jLabelCPF.setText("*CPF");
 
-        jLabelFormatoData.setText("dd/mm/aaaa");
+        jLabelFormatoData.setText("aaaa-mm-dd");
 
-        jLabelDataNascimento.setText("Data de Nascimento");
+        jLabelDataNascimento.setText("*Data de Nascimento");
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Feminino", "Masculino" }));
 
@@ -563,7 +572,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
         jPanelFornecedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
 
-        jLabelCNPJ.setText("CNPJ");
+        jLabelCNPJ.setText("*CNPJ");
 
         javax.swing.GroupLayout jPanelFornecedorLayout = new javax.swing.GroupLayout(jPanelFornecedor);
         jPanelFornecedor.setLayout(jPanelFornecedorLayout);
@@ -593,11 +602,11 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
-        jLabelSalario.setText("Salario");
+        jLabelSalario.setText("*Salario");
 
-        jLabelDataAdmissao.setText("Data de Admissão");
+        jLabelDataAdmissao.setText("*Data de Admissão");
 
-        jLabelFormatoData1.setText("dd/mm/aaaa");
+        jLabelFormatoData1.setText("aaaa-mm-dd");
 
         javax.swing.GroupLayout jPanelVendedorLayout = new javax.swing.GroupLayout(jPanelVendedor);
         jPanelVendedor.setLayout(jPanelVendedorLayout);
@@ -646,8 +655,13 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
-        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.setText("LIMPAR");
         jButtonExcluir.setEnabled(false);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTelaCadastroPessoaLayout = new javax.swing.GroupLayout(jPanelTelaCadastroPessoa);
         jPanelTelaCadastroPessoa.setLayout(jPanelTelaCadastroPessoaLayout);
@@ -730,7 +744,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButtonVendedorActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String nascimento = jTextFieldDataNascimento.getText();
         String admissao = jTextFieldAdmissao.getText();
         Date dataNascimento = null;
@@ -766,8 +780,19 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                     Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
                     dataAdmissao
             );
-            JOptionPane.showMessageDialog(this, "Pessoa " + id + " foi cadastrada");
+       
+            if(buttonGroupTipoPessoa.getSelection().getMnemonic() == 'C'){
+                JOptionPane.showMessageDialog(this, "Cliente Cadastrado");
+            }
+            if(buttonGroupTipoPessoa.getSelection().getMnemonic() == 'V'){
+                JOptionPane.showMessageDialog(this, "Vendedor(a) Cadastrado");
+            }
+            if(buttonGroupTipoPessoa.getSelection().getMnemonic() == 'F'){
+                JOptionPane.showMessageDialog(this, "Fornecdor Cadastrado");
+            }
+            
             cleanFields();
+            
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -776,7 +801,66 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
         
+        double salario;
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String nascimento = jTextFieldDataNascimento.getText();
+        String admissao = jTextFieldAdmissao.getText();
+        Date dataNascimento = null;
+        Date dataAdmissao = null;
+
+        if (!jTextFieldDataNascimento.getText().equals("")) {
+            try {
+                dataNascimento = formatter.parse(nascimento);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (!jTextFieldAdmissao.getText().equals("")) {
+            try {
+                dataAdmissao = formatter.parse(admissao);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if(jTextFieldSalario.getText().equals("")){
+            salario = 0.0;
+        }
+        else{
+            salario = Double.parseDouble(jTextFieldSalario.getText());
+        }
+        
+        try {
+            control.alterarPessoa(this.getIdPessoa(),
+                    jTextFieldNome.getText(),
+                    jTextFieldTelefone.getText(),
+                    jTextFieldCEP.getText(),
+                    jTextFieldCidade.getText(),
+                    jTextFieldRua.getText(),
+                    Integer.parseInt(jTextFieldNumero.getText().trim()),
+                    jTextFieldBairro.getText(),
+                    jTextFieldComplemento.getText(),
+                    jTextFieldReferencia.getText(),
+                    jComboBoxEstado.getSelectedItem().toString(),
+                    buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                    jTextFieldCPF.getText(),
+                    dataNascimento,
+                    jComboBoxSexo.getSelectedItem().toString(),
+                    jTextFieldCNPJ.getText(),
+                    salario,
+                    dataAdmissao
+            );
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // TODO add your handling code here:
+        this.cleanFields();
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
     public void cleanFields() {
         jTextFieldNome.setText("");
         jTextFieldTelefone.setText("");

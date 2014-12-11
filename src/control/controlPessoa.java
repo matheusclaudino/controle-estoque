@@ -136,9 +136,10 @@ public class controlPessoa {
     public void getPessoaSelecionada(TelaCadastroPessoa telaCadastro, TelaExibirPessoas telaExibirPessoas, JTable tabela, int tipo) throws Exception {
         int linha = tabela.getSelectedRow();
 
-        if (linha >= 0) {
+        if (linha >= 0) {            
             telaCadastro = new TelaCadastroPessoa(null, true);
             pessoa = (Pessoa) tabela.getValueAt(linha, 1);
+            telaCadastro.setIdPessoa((int) tabela.getValueAt(linha, 0));
             
             telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());
