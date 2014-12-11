@@ -259,4 +259,25 @@ public class daoProduto {
             return null;
         }
     }
+    public List<Produto> listarProduto() throws Exception {
+
+        Session sessao = null;
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            List<Produto> resultado = sessao.createCriteria(Produto.class).list();
+
+            sessao.getTransaction().commit();
+            sessao.close();
+            return resultado;
+        } catch (HibernateException he) {
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("ERRO listar Produto: " + he.getMessage());
+            return null;
+        }
+    }
 }

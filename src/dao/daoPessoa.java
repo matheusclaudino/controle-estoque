@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.Endereco;
 import model.Fornecedor;
@@ -175,6 +176,28 @@ public class daoPessoa {
                 sessao.close();
             }
             System.out.println("Erro de consulta do ENDERECO: " + he.getMessage());
+            return null;
+        }
+    }
+    
+    public List<Vendedor> listarVendedor() throws SQLException, Exception {
+
+        Session sessao = null;
+        try {
+            sessao = dao.HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            List<Vendedor> resultado = sessao.createCriteria(Vendedor.class).list();
+
+            sessao.getTransaction().commit();
+            sessao.close();
+            return resultado;
+        } catch (HibernateException he) {
+            if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+            System.out.println("ERRO listar Vendedor: " + he.getMessage());
             return null;
         }
     }
