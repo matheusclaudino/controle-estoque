@@ -97,6 +97,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemTamanho = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
         jMenuItemRelatorioCliente = new javax.swing.JMenuItem();
+        jMenuItemRelatorioVendedor = new javax.swing.JMenuItem();
+        jMenuItemRelatorioFornecedor = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -476,13 +478,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuRelatorios.setText("Relatórios");
 
-        jMenuItemRelatorioCliente.setText("Cliente");
+        jMenuItemRelatorioCliente.setText("Clientes");
         jMenuItemRelatorioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemRelatorioClienteActionPerformed(evt);
             }
         });
         jMenuRelatorios.add(jMenuItemRelatorioCliente);
+
+        jMenuItemRelatorioVendedor.setText("Vendedores(as)");
+        jMenuItemRelatorioVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioVendedorActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItemRelatorioVendedor);
+
+        jMenuItemRelatorioFornecedor.setText("Fornecedores");
+        jMenuItemRelatorioFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioFornecedorActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItemRelatorioFornecedor);
 
         jMenuBar1.add(jMenuRelatorios);
 
@@ -707,37 +725,78 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItemRelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioClienteActionPerformed
         // TODO add your handling code here:
 
-         List<Pessoa> lista = bancoPessoa.consultaPessoa(67);
-        
-         JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
-        
-        // PASSO 1 - Caminho do relatório
+        List<Pessoa> lista = bancoPessoa.consultaPessoa('C');
+
+        JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+
         InputStream rel = getClass().getResourceAsStream("../report/Cliente.jasper");
 
-        // PASSO 2 - Criar parâmetros de Pesquisa 
         Map parametros = new HashMap();
-      //  parametros.put("SUBREPORT_DIR "src/report/");
 
-        // Conexao HIBERNATE
         parametros.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION,
-               dao.HibernateUtil.getSessionFactory().openSession());
-        
-        
+                dao.HibernateUtil.getSessionFactory().openSession());
 
-        // PASSO 3 - Carregar o relatório com os dados
         JasperPrint print = null;
-        
+
         try {
-            // Passar o caminho do RELATORIO e os PARAMETROS dos PASSSOS 1 e 2 e os DADOS
             print = JasperFillManager.fillReport(rel, parametros, dados);
         } catch (JRException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-  
-        // PASSO 4 - Mostrat em uma JANELA
+
         JasperViewer janela = new JasperViewer(print, false);
         janela.setVisible(true);
     }//GEN-LAST:event_jMenuItemRelatorioClienteActionPerformed
+
+    private void jMenuItemRelatorioVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioVendedorActionPerformed
+        // TODO add your handling code here:
+        List<Pessoa> lista = bancoPessoa.consultaPessoa('V');
+
+        JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+
+        InputStream rel = getClass().getResourceAsStream("../report/Vendedor.jasper");
+
+        Map parametros = new HashMap();
+
+        parametros.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION,
+                dao.HibernateUtil.getSessionFactory().openSession());
+
+        JasperPrint print = null;
+
+        try {
+            print = JasperFillManager.fillReport(rel, parametros, dados);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JasperViewer janela = new JasperViewer(print, false);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelatorioVendedorActionPerformed
+
+    private void jMenuItemRelatorioFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioFornecedorActionPerformed
+        // TODO add your handling code here:
+        List<Pessoa> lista = bancoPessoa.consultaPessoa('F');
+
+        JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+
+        InputStream rel = getClass().getResourceAsStream("../report/Fornecedor.jasper");
+
+        Map parametros = new HashMap();
+
+        parametros.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION,
+                dao.HibernateUtil.getSessionFactory().openSession());
+
+        JasperPrint print = null;
+
+        try {
+            print = JasperFillManager.fillReport(rel, parametros, dados);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JasperViewer janela = new JasperViewer(print, false);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelatorioFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -813,6 +872,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCor;
     private javax.swing.JMenuItem jMenuItemEstampa;
     private javax.swing.JMenuItem jMenuItemRelatorioCliente;
+    private javax.swing.JMenuItem jMenuItemRelatorioFornecedor;
+    private javax.swing.JMenuItem jMenuItemRelatorioVendedor;
     private javax.swing.JMenuItem jMenuItemTamanho;
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
