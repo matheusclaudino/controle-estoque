@@ -22,9 +22,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="37" splitType="Stretch">
+		<band height="52" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="eb675211-b264-492d-86c5-2a97ba79036b" x="184" y="0" width="207" height="20"/>
+				<reportElement uuid="eb675211-b264-492d-86c5-2a97ba79036b" x="183" y="15" width="207" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
@@ -35,44 +35,44 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="184e9c68-1859-48cc-a2cd-2e41548d6ad5" x="0" y="0" width="45" height="20"/>
+				<reportElement uuid="184e9c68-1859-48cc-a2cd-2e41548d6ad5" x="0" y="0" width="55" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[codigo]]></text>
+				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="013f742e-6eeb-4ff0-8923-a958f1d2b143" x="55" y="0" width="139" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[nome]]></text>
+				<text><![CDATA[NOME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c12a3745-b3b7-4b31-aca5-72350c8c63d0" x="194" y="0" width="74" height="20"/>
+				<reportElement uuid="c12a3745-b3b7-4b31-aca5-72350c8c63d0" x="194" y="0" width="83" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[quantidade]]></text>
+				<text><![CDATA[QUANTIDADE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="06ef8069-47f2-4769-aedc-f1aa5b997afc" x="290" y="0" width="57" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[preco]]></text>
+				<text><![CDATA[PREÇO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="a931ed70-f56f-4db8-9c49-dc7188252ee1" x="378" y="0" width="100" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[fornecedor]]></text>
+				<text><![CDATA[FORNECEDOR]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<textField>
 				<reportElement uuid="93c02c33-dba6-4669-92c2-1070cdce6825" x="0" y="0" width="45" height="20"/>
 				<textElement/>
@@ -98,6 +98,9 @@
 				<textElement/>
 				<textFieldExpression><![CDATA[""+$F{fornecedor}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="272617bb-d648-4704-947b-bcf9fd4ef74c" x="0" y="20" width="555" height="1"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

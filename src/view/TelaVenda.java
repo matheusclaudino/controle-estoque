@@ -70,9 +70,9 @@ public class TelaVenda extends javax.swing.JDialog {
 
         jLabelQuantidade.setText("Quantidade");
 
-        jLabelVendedor.setText("Código do Vendedor");
+        jLabelVendedor.setText(" Vendedor");
 
-        jLabelProduto.setText("Código do Produto");
+        jLabelProduto.setText("Produto");
 
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class TelaVenda extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addComponent(jButtonCadastrar)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

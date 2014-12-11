@@ -75,7 +75,7 @@
                           <Component id="jButtonCadastrar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -122,12 +122,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelVendedor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="C&#xf3;digo do Vendedor"/>
+            <Property name="text" type="java.lang.String" value=" Vendedor"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelProduto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="C&#xf3;digo do Produto"/>
+            <Property name="text" type="java.lang.String" value="Produto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCadastrar">
