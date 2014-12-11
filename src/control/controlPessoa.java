@@ -19,6 +19,10 @@ import model.Vendedor;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import view.TelaCadastroPessoa;
@@ -124,7 +128,7 @@ public class controlPessoa {
             while (it.hasNext()) {
                 pes = it.next();
                 ((DefaultTableModel) tabela.getModel()).addRow(pes.toArray());
-            }
+            } 
         }
 
     }
@@ -136,7 +140,7 @@ public class controlPessoa {
             telaCadastro = new TelaCadastroPessoa(null, true);
             pessoa = (Pessoa) tabela.getValueAt(linha, 1);
             
-            telaCadastro.getjTextFieldNome().setText(pessoa.toString());
+            telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());
             Endereco endereco = dao.getEndereco(pessoa.getEndereco().getIdEndereco());
             telaCadastro.getjTextFieldCEP().setText(endereco.getCep());
@@ -192,4 +196,16 @@ public class controlPessoa {
 
         return s;
     }
+    
+     public void carregarComboVendedor(JComboBox vendedor) {
+        List lista;
+        try {
+            lista = dao.listarVendedor();
+            vendedor.setModel(new DefaultComboBoxModel(lista.toArray()));
+        } catch (Exception ex) {
+            vendedor.setModel(null);
+            Logger.getLogger(controlPessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

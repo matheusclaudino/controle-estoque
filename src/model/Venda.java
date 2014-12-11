@@ -70,6 +70,14 @@ public class Venda  implements java.io.Serializable {
     public void setData(Date data) {
         this.data = data;
     }
+    
+    public String toString(){
+        return String.valueOf(this.idVenda);
+    }
+    
+    public Object[] toArray(){
+        return new Object[] {this, this.produto, this.quantidade, this.valor };
+    }
 
 
 

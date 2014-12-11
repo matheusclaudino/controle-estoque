@@ -6,18 +6,37 @@
 
 package view;
 
+import control.controlPessoa;
+import control.controlProduto;
+import control.controlVenda;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Produto;
+
 /**
  *
  * @author Paulo
  */
 public class TelaVenda extends javax.swing.JDialog {
-
+    controlPessoa conPessoa;
+    controlProduto conProduto;
+    controlVenda conVenda;
+    
     /**
      * Creates new form TelaVenda
      */
-    public TelaVenda(java.awt.Frame parent, boolean modal) {
+    public TelaVenda(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
         initComponents();
+        
+        this.conPessoa = new controlPessoa();
+        this.conProduto = new controlProduto();
+        this.conVenda = new controlVenda();
     }
 
     /**
@@ -43,6 +62,12 @@ public class TelaVenda extends javax.swing.JDialog {
         jLabelFormatoData = new javax.swing.JLabel();
         jTextFieldDataVenda = new javax.swing.JTextField();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
         jLabelQuantidade.setText("Quantidade");
 
         jLabelVendedor.setText("Código do Vendedor");
@@ -50,12 +75,15 @@ public class TelaVenda extends javax.swing.JDialog {
         jLabelProduto.setText("Código do Produto");
 
         jButtonCadastrar.setText("Cadastrar");
-
-        jComboBoxCodigoVendedor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
 
         jLabelValor.setText("Valor");
+
+        jTextFieldValor.setEnabled(false);
 
         jLabelDataVenda.setText("Data de Venda");
 
@@ -81,8 +109,8 @@ public class TelaVenda extends javax.swing.JDialog {
                                         .addComponent(jTextFieldValor, javax.swing.GroupLayout.Alignment.LEADING)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxCodigoVendedor, 0, 250, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxCodigoVendedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxProduto, 0, 250, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabelDataVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,6 +165,46 @@ public class TelaVenda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        conPessoa.carregarComboVendedor(jComboBoxCodigoVendedor);
+        conProduto.carregarComboProduto(jComboBoxProduto);
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String data = jTextFieldDataVenda.getText();
+        int id;
+        Date dataEntrada;
+        int quantidade = Integer.parseInt(jTextFieldQuantidade.getText());
+        double valor;
+        Produto p = (Produto)jComboBoxProduto.getSelectedItem();
+        valor = (Double.parseDouble(p.getPreco().toString()));
+        
+        valor = (valor * quantidade);
+        jTextFieldValor.setText(String.valueOf(valor));
+        
+         try {
+            dataEntrada = formatter.parse(data);
+            
+            id = conVenda.inserirVenda(
+                jComboBoxCodigoVendedor.getSelectedItem(),
+                jComboBoxProduto.getSelectedItem(),
+                Integer.parseInt(jTextFieldQuantidade.getText()),
+                valor,
+                dataEntrada
+            );
+            
+        JOptionPane.showMessageDialog(this, "Venda " + id + " cadastrado");
+       
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,14 +235,20 @@ public class TelaVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaVenda dialog = new TelaVenda(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                TelaVenda dialog;
+                try {
+                    dialog = new TelaVenda(new javax.swing.JFrame(), true); 
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
                 dialog.setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
             }
         });
     }
