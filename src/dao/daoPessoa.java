@@ -31,9 +31,9 @@ public class daoPessoa {
         try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
-            
+
             sessao.save(pes);
-            
+
             sessao.getTransaction().commit();
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();
@@ -43,7 +43,7 @@ public class daoPessoa {
             }
         }
     }
-    
+
     public void inserirEndereco(Endereco pes) {
 
         Session sessao = null;
@@ -82,7 +82,7 @@ public class daoPessoa {
         }
     }
 
-    public void alterar(Pessoa pes) {
+    public void alterar(Pessoa pes){
 
         Session sessao = null;
         try {
@@ -92,10 +92,11 @@ public class daoPessoa {
             sessao.update(pes);
 
             sessao.getTransaction().commit();
+            sessao.close();
         } catch (HibernateException he) {
-            sessao.getTransaction().rollback();
-        } finally {
-            if (sessao != null) {
+            System.out.println(he.getMessage());
+           if (sessao != null) {
+                sessao.getTransaction().rollback();
                 sessao.close();
             }
         }
@@ -108,18 +109,18 @@ public class daoPessoa {
             sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
-            Pessoa pessoa = (Pessoa) sessao.get( Pessoa.class, new Integer(id) );
-            
-            sessao.getTransaction().commit(); 
+            Pessoa pessoa = (Pessoa) sessao.get(Pessoa.class, new Integer(id));
+
+            sessao.getTransaction().commit();
             sessao.close();
             return pessoa;
-  
+
         } catch (HibernateException he) {
             sessao.getTransaction().rollback();
-            System.out.println("Erro ao tentar pegar a Pessoa: " + he.getMessage() );
+            System.out.println("Erro ao tentar pegar a Pessoa: " + he.getMessage());
         } finally {
             if (sessao != null) {
-                sessao.close(); 
+                sessao.close();
             }
             return null;
         }
@@ -137,7 +138,7 @@ public class daoPessoa {
                 consulta = sessao.createCriteria(Pessoafisica.class);
             } else if (tipo == 'F') {
                 consulta = sessao.createCriteria(Fornecedor.class);
-            } else if (tipo == 'V'){
+            } else if (tipo == 'V') {
                 consulta = sessao.createCriteria(Vendedor.class);
             }
 
@@ -154,16 +155,16 @@ public class daoPessoa {
             return lista;
         }
     }
-    
-    public Endereco getEndereco(int idEndereco){
+
+    public Endereco getEndereco(int idEndereco) {
         Session sessao = null;
-        
+
         try {
             sessao = dao.HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
- 
+
             Endereco endereco = (Endereco) sessao.get(Endereco.class, new Integer(idEndereco));
-            
+
             sessao.getTransaction().commit();
             sessao.close();
             return endereco;
