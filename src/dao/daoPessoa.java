@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import model.Endereco;
 import model.Fornecedor;
@@ -82,7 +83,7 @@ public class daoPessoa {
         }
     }
 
-    public void alterar(Pessoa pes){
+    public void alterar(Pessoa pes) {
 
         Session sessao = null;
         try {
@@ -96,14 +97,14 @@ public class daoPessoa {
             sessao.close();
         } catch (HibernateException he) {
             System.out.println(he.getMessage());
-           if (sessao != null) {
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
         }
     }
-    
-      public void alterarEndereco(Endereco ender){
+
+    public void alterarEndereco(Endereco ender) {
 
         Session sessao = null;
         try {
@@ -116,7 +117,7 @@ public class daoPessoa {
             sessao.close();
         } catch (HibernateException he) {
             System.out.println(he.getMessage());
-           if (sessao != null) {
+            if (sessao != null) {
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
@@ -173,6 +174,26 @@ public class daoPessoa {
             if (sessao != null) {
                 sessao.close();
             }
+
+            //IMPEDE QUE A LISTA DE CLIENTES SE MISTURE COM A DE VENDEDORES
+            if (tipo == 'C') {
+                Pessoa pes = null;
+                Pessoa pesFiltro = null;
+                List<Pessoa> listaFiltro = this.consultaPessoa('V'); 
+
+                Iterator<Pessoa> itListaFiltro = listaFiltro.iterator();
+                Iterator<Pessoa> itLista = lista.iterator();
+                //   int i = 0;
+                while (itLista.hasNext() && itListaFiltro.hasNext()) {
+                    pes = itLista.next();
+                    pesFiltro = itListaFiltro.next();
+                    if (pesFiltro.getIdPessoa() == pes.getIdPessoa()) {
+                        itLista.remove();
+                    }
+                }
+            }
+            //IMPEDE QUE A LISTA DE CLIENTES SE MISTURE COM A DE VENDEDORES
+            
             return lista;
         }
     }
@@ -200,7 +221,7 @@ public class daoPessoa {
             return null;
         }
     }
-    
+
     public List<Vendedor> listarVendedor() throws SQLException, Exception {
 
         Session sessao = null;

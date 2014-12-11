@@ -66,7 +66,7 @@ public class controlPessoa {
         return pes.getIdPessoa();
     }
 
-    public void alterarPessoa(int idPessoa,int idEndereco, String nome, String telefone, String cep, String cidade, String rua, int numero, String bairro,
+    public void alterarPessoa(int idPessoa, int idEndereco, String nome, String telefone, String cep, String cidade, String rua, int numero, String bairro,
             String complemento, String referencia, String estado, int tipoPessoa, String cpf, Date dataNascimento,
             String sexo, String cnpj, Double salario, Date dataAdmissao)//os valores especificos podem ser null
             throws SQLException, Exception {
@@ -109,10 +109,11 @@ public class controlPessoa {
     public void exibirLista(JTable tabela, int tipo) {
         String nomeClasse = null;
         Pessoa pes = null;
+      
 
         switch (tipo) {
             case 'C': // Pessoa Fisica
-                nomeClasse = "modelo.Pessoafisica";
+                //nomeClasse = "modelo.Pessoafisica";
                 break;
             case 'F': // Pessoa Fornecedor
                 nomeClasse = "modelo.Fornecedor";
@@ -129,7 +130,7 @@ public class controlPessoa {
             while (it.hasNext()) {
                 pes = it.next();
                 ((DefaultTableModel) tabela.getModel()).addRow(pes.toArray());
-            } 
+            }
         }
 
     }
@@ -137,11 +138,11 @@ public class controlPessoa {
     public void getPessoaSelecionada(TelaCadastroPessoa telaCadastro, TelaExibirPessoas telaExibirPessoas, JTable tabela, int tipo) throws Exception {
         int linha = tabela.getSelectedRow();
 
-        if (linha >= 0) {            
+        if (linha >= 0) {
             telaCadastro = new TelaCadastroPessoa(null, true);
             pessoa = (Pessoa) tabela.getValueAt(linha, 1);
             telaCadastro.setPessoa(pessoa);
-            
+
             telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());
             Endereco endereco = dao.getEndereco(pessoa.getEndereco().getIdEndereco());
@@ -198,8 +199,8 @@ public class controlPessoa {
 
         return s;
     }
-    
-     public void carregarComboVendedor(JComboBox vendedor) {
+
+    public void carregarComboVendedor(JComboBox vendedor) {
         List lista;
         try {
             lista = dao.listarVendedor();
@@ -209,5 +210,5 @@ public class controlPessoa {
             Logger.getLogger(controlPessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
