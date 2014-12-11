@@ -81,7 +81,7 @@ public class controlProduto {
     public void excluirProduto(int linha, JTable tabela) throws SQLException, Exception {
         Produto pro;
         if ( linha >= 0) {
-            pro = (Produto) tabela.getValueAt(linha,0);//GAMBIARRA
+            pro = (Produto) tabela.getValueAt(linha,1);
             try {
                 dao.delete(pro);
             } catch (Exception ex) {
@@ -120,8 +120,8 @@ public class controlProduto {
             } else if (prod != null) {
                 ((DefaultTableModel) tabela.getModel()).addRow(new Vector());
                 int col = 0;
+                tabela.setValueAt(prod.getCodigo(), 0, col++);
                 tabela.setValueAt(prod, 0, col++);
-                tabela.setValueAt(prod.getNome(), 0, col++);
                 tabela.setValueAt(dao.getFornecedor(prod.getFornecedor().getIdPessoa()), 0, col++);
                 tabela.setValueAt(dao.getCategoria(prod.getCategoria().getIdCategoria()), 0, col++);
                 tabela.setValueAt(dao.getTamanho(prod.getTamanho().getIdTamanho()), 0, col++);
@@ -143,7 +143,7 @@ public class controlProduto {
 
         List<Produto> l = null;
         if ( linha >= 0) {
-            produto =  (Produto) tabela.getValueAt(linha,0);
+            produto =  (Produto) tabela.getValueAt(linha,1);
             telaCad.getjTextFieldNome().setText(produto.getNome());
             telaCad.getjTextFieldCodigo().setText(String.valueOf(produto.getCodigo()));
             telaCad.getjTextFieldCodigo().setEnabled(false);
