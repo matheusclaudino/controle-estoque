@@ -7,6 +7,7 @@ package view;
 
 import control.controlPessoa;
 import control.controlProduto;
+import dao.daoPessoa;
 import dao.HibernateUtil;
 import dao.daoProduto;
 import dao.daoVenda;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JRadioButton;
+import model.Pessoa;
 import model.Produto;
 import model.Venda;
 import net.sf.jasperreports.engine.JRException;
@@ -35,14 +37,17 @@ import org.hibernate.Session;
 public class TelaPrincipal extends javax.swing.JFrame {
 
     controlProduto control;
+    daoPessoa bancoPessoa;
+
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal(){
+    public TelaPrincipal() throws SQLException, Exception {
         initComponents();
         setLocationRelativeTo(null);
         this.control = null;
-     
+        bancoPessoa = new daoPessoa();
+
     }
 
     /**
@@ -98,6 +103,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemTamanho = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
         jMenuItemRelatorioCliente = new javax.swing.JMenuItem();
+        jMenuItemRelatorioVendedor = new javax.swing.JMenuItem();
+        jMenuItemRelatorioFornecedor = new javax.swing.JMenuItem();
         jMenuItemRelatorioProduto = new javax.swing.JMenuItem();
         jMenuItemRelatorioVenda = new javax.swing.JMenuItem();
 
@@ -479,7 +486,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuRelatorios.setText("Relatórios");
 
-        jMenuItemRelatorioCliente.setText("Cliente");
+        jMenuItemRelatorioCliente.setText("Clientes");
         jMenuItemRelatorioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemRelatorioClienteActionPerformed(evt);
@@ -487,6 +494,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuRelatorios.add(jMenuItemRelatorioCliente);
 
+        jMenuItemRelatorioVendedor.setText("Vendedores(as)");
+        jMenuItemRelatorioVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioVendedorActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItemRelatorioVendedor);
+
+        jMenuItemRelatorioFornecedor.setText("Fornecedores");
+        jMenuItemRelatorioFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioFornecedorActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItemRelatorioFornecedor);
         jMenuItemRelatorioProduto.setText("Produto");
         jMenuItemRelatorioProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -676,7 +698,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonListarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarVendedorActionPerformed
         // TODO add your handling code here:
-         TelaExibirPessoas exibirPessoas;
+        TelaExibirPessoas exibirPessoas;
         try {
             exibirPessoas = new TelaExibirPessoas(this, true);
             exibirPessoas.setLocationRelativeTo(this);
@@ -686,12 +708,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButtonListarVendedorActionPerformed
 
     private void jButtonListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarClienteActionPerformed
         // TODO add your handling code here:
-         TelaExibirPessoas exibirPessoas;
+        TelaExibirPessoas exibirPessoas;
         try {
             exibirPessoas = new TelaExibirPessoas(this, true);
             exibirPessoas.setLocationRelativeTo(this);
@@ -713,8 +735,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }//GEN-LAST:event_jButtonCadastrarVendaActionPerformed
 
     private void jButtonListarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarVendaActionPerformed
@@ -726,39 +747,90 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemRelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioClienteActionPerformed
         // TODO add your handling code here:
-  
-            
-            // PASSO 1 - Caminho do relatório
-            InputStream rel = getClass().getResourceAsStream("../report/Cliente.jasper");
 
-            // PASSO 2 - Criar parâmetros de Pesquisa 
-            Map parametros = new HashMap();
-            parametros.put("SUBREPORT_DIR", "src/report/");
+        List<Pessoa> lista = bancoPessoa.consultaPessoa('C');
 
-            // PASSO 3 - Carregar o relatório com os dados
-            JasperPrint print = null;
+        JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+
+        InputStream rel = getClass().getResourceAsStream("../report/Cliente.jasper");
+
+        Map parametros = new HashMap();
+
+        parametros.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION,
+                dao.HibernateUtil.getSessionFactory().openSession());
+
+        JasperPrint print = null;
+
         try {
-            // Passar o caminho do RELATORIO e os PARAMETROS dos PASSSOS 1 e 2 e os DADOS
-            print = JasperFillManager.fillReport(rel, parametros);
+            print = JasperFillManager.fillReport(rel, parametros, dados);
         } catch (JRException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-            // PASSO 4 - Mostrat em uma JANELA
-            JasperViewer janela = new JasperViewer(print, false);
-            janela.setVisible(true);
+        JasperViewer janela = new JasperViewer(print, false);
+        janela.setVisible(true);
     }//GEN-LAST:event_jMenuItemRelatorioClienteActionPerformed
 
+   
+    private void jMenuItemRelatorioVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioVendedorActionPerformed
+        // TODO add your handling code here:
+        List<Pessoa> lista = bancoPessoa.consultaPessoa('V');
+
+        JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+
+        InputStream rel = getClass().getResourceAsStream("../report/Vendedor.jasper");
+
+        Map parametros = new HashMap();
+
+        parametros.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION,
+                dao.HibernateUtil.getSessionFactory().openSession());
+
+        JasperPrint print = null;
+
+        try {
+            print = JasperFillManager.fillReport(rel, parametros, dados);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JasperViewer janela = new JasperViewer(print, false);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelatorioVendedorActionPerformed
+
+    private void jMenuItemRelatorioFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioFornecedorActionPerformed
+        // TODO add your handling code here:
+        List<Pessoa> lista = bancoPessoa.consultaPessoa('F');
+
+        JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
+
+        InputStream rel = getClass().getResourceAsStream("../report/Fornecedor.jasper");
+
+        Map parametros = new HashMap();
+
+        parametros.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION,
+                dao.HibernateUtil.getSessionFactory().openSession());
+
+        JasperPrint print = null;
+
+        try {
+            print = JasperFillManager.fillReport(rel, parametros, dados);
+        } catch (JRException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JasperViewer janela = new JasperViewer(print, false);
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelatorioFornecedorActionPerformed
+   
     private void jMenuItemRelatorioProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioProdutoActionPerformed
         // TODO add your handling code here:
         try {
             daoProduto dao = new daoProduto();
             List<Produto> lista = dao.getNome("");
-            
+
             // Dados para o RELATORIO
             JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
-            
+
             // PASSO 1 - Caminho do relatório
             InputStream rel = getClass().getResourceAsStream("../report/RelatorioProduto.jasper");
 
@@ -770,15 +842,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             JasperPrint print;
             print = JasperFillManager.fillReport(rel, parametros, dados);
 
-
             // PASSO 4 - Mostrar em uma JANELA
             JasperViewer janela = new JasperViewer(print, false);
             janela.setVisible(true);
-            
-        }catch(Exception e){
-            
+
+        } catch (Exception e) {
+
         }
-        
+
     }//GEN-LAST:event_jMenuItemRelatorioProdutoActionPerformed
 
     private void jMenuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioVendaActionPerformed
@@ -786,10 +857,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         try {
             daoVenda dao = new daoVenda();
             List<Venda> lista = dao.getVenda();
-            
+
             // Dados para o RELATORIO
             JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(lista);
-            
+
             // PASSO 1 - Caminho do relatório
             InputStream rel = getClass().getResourceAsStream("../report/RelatorioVenda.jasper");
 
@@ -799,23 +870,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             // PASSO 3 - Carregar o relatório com os dados
             // Passar o caminho do RELATORIO e os PARAMETROS dos PASSSOS 1 e 2 e os DADOS
             JasperPrint print;
-        
-            print = JasperFillManager.fillReport(rel, parametros, dados);
-        
 
+            print = JasperFillManager.fillReport(rel, parametros, dados);
 
             // PASSO 4 - Mostrar em uma JANELA
             JasperViewer janela = new JasperViewer(print, false);
             janela.setVisible(true);
-        }catch (JRException ex) {
+        } catch (JRException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_jMenuItemRelatorioVendaActionPerformed
 
+    }//GEN-LAST:event_jMenuItemRelatorioVendaActionPerformed
+    
     /**
-     * @param args the command line arguments
-     */
+             * @param args the command line arguments
+             */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -843,7 +913,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                try {
+                    new TelaPrincipal().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -883,6 +957,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCor;
     private javax.swing.JMenuItem jMenuItemEstampa;
     private javax.swing.JMenuItem jMenuItemRelatorioCliente;
+    private javax.swing.JMenuItem jMenuItemRelatorioFornecedor;
+    private javax.swing.JMenuItem jMenuItemRelatorioVendedor;
     private javax.swing.JMenuItem jMenuItemRelatorioProduto;
     private javax.swing.JMenuItem jMenuItemRelatorioVenda;
     private javax.swing.JMenuItem jMenuItemTamanho;
