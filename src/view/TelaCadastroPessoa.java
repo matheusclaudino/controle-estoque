@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import model.Pessoa;
 
 /**
  *
@@ -32,7 +33,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
      * Creates new form TelaCadastroPessoa
      */
     controlPessoa control;
-    int IdPessoa; //recupera o id para operações no banco
+    Pessoa pessoa;
 
     public TelaCadastroPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
@@ -43,13 +44,15 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         this.control = new controlPessoa();
     }
 
-    public int getIdPessoa() {
-        return IdPessoa;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setIdPessoa(int IdPessoa) {
-        this.IdPessoa = IdPessoa;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
+
+
 
     public ButtonGroup getButtonGroupTipoPessoa() {
         return buttonGroupTipoPessoa;
@@ -832,7 +835,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         }
         
         try {
-            control.alterarPessoa(this.getIdPessoa(),
+            control.alterarPessoa(this.pessoa.getIdPessoa(), this.pessoa.getEndereco().getIdEndereco(),
                     jTextFieldNome.getText(),
                     jTextFieldTelefone.getText(),
                     jTextFieldCEP.getText(),
