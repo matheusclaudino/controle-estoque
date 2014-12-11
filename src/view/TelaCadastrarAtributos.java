@@ -108,7 +108,7 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
             .addGroup(jPanelTipoAtributoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jRadioButtonCor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jRadioButtonEstampa)
                 .addGap(26, 26, 26)
                 .addComponent(jRadioButtonCategoria)
@@ -151,7 +151,7 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
                 .addGap(0, 19, Short.MAX_VALUE))
         );
 
-        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.setText("CADASTRAR");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCadastrarActionPerformed(evt);
@@ -185,7 +185,7 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
                     .addGroup(jPanelAtributosLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jButtonCadastrar)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelAtributos, java.awt.BorderLayout.CENTER);

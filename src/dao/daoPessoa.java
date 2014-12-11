@@ -89,7 +89,28 @@ public class daoPessoa {
             sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
 
+            sessao.update(pes.getEndereco());
             sessao.update(pes);
+
+            sessao.getTransaction().commit();
+            sessao.close();
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+           if (sessao != null) {
+                sessao.getTransaction().rollback();
+                sessao.close();
+            }
+        }
+    }
+    
+      public void alterarEndereco(Endereco ender){
+
+        Session sessao = null;
+        try {
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
+            sessao.update(ender);
 
             sessao.getTransaction().commit();
             sessao.close();

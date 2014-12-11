@@ -66,7 +66,7 @@ public class controlPessoa {
         return pes.getIdPessoa();
     }
 
-    public void alterarPessoa(int idPessoa, String nome, String telefone, String cep, String cidade, String rua, int numero, String bairro,
+    public void alterarPessoa(int idPessoa,int idEndereco, String nome, String telefone, String cep, String cidade, String rua, int numero, String bairro,
             String complemento, String referencia, String estado, int tipoPessoa, String cpf, Date dataNascimento,
             String sexo, String cnpj, Double salario, Date dataAdmissao)//os valores especificos podem ser null
             throws SQLException, Exception {
@@ -74,6 +74,7 @@ public class controlPessoa {
         char s = tipoSexo(sexo);
         Pessoa pes = null;
         Endereco endereco = new Endereco(cep, rua, numero, bairro, cidade, estado);
+        endereco.setIdEndereco(idEndereco);
         if (tipoPessoa == 'C') {
             pes = new Pessoafisica(endereco, nome, telefone, cpf, s, dataNascimento);
         } else if (tipoPessoa == 'F') {
@@ -139,7 +140,7 @@ public class controlPessoa {
         if (linha >= 0) {            
             telaCadastro = new TelaCadastroPessoa(null, true);
             pessoa = (Pessoa) tabela.getValueAt(linha, 1);
-            telaCadastro.setIdPessoa((int) tabela.getValueAt(linha, 0));
+            telaCadastro.setPessoa(pessoa);
             
             telaCadastro.getjTextFieldNome().setText(pessoa.getNome());
             telaCadastro.getjTextFieldTelefone().setText(pessoa.getTelefone());
