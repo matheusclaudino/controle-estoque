@@ -47,6 +47,10 @@ public class TelaPesqVenda extends javax.swing.JDialog {
             }
         });
 
+        jPanelVenda.setBackground(new java.awt.Color(11, 122, 150));
+
+        jScrollPane1.setBackground(new java.awt.Color(11, 122, 150));
+
         jTableVenda.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jTableVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

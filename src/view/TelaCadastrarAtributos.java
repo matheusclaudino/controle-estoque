@@ -81,7 +81,10 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
 
         setTitle("Cadastrar Atributo");
 
-        jPanelTipoAtributo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Atributo"));
+        jPanelAtributos.setBackground(new java.awt.Color(11, 122, 150));
+
+        jPanelTipoAtributo.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelTipoAtributo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO ATRIBUTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanelTipoAtributo.setToolTipText("");
 
         buttonGroupTipoAtributo.add(jRadioButtonCor);
@@ -127,8 +130,11 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
                 .addGap(0, 14, Short.MAX_VALUE))
         );
 
-        jPanelInformacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação"));
+        jPanelInformacao.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelInformacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INFORMAÇÃO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNome.setText("Nome");
 
         javax.swing.GroupLayout jPanelInformacaoLayout = new javax.swing.GroupLayout(jPanelInformacao);

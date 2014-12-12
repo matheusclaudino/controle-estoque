@@ -75,6 +75,8 @@ public class TelaPesqProduto extends javax.swing.JDialog {
 
         jPopupMenuPesquisa.getAccessibleContext().setAccessibleParent(jTableProduto);
 
+        jPanelPesqProduto.setBackground(new java.awt.Color(11, 122, 150));
+
         jComboBoxPesqProduto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Nome" }));
 
         jButtonPesquisar.setText("Pesquisar");
@@ -83,6 +85,8 @@ public class TelaPesqProduto extends javax.swing.JDialog {
                 jButtonPesquisarActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setBackground(new java.awt.Color(11, 122, 150));
 
         jTableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -68,10 +68,18 @@ public class TelaVenda extends javax.swing.JDialog {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(11, 122, 150));
+
+        jLabelQuantidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelQuantidade.setForeground(new java.awt.Color(255, 255, 255));
         jLabelQuantidade.setText("Quantidade");
 
+        jLabelVendedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelVendedor.setForeground(new java.awt.Color(255, 255, 255));
         jLabelVendedor.setText(" Vendedor");
 
+        jLabelProduto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelProduto.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProduto.setText("Produto");
 
         jButtonCadastrar.setText("Cadastrar");
@@ -81,12 +89,18 @@ public class TelaVenda extends javax.swing.JDialog {
             }
         });
 
+        jLabelValor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelValor.setForeground(new java.awt.Color(255, 255, 255));
         jLabelValor.setText("Valor");
 
         jTextFieldValor.setEnabled(false);
 
+        jLabelDataVenda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelDataVenda.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDataVenda.setText("Data de Venda");
 
+        jLabelFormatoData.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelFormatoData.setForeground(new java.awt.Color(255, 255, 255));
         jLabelFormatoData.setText("aaaa-mm-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,7 +134,7 @@ public class TelaVenda extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addComponent(jButtonCadastrar)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +162,7 @@ public class TelaVenda extends javax.swing.JDialog {
                 .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jButtonCadastrar)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
