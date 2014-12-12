@@ -88,9 +88,14 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(11, 122, 150));
+
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNome.setText("*Nome");
 
-        jPanelDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder("*Descrição"));
+        jPanelDescricao.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelDescricao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "*Descrição", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jTextAreaDescricao.setColumns(20);
         jTextAreaDescricao.setRows(5);
@@ -109,24 +114,43 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabelPreco.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelPreco.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPreco.setText("*Preço");
 
+        jLabelUnidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelUnidade.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUnidade.setText("*Und.");
 
+        jLabelData.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelData.setForeground(new java.awt.Color(255, 255, 255));
         jLabelData.setText("*Data");
 
+        jPanel3.setBackground(new java.awt.Color(11, 122, 150));
         jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jLabelFornecedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         jLabelFornecedor.setText("Fornecedor");
 
+        jLabelCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCategoria.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCategoria.setText("Categoria");
 
+        jLabelTamanho.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelTamanho.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTamanho.setText("Tamanho");
 
+        jLabelCor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCor.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCor.setText("Cor");
 
+        jLabelEstampa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelEstampa.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEstampa.setText("Estampa");
 
+        jLabelCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCodigo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCodigo.setText("*Código");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -136,7 +160,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxFornecedor, 0, 228, Short.MAX_VALUE)
+                    .addComponent(jComboBoxFornecedor, 0, 241, Short.MAX_VALUE)
                     .addComponent(jComboBoxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxTamanho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxCor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -208,6 +232,8 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
         jButtonExcluir.setText("LIMPAR");
         jButtonExcluir.setEnabled(false);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("aaaa-mm-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -236,7 +262,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanelDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelData)
@@ -286,7 +312,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                             .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrarProduto)
                     .addComponent(jButtonAlterar)

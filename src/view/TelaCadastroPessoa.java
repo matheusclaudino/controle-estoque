@@ -326,10 +326,16 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
 
         setTitle("Cadastro");
 
+        jScrollPane1.setBackground(new java.awt.Color(11, 122, 150));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(410, 708));
 
-        jPanelInformacoesGerais.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Gerais"));
+        jPanelTelaCadastroPessoa.setBackground(new java.awt.Color(11, 122, 150));
 
+        jPanelInformacoesGerais.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelInformacoesGerais.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INFORMAÇÕES GERAIS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNome.setText("*Nome");
 
         jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
@@ -338,8 +344,12 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
+        jLabelTelefone.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelTelefone.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTelefone.setText("*Telefone");
 
+        jLabelRua.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelRua.setForeground(new java.awt.Color(255, 255, 255));
         jLabelRua.setText("*Rua");
 
         jTextFieldCidade.addActionListener(new java.awt.event.ActionListener() {
@@ -348,24 +358,40 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
+        jLabelCidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCidade.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCidade.setText("*Cidade");
 
+        jLabelBairro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelBairro.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBairro.setText("*Bairro");
 
+        jLabelNumero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelNumero.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNumero.setText("*Numero");
 
         jSeparator1.setToolTipText("Endereço");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Endereço");
 
+        jLabelCEP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCEP.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCEP.setText("*CEP");
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", " " }));
 
+        jLabelEstado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelEstado.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEstado.setText("Estado");
 
+        jLabelComplemento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelComplemento.setForeground(new java.awt.Color(255, 255, 255));
         jLabelComplemento.setText("Complemento");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Referência");
 
         javax.swing.GroupLayout jPanelInformacoesGeraisLayout = new javax.swing.GroupLayout(jPanelInformacoesGerais);
@@ -467,11 +493,16 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelTipoPessoa.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Pessoa"));
+        jPanelTipoPessoa.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelTipoPessoa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO PESSOA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelTipoPessoa.setForeground(new java.awt.Color(255, 255, 255));
 
         buttonGroupTipoPessoa.add(jRadioButtonCliente);
+        jRadioButtonCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonCliente.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonCliente.setMnemonic('C');
         jRadioButtonCliente.setText("Cliente");
+        jRadioButtonCliente.setContentAreaFilled(false);
         jRadioButtonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonClienteActionPerformed(evt);
@@ -479,8 +510,11 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         });
 
         buttonGroupTipoPessoa.add(jRadioButtonFornecedor);
+        jRadioButtonFornecedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonFornecedor.setMnemonic('F');
         jRadioButtonFornecedor.setText("Fornecedor");
+        jRadioButtonFornecedor.setContentAreaFilled(false);
         jRadioButtonFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonFornecedorActionPerformed(evt);
@@ -488,8 +522,11 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
         });
 
         buttonGroupTipoPessoa.add(jRadioButtonVendedor);
+        jRadioButtonVendedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonVendedor.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonVendedor.setMnemonic('V');
         jRadioButtonVendedor.setText("Vendedor");
+        jRadioButtonVendedor.setContentAreaFilled(false);
         jRadioButtonVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonVendedorActionPerformed(evt);
@@ -520,16 +557,26 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
+        jPanelCliente.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelCliente.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabelCPF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCPF.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCPF.setText("*CPF");
 
+        jLabelFormatoData.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelFormatoData.setForeground(new java.awt.Color(255, 255, 255));
         jLabelFormatoData.setText("aaaa-mm-dd");
 
+        jLabelDataNascimento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelDataNascimento.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDataNascimento.setText("*Data de Nascimento");
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Feminino", "Masculino" }));
 
+        jLabelSexo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelSexo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSexo.setText("Sexo");
 
         javax.swing.GroupLayout jPanelClienteLayout = new javax.swing.GroupLayout(jPanelCliente);
@@ -574,8 +621,12 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanelFornecedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
+        jPanelFornecedor.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelFornecedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FORNECEDOR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelFornecedor.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabelCNPJ.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelCNPJ.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCNPJ.setText("*CNPJ");
 
         javax.swing.GroupLayout jPanelFornecedorLayout = new javax.swing.GroupLayout(jPanelFornecedor);
@@ -598,7 +649,9 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
-        jPanelVendedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Vendedor"));
+        jPanelVendedor.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelVendedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VENDEDOR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanelVendedor.setForeground(new java.awt.Color(255, 255, 255));
 
         jTextFieldSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -606,10 +659,16 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
             }
         });
 
+        jLabelSalario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelSalario.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSalario.setText("*Salario");
 
+        jLabelDataAdmissao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelDataAdmissao.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDataAdmissao.setText("*Data de Admissão");
 
+        jLabelFormatoData1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelFormatoData1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelFormatoData1.setText("aaaa-mm-dd");
 
         javax.swing.GroupLayout jPanelVendedorLayout = new javax.swing.GroupLayout(jPanelVendedor);
@@ -621,7 +680,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addGroup(jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSalario)
                     .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelVendedorLayout.createSequentialGroup()
                         .addComponent(jLabelDataAdmissao)
@@ -697,7 +756,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -707,7 +766,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
                     .addComponent(jButtonCadastrar)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButtonExcluir))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanelTelaCadastroPessoa);

@@ -83,25 +83,40 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
 
         setTitle("Cadastrar Atributo");
 
-        jPanelTipoAtributo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Atributo"));
+        jPanelAtributos.setBackground(new java.awt.Color(11, 122, 150));
+
+        jPanelTipoAtributo.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelTipoAtributo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO ATRIBUTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanelTipoAtributo.setToolTipText("");
 
         buttonGroupTipoAtributo.add(jRadioButtonCor);
+        jRadioButtonCor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonCor.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonCor.setMnemonic('1');
         jRadioButtonCor.setText("Cor");
+        jRadioButtonCor.setContentAreaFilled(false);
 
         buttonGroupTipoAtributo.add(jRadioButtonEstampa);
+        jRadioButtonEstampa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonEstampa.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonEstampa.setMnemonic('2');
         jRadioButtonEstampa.setText("Estampa");
+        jRadioButtonEstampa.setContentAreaFilled(false);
 
         buttonGroupTipoAtributo.add(jRadioButtonCategoria);
+        jRadioButtonCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonCategoria.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonCategoria.setMnemonic('3');
         jRadioButtonCategoria.setText("Categoria");
+        jRadioButtonCategoria.setContentAreaFilled(false);
 
         buttonGroupTipoAtributo.add(jRadioButtonTamanho);
+        jRadioButtonTamanho.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonTamanho.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonTamanho.setMnemonic('4');
         jRadioButtonTamanho.setText("Tamanho");
         jRadioButtonTamanho.setToolTipText("");
+        jRadioButtonTamanho.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanelTipoAtributoLayout = new javax.swing.GroupLayout(jPanelTipoAtributo);
         jPanelTipoAtributo.setLayout(jPanelTipoAtributoLayout);
@@ -129,8 +144,11 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
                 .addGap(0, 14, Short.MAX_VALUE))
         );
 
-        jPanelInformacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Informação"));
+        jPanelInformacao.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelInformacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INFORMAÇÃO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelNome.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNome.setText("Nome");
 
         javax.swing.GroupLayout jPanelInformacaoLayout = new javax.swing.GroupLayout(jPanelInformacao);

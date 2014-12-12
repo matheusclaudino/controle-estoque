@@ -75,7 +75,12 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanelTabelaPessoas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanelExibirPessoas.setBackground(new java.awt.Color(11, 122, 150));
+
+        jPanelTabelaPessoas.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelTabelaPessoas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        jScrollPane2.setBackground(new java.awt.Color(11, 122, 150));
 
         jTablePessoas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,11 +116,15 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanelTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo\n"));
+        jPanelTipo.setBackground(new java.awt.Color(11, 122, 150));
+        jPanelTipo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         buttonGroupTipo.add(jRadioButtonVendedores);
+        jRadioButtonVendedores.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonVendedores.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonVendedores.setMnemonic('V');
         jRadioButtonVendedores.setText("Vendedores");
+        jRadioButtonVendedores.setContentAreaFilled(false);
         jRadioButtonVendedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonVendedoresActionPerformed(evt);
@@ -123,8 +132,11 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         });
 
         buttonGroupTipo.add(jRadioButtonClientes);
+        jRadioButtonClientes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonClientes.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonClientes.setMnemonic('C');
         jRadioButtonClientes.setText("Clientes");
+        jRadioButtonClientes.setContentAreaFilled(false);
         jRadioButtonClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonClientesActionPerformed(evt);
@@ -132,8 +144,11 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         });
 
         buttonGroupTipo.add(jRadioButtonFornecedores);
+        jRadioButtonFornecedores.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonFornecedores.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonFornecedores.setMnemonic('F');
         jRadioButtonFornecedores.setText("Fornecedores");
+        jRadioButtonFornecedores.setContentAreaFilled(false);
         jRadioButtonFornecedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonFornecedoresActionPerformed(evt);
@@ -213,7 +228,7 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
                     .addComponent(jButtonSelecionar)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonExcluir))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
