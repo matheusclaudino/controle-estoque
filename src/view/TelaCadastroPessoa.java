@@ -38,6 +38,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public TelaCadastroPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         jPanelCliente.setVisible(false);
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(false);
