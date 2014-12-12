@@ -38,6 +38,7 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public TelaCadastroPessoa(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         jPanelCliente.setVisible(false);
         jPanelFornecedor.setVisible(false);
         jPanelVendedor.setVisible(false);
@@ -51,8 +52,6 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
-
-
 
     public ButtonGroup getButtonGroupTipoPessoa() {
         return buttonGroupTipoPessoa;
@@ -806,115 +805,134 @@ public class TelaCadastroPessoa extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButtonVendedorActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String nascimento = jTextFieldDataNascimento.getText();
-        String admissao = jTextFieldAdmissao.getText();
-        Date dataNascimento = null;
-        Date dataAdmissao = null;
-        try {
-            if (!jTextFieldDataNascimento.getText().equals("")) {
-                dataNascimento = formatter.parse(nascimento);
-            }
-            if (!jTextFieldAdmissao.getText().equals("")) {
-                dataAdmissao = formatter.parse(admissao);
-            }
-            if (jTextFieldSalario.getText().equals("")) {
-                jTextFieldSalario.setText("0.0");
-            }
-            int id;
+        if (jTextFieldNome.getText().equals("")
+                || jTextFieldTelefone.getText().equals("")
+                || jTextFieldCEP.getText().equals("")
+                || jTextFieldCidade.getText().equals("")
+                || jTextFieldRua.getText().equals("")
+                || jTextFieldBairro.getText().equals("")
+                || jTextFieldNumero.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS!");
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String nascimento = jTextFieldDataNascimento.getText();
+            String admissao = jTextFieldAdmissao.getText();
+            Date dataNascimento = null;
+            Date dataAdmissao = null;
+            try {
+                if (!jTextFieldDataNascimento.getText().equals("")) {
+                    dataNascimento = formatter.parse(nascimento);
+                }
+                if (!jTextFieldAdmissao.getText().equals("")) {
+                    dataAdmissao = formatter.parse(admissao);
+                }
+                if (jTextFieldSalario.getText().equals("")) {
+                    jTextFieldSalario.setText("0.0");
+                }
+                int id;
 
-            id = control.inserirPessoa(
-                    jTextFieldNome.getText(),
-                    jTextFieldTelefone.getText(),
-                    jTextFieldCEP.getText(),
-                    jTextFieldCidade.getText(),
-                    jTextFieldRua.getText(),
-                    Integer.parseInt(jTextFieldNumero.getText().toString().trim()),
-                    jTextFieldBairro.getText(),
-                    jTextFieldComplemento.getText(),
-                    jTextFieldReferencia.getText(),
-                    jComboBoxEstado.getSelectedItem().toString(),
-                    buttonGroupTipoPessoa.getSelection().getMnemonic(),
-                    jTextFieldCPF.getText(),
-                    dataNascimento,
-                    jComboBoxSexo.getSelectedItem().toString(),
-                    jTextFieldCNPJ.getText(),
-                    Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
-                    dataAdmissao
-            );
-       
-            if(buttonGroupTipoPessoa.getSelection().getMnemonic() == 'C'){
-                JOptionPane.showMessageDialog(this, "Cliente Cadastrado");
+                id = control.inserirPessoa(
+                        jTextFieldNome.getText(),
+                        jTextFieldTelefone.getText(),
+                        jTextFieldCEP.getText(),
+                        jTextFieldCidade.getText(),
+                        jTextFieldRua.getText(),
+                        Integer.parseInt(jTextFieldNumero.getText().toString().trim()),
+                        jTextFieldBairro.getText(),
+                        jTextFieldComplemento.getText(),
+                        jTextFieldReferencia.getText(),
+                        jComboBoxEstado.getSelectedItem().toString(),
+                        buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                        jTextFieldCPF.getText(),
+                        dataNascimento,
+                        jComboBoxSexo.getSelectedItem().toString(),
+                        jTextFieldCNPJ.getText(),
+                        Double.parseDouble(jTextFieldSalario.getText().toString().trim()),
+                        dataAdmissao
+                );
+
+                if (buttonGroupTipoPessoa.getSelection().getMnemonic() == 'C') {
+                    JOptionPane.showMessageDialog(this, "Cliente Cadastrado");
+                }
+                if (buttonGroupTipoPessoa.getSelection().getMnemonic() == 'V') {
+                    JOptionPane.showMessageDialog(this, "Vendedor(a) Cadastrado");
+                }
+                if (buttonGroupTipoPessoa.getSelection().getMnemonic() == 'F') {
+                    JOptionPane.showMessageDialog(this, "Fornecdor Cadastrado");
+                }
+
+                cleanFields();
+
+            } catch (Exception ex) {
+                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(buttonGroupTipoPessoa.getSelection().getMnemonic() == 'V'){
-                JOptionPane.showMessageDialog(this, "Vendedor(a) Cadastrado");
-            }
-            if(buttonGroupTipoPessoa.getSelection().getMnemonic() == 'F'){
-                JOptionPane.showMessageDialog(this, "Fornecdor Cadastrado");
-            }
-            
-            cleanFields();
-            
-        } catch (Exception ex) {
-            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        
-        double salario;
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String nascimento = jTextFieldDataNascimento.getText();
-        String admissao = jTextFieldAdmissao.getText();
-        Date dataNascimento = null;
-        Date dataAdmissao = null;
+        if (jTextFieldNome.getText().equals("")
+                || jTextFieldTelefone.getText().equals("")
+                || jTextFieldCEP.getText().equals("")
+                || jTextFieldCidade.getText().equals("")
+                || jTextFieldRua.getText().equals("")
+                || jTextFieldBairro.getText().equals("")
+                || jTextFieldNumero.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS!");
+        } else {
+            double salario;
 
-        if (!jTextFieldDataNascimento.getText().equals("")) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String nascimento = jTextFieldDataNascimento.getText();
+            String admissao = jTextFieldAdmissao.getText();
+            Date dataNascimento = null;
+            Date dataAdmissao = null;
+
+            if (!jTextFieldDataNascimento.getText().equals("")) {
+                try {
+                    dataNascimento = formatter.parse(nascimento);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (!jTextFieldAdmissao.getText().equals("")) {
+                try {
+                    dataAdmissao = formatter.parse(admissao);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            if (jTextFieldSalario.getText().equals("")) {
+                salario = 0.0;
+            } else {
+                salario = Double.parseDouble(jTextFieldSalario.getText());
+            }
+
             try {
-                dataNascimento = formatter.parse(nascimento);
-            } catch (ParseException ex) {
+                control.alterarPessoa(this.pessoa.getIdPessoa(), this.pessoa.getEndereco().getIdEndereco(),
+                        jTextFieldNome.getText(),
+                        jTextFieldTelefone.getText(),
+                        jTextFieldCEP.getText(),
+                        jTextFieldCidade.getText(),
+                        jTextFieldRua.getText(),
+                        Integer.parseInt(jTextFieldNumero.getText().trim()),
+                        jTextFieldBairro.getText(),
+                        jTextFieldComplemento.getText(),
+                        jTextFieldReferencia.getText(),
+                        jComboBoxEstado.getSelectedItem().toString(),
+                        buttonGroupTipoPessoa.getSelection().getMnemonic(),
+                        jTextFieldCPF.getText(),
+                        dataNascimento,
+                        jComboBoxSexo.getSelectedItem().toString(),
+                        jTextFieldCNPJ.getText(),
+                        salario,
+                        dataAdmissao
+                );
+            JOptionPane.showMessageDialog(this, "Dado(s) alterado(s)!");
+            } catch (Exception ex) {
                 Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        if (!jTextFieldAdmissao.getText().equals("")) {
-            try {
-                dataAdmissao = formatter.parse(admissao);
-            } catch (ParseException ex) {
-                Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        if(jTextFieldSalario.getText().equals("")){
-            salario = 0.0;
-        }
-        else{
-            salario = Double.parseDouble(jTextFieldSalario.getText());
-        }
-        
-        try {
-            control.alterarPessoa(this.pessoa.getIdPessoa(), this.pessoa.getEndereco().getIdEndereco(),
-                    jTextFieldNome.getText(),
-                    jTextFieldTelefone.getText(),
-                    jTextFieldCEP.getText(),
-                    jTextFieldCidade.getText(),
-                    jTextFieldRua.getText(),
-                    Integer.parseInt(jTextFieldNumero.getText().trim()),
-                    jTextFieldBairro.getText(),
-                    jTextFieldComplemento.getText(),
-                    jTextFieldReferencia.getText(),
-                    jComboBoxEstado.getSelectedItem().toString(),
-                    buttonGroupTipoPessoa.getSelection().getMnemonic(),
-                    jTextFieldCPF.getText(),
-                    dataNascimento,
-                    jComboBoxSexo.getSelectedItem().toString(),
-                    jTextFieldCNPJ.getText(),
-                    salario,
-                    dataAdmissao
-            );
-        } catch (Exception ex) {
-            Logger.getLogger(TelaCadastroPessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 

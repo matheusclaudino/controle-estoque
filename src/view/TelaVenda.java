@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
 
 import control.controlPessoa;
@@ -23,17 +22,18 @@ import model.Produto;
  * @author Paulo
  */
 public class TelaVenda extends javax.swing.JDialog {
+
     controlPessoa conPessoa;
     controlProduto conProduto;
     controlVenda conVenda;
-    
+
     /**
      * Creates new form TelaVenda
      */
     public TelaVenda(java.awt.Frame parent, boolean modal) throws SQLException, Exception {
         super(parent, modal);
         initComponents();
-        
+
         this.conPessoa = new controlPessoa();
         this.conProduto = new controlProduto();
         this.conVenda = new controlVenda();
@@ -187,35 +187,37 @@ public class TelaVenda extends javax.swing.JDialog {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String data = jTextFieldDataVenda.getText();
-        int id;
-        Date dataEntrada;
-        int quantidade = Integer.parseInt(jTextFieldQuantidade.getText());
-        double valor;
-        Produto p = (Produto)jComboBoxProduto.getSelectedItem();
-        valor = (Double.parseDouble(p.getPreco().toString()));
-        
-        valor = (valor * quantidade);
-        jTextFieldValor.setText(String.valueOf(valor));
-        
-         try {
-            dataEntrada = formatter.parse(data);
-            
-            id = conVenda.inserirVenda(
-                jComboBoxCodigoVendedor.getSelectedItem(),
-                jComboBoxProduto.getSelectedItem(),
-                Integer.parseInt(jTextFieldQuantidade.getText()),
-                valor,
-                dataEntrada
-            );
-            
-        JOptionPane.showMessageDialog(this, "Venda " + id + " cadastrado");
-       
-            
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+        if (jTextFieldQuantidade.getText().equals("") || jTextFieldDataVenda.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "PREENCHA TODOS OS CAMPOS!");
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String data = jTextFieldDataVenda.getText();
+            int id;
+            Date dataEntrada;
+            int quantidade = Integer.parseInt(jTextFieldQuantidade.getText());
+            double valor;
+            Produto p = (Produto) jComboBoxProduto.getSelectedItem();
+            valor = (Double.parseDouble(p.getPreco().toString()));
+
+            valor = (valor * quantidade);
+            jTextFieldValor.setText(String.valueOf(valor));
+
+            try {
+                dataEntrada = formatter.parse(data);
+
+                id = conVenda.inserirVenda(
+                        jComboBoxCodigoVendedor.getSelectedItem(),
+                        jComboBoxProduto.getSelectedItem(),
+                        Integer.parseInt(jTextFieldQuantidade.getText()),
+                        valor,
+                        dataEntrada
+                );
+
+                JOptionPane.showMessageDialog(this, "Venda Cadastrada!");
+
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
@@ -251,18 +253,18 @@ public class TelaVenda extends javax.swing.JDialog {
             public void run() {
                 TelaVenda dialog;
                 try {
-                    dialog = new TelaVenda(new javax.swing.JFrame(), true); 
+                    dialog = new TelaVenda(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(TelaVenda.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               
+
             }
         });
     }

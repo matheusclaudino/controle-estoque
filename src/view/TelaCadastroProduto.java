@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
 /**
  *
  * @author Paulo
@@ -31,6 +30,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
      */
     controlProduto control;
     controlAtributos controlAtri;
+
     public TelaCadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -335,48 +335,55 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarProdutoActionPerformed
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String data = jTextFieldData.getText();
-        Date dataEntrada;
-        String preco = jTextFieldPreco.getText();
-        BigDecimal bigPreco = new BigDecimal(preco);
-        
-        try {
-            dataEntrada = formatter.parse(data);
+        if (jTextFieldNome.getText().equals("")
+                || jTextAreaDescricao.getText().equals("")
+                || jTextFieldCodigo.getText().equals("")
+                || jTextFieldUnidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS!");
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            String data = jTextFieldData.getText();
+            Date dataEntrada;
+            String preco = jTextFieldPreco.getText();
+            BigDecimal bigPreco = new BigDecimal(preco);
 
-            int id;
-           id = control.inserirProduto(
-                    Integer.parseInt(jTextFieldCodigo.getText()),
-                    jTextFieldNome.getText(),
-                    jTextAreaDescricao.getText(),
-                    bigPreco,
-                    Integer.parseInt(jTextFieldUnidade.getText()),
-                    dataEntrada,
-                    jComboBoxFornecedor.getSelectedItem(),
-                    jComboBoxCategoria.getSelectedItem(),
-                    jComboBoxTamanho.getSelectedItem(),
-                    jComboBoxCor.getSelectedItem(),
-                    jComboBoxEstampa.getSelectedItem()
-            );
-           JOptionPane.showMessageDialog(this, "Produto Cadastrado");
-           cleanFields();
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                dataEntrada = formatter.parse(data);
+
+                int id;
+                id = control.inserirProduto(
+                        Integer.parseInt(jTextFieldCodigo.getText()),
+                        jTextFieldNome.getText(),
+                        jTextAreaDescricao.getText(),
+                        bigPreco,
+                        Integer.parseInt(jTextFieldUnidade.getText()),
+                        dataEntrada,
+                        jComboBoxFornecedor.getSelectedItem(),
+                        jComboBoxCategoria.getSelectedItem(),
+                        jComboBoxTamanho.getSelectedItem(),
+                        jComboBoxCor.getSelectedItem(),
+                        jComboBoxEstampa.getSelectedItem()
+                );
+                JOptionPane.showMessageDialog(this, "Produto Cadastrado");
+                cleanFields();
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-         controlAtri.carregarComboFornecedor(jComboBoxFornecedor);
-         controlAtri.carregarComboCategoria(jComboBoxCategoria);
-         controlAtri.carregarComboTamanho(jComboBoxTamanho);
-         controlAtri.carregarComboCor(jComboBoxCor);
-         controlAtri.carregarComboEstampa(jComboBoxEstampa);
+        controlAtri.carregarComboFornecedor(jComboBoxFornecedor);
+        controlAtri.carregarComboCategoria(jComboBoxCategoria);
+        controlAtri.carregarComboTamanho(jComboBoxTamanho);
+        controlAtri.carregarComboCor(jComboBoxCor);
+        controlAtri.carregarComboEstampa(jComboBoxEstampa);
     }//GEN-LAST:event_formComponentShown
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         // TODO add your handling code here:
         TelaPesqProduto pesquisa = new TelaPesqProduto(null, true, this);
-        pesquisa.requestFocus();  
+        pesquisa.requestFocus();
         pesquisa.setDefaultCloseOperation(TelaPrincipal.HIDE_ON_CLOSE);
         pesquisa.setLocationRelativeTo(this);
         pesquisa.setVisible(true);
@@ -384,32 +391,38 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         // TODO add your handling code here:
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-        String data = jTextFieldData.getText();
-        Date dataEntrada;
-        String preco = jTextFieldPreco.getText();
-        BigDecimal bigPreco = new BigDecimal(preco);
-        
-        try {
-            dataEntrada = formatter.parse(data);
-       
+        if (jTextFieldNome.getText().equals("")
+                || jTextAreaDescricao.getText().equals("")
+                || jTextFieldCodigo.getText().equals("")
+                || jTextFieldUnidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS!");
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            String data = jTextFieldData.getText();
+            Date dataEntrada;
+            String preco = jTextFieldPreco.getText();
+            BigDecimal bigPreco = new BigDecimal(preco);
 
-        control.alterarProduto(Integer.parseInt(jTextFieldCodigo.getText()),
-                    jTextFieldNome.getText(),
-                    jTextAreaDescricao.getText(),
-                    bigPreco,
-                    Integer.parseInt(jTextFieldUnidade.getText()),
-                    dataEntrada,
-                    jComboBoxFornecedor.getSelectedItem(),
-                    jComboBoxCategoria.getSelectedItem(),
-                    jComboBoxTamanho.getSelectedItem(),
-                    jComboBoxCor.getSelectedItem(),
-                    jComboBoxEstampa.getSelectedItem());
-         JOptionPane.showMessageDialog(this, "Produto " + Integer.parseInt(jTextFieldCodigo.getText()) + " alterado!");
-        cleanFields();
-        
-         } catch (ParseException ex) {
-            Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                dataEntrada = formatter.parse(data);
+
+                control.alterarProduto(Integer.parseInt(jTextFieldCodigo.getText()),
+                        jTextFieldNome.getText(),
+                        jTextAreaDescricao.getText(),
+                        bigPreco,
+                        Integer.parseInt(jTextFieldUnidade.getText()),
+                        dataEntrada,
+                        jComboBoxFornecedor.getSelectedItem(),
+                        jComboBoxCategoria.getSelectedItem(),
+                        jComboBoxTamanho.getSelectedItem(),
+                        jComboBoxCor.getSelectedItem(),
+                        jComboBoxEstampa.getSelectedItem());
+                JOptionPane.showMessageDialog(this, "Produto " + Integer.parseInt(jTextFieldCodigo.getText()) + " alterado!");
+                cleanFields();
+
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
@@ -417,22 +430,23 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         // TODO add your handling code here:
         this.cleanFields();
-        
+
     }//GEN-LAST:event_jButtonExcluirActionPerformed
-    
-    public void cleanFields(){
-                    jTextFieldCodigo.setText("");
-                    jTextFieldNome.setText("");
-                    jTextAreaDescricao.setText("");
-                    jTextFieldPreco.setText("");
-                    jTextFieldUnidade.setText("");
-                    jTextFieldData.setText("");
-                    jComboBoxFornecedor.setSelectedIndex(0);
-                    jComboBoxCategoria.setSelectedIndex(0);
-                    jComboBoxTamanho.setSelectedIndex(0);
-                    jComboBoxCor.setSelectedIndex(0);
-                    jComboBoxEstampa.setSelectedIndex(0);
+
+    public void cleanFields() {
+        jTextFieldCodigo.setText("");
+        jTextFieldNome.setText("");
+        jTextAreaDescricao.setText("");
+        jTextFieldPreco.setText("");
+        jTextFieldUnidade.setText("");
+        jTextFieldData.setText("");
+        jComboBoxFornecedor.setSelectedIndex(0);
+        jComboBoxCategoria.setSelectedIndex(0);
+        jComboBoxTamanho.setSelectedIndex(0);
+        jComboBoxCor.setSelectedIndex(0);
+        jComboBoxEstampa.setSelectedIndex(0);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -506,7 +520,6 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
     public void setjButtonExcluir(JButton jButtonExcluir) {
         this.jButtonExcluir = jButtonExcluir;
     }
-    
 
     public JComboBox getjComboBoxCategoria() {
         return jComboBoxCategoria;

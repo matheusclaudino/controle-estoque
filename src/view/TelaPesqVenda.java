@@ -8,6 +8,7 @@ package view;
 import control.controlVenda;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -119,6 +120,7 @@ public class TelaPesqVenda extends javax.swing.JDialog {
             // TODO add your handling code here:
 
             control.excluirVenda(jTableVenda);
+            JOptionPane.showMessageDialog(this, "Venda excluida!");
         } catch (Exception ex) {
             Logger.getLogger(TelaPesqVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
