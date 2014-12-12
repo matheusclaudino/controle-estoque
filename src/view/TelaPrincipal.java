@@ -11,7 +11,10 @@ import dao.daoPessoa;
 import dao.HibernateUtil;
 import dao.daoProduto;
 import dao.daoVenda;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.control = null;
         bancoPessoa = new daoPessoa();
+        this.setIcon();
 
     }
 
@@ -974,6 +978,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         });
+        
+    }
+    public void setIcon() {
+        URL url = this.getClass().getResource("/img/icon-sale-border-64.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
