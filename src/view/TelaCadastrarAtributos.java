@@ -222,6 +222,7 @@ public class TelaCadastrarAtributos extends javax.swing.JDialog {
                     buttonGroupTipoAtributo.getSelection().getMnemonic(),
                     jTextFieldNome.getText()
             );
+            JOptionPane.showMessageDialog(this, "Atributo Cadastrado!");
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
