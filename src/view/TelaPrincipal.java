@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JRadioButton;
+import javax.swing.UnsupportedLookAndFeelException;
 import model.Pessoa;
 import model.Produto;
 import model.Venda;
@@ -969,6 +970,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                // JOptionPane.showMessageDialog(null, info.getName() );
+                if ("Windows".equals(info.getName())) {
+                    
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    
+                    break;
+                }
+            }
+            } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InstantiationException ex) {
+                        Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IllegalAccessException ex) {
+                        Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
