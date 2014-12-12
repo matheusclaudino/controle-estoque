@@ -131,6 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SISTEMA DE VENDA");
 
         jPanel1.setBackground(new java.awt.Color(11, 122, 150));
 
