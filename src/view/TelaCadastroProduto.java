@@ -332,7 +332,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
                     jComboBoxCor.getSelectedItem(),
                     jComboBoxEstampa.getSelectedItem()
             );
-           JOptionPane.showMessageDialog(this, "Produto " + id + " cadastrado");
+           JOptionPane.showMessageDialog(this, "Produto Cadastrado");
            cleanFields();
         } catch (ParseException ex) {
             Logger.getLogger(TelaCadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
