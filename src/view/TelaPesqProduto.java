@@ -88,6 +88,7 @@ public class TelaPesqProduto extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(11, 122, 150));
 
+        jTableProduto.setForeground(new java.awt.Color(255, 255, 255));
         jTableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

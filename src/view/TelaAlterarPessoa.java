@@ -266,8 +266,11 @@ public class TelaAlterarPessoa extends javax.swing.JDialog {
         jPanelTipoPessoa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         buttonGroupTipoPessoa.add(jRadioButtonCliente);
+        jRadioButtonCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonCliente.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonCliente.setMnemonic('c');
         jRadioButtonCliente.setText("Cliente");
+        jRadioButtonCliente.setContentAreaFilled(false);
         jRadioButtonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonClienteActionPerformed(evt);
@@ -275,8 +278,11 @@ public class TelaAlterarPessoa extends javax.swing.JDialog {
         });
 
         buttonGroupTipoPessoa.add(jRadioButtonFornecedor);
+        jRadioButtonFornecedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonFornecedor.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonFornecedor.setMnemonic('f');
         jRadioButtonFornecedor.setText("Fornecedor");
+        jRadioButtonFornecedor.setContentAreaFilled(false);
         jRadioButtonFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonFornecedorActionPerformed(evt);
@@ -284,8 +290,11 @@ public class TelaAlterarPessoa extends javax.swing.JDialog {
         });
 
         buttonGroupTipoPessoa.add(jRadioButtonVendedor);
+        jRadioButtonVendedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonVendedor.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonVendedor.setMnemonic('v');
         jRadioButtonVendedor.setText("Vendedor");
+        jRadioButtonVendedor.setContentAreaFilled(false);
         jRadioButtonVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonVendedorActionPerformed(evt);

@@ -120,8 +120,11 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         jPanelTipo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         buttonGroupTipo.add(jRadioButtonVendedores);
+        jRadioButtonVendedores.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonVendedores.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonVendedores.setMnemonic('V');
         jRadioButtonVendedores.setText("Vendedores");
+        jRadioButtonVendedores.setContentAreaFilled(false);
         jRadioButtonVendedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonVendedoresActionPerformed(evt);
@@ -129,8 +132,11 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         });
 
         buttonGroupTipo.add(jRadioButtonClientes);
+        jRadioButtonClientes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonClientes.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonClientes.setMnemonic('C');
         jRadioButtonClientes.setText("Clientes");
+        jRadioButtonClientes.setContentAreaFilled(false);
         jRadioButtonClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonClientesActionPerformed(evt);
@@ -138,8 +144,11 @@ public class TelaExibirPessoas extends javax.swing.JDialog {
         });
 
         buttonGroupTipo.add(jRadioButtonFornecedores);
+        jRadioButtonFornecedores.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonFornecedores.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonFornecedores.setMnemonic('F');
         jRadioButtonFornecedores.setText("Fornecedores");
+        jRadioButtonFornecedores.setContentAreaFilled(false);
         jRadioButtonFornecedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonFornecedoresActionPerformed(evt);
